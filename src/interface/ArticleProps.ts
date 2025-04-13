@@ -54,5 +54,5 @@ export interface ArticleProps {
   subtitleStyle?: string;
   sapoStyle?: string;
   align?: string;
-  dataArticle?: Article | {} | undefined;
+  dataArticle?: Article;
 }
