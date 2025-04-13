@@ -37,9 +37,11 @@ const ArticlePerson = ({ className, horizonCard = false }: CardPerson) => {
       )}
       {horizonCard && (
         <div
-          className={`${className} flex justify-between items-center p-3`}
-          style={{ background: 'url(/banners/bg-ps.png)' }}
+          className={`${className} relative flex justify-between items-center p-3`}
         >
+          <div className="absolute top-0 z-[-1] left-0">
+            <img src="/banners/bg-ps.png" className="w-full h-full" alt="" />
+          </div>
           <img
             srcSet="/images/person2.png 2x"
             alt="Image"
