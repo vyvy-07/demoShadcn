@@ -1,0 +1,188 @@
+@import 'tailwindcss';
+/* @import 'tw-animate-css'; */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Rochester&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@custom-variant dark (&:is(.dark *));
+/* @theme inline : sử dụng trên trực tiếp class tailwind */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  /* font */
+  --font-roboto: Roboto, sans-serif;
+  --font-Montserrat: Montserrat, sans-serif;
+  --font-PlayfairDisplay: 'Playfair Display', sans-serif;
+  --font-Rochester: Rochester, sans-serif;
+  --font-SourceSans3: 'Source Sans 3', sans-serif;
+  /* breakpoint*/
+  --width-initial: initial;
+
+  --breakpoint-xs-max: 767px;
+  --breakpoint-md-max: 835px;
+  --breakpoint-lg-max: 1024px;
+  --breakpoint-lg-min: 1024px;
+  /* colors */
+  /* colors */
+  --color-*: initial;
+  --color-white: #fff;
+  --color-red-primary: red;
+  --color-grey: #b6b6b6;
+  --color-black-main: #393939;
+
+  --color-purple: #3f3cbb;
+  --color-midnight: #121063;
+  --color-tahiti: #3ab7bf;
+  --color-bermuda: #78dcca;
+  --bg-background: #fff;
+}
+/*:root : Định nghĩa 1 biến dùng trong style inline css 
+hoặc trực tiếp trên css thuần cú pháp var(--font-roboto)
+và tái sử dụng lại để định nghĩa cho tailwind css*/
+
+:root {
+  /* Font */
+  --font-roboto: Roboto, sans-serif;
+  --font-Montserrat: Montserrat, sans-serif;
+  --font-roboto: 'Playfair Display', sans-serif;
+  --font-roboto: Rochester, sans-serif;
+  --font-roboto: 'Source Sans 3', sans-serif;
+  --bg-background: #fff;
+  /*  */
+}
+body {
+  @apply font-roboto text-[16px] bg-white;
+}
+@layer base {
+  .H0 {
+    @apply font-roboto font-medium text-[52px] leading-[48px];
+  }
+
+  .H1 {
+    @apply font-roboto font-bold text-[40px] leading-[48px];
+  }
+
+  .H2 {
+    @apply font-roboto font-bold text-[32px] leading-10;
+  }
+
+  .H3 {
+    @apply font-roboto font-semibold text-[22px] leading-[30px];
+  }
+
+  .H4 {
+    @apply font-roboto font-bold text-xl leading-[25px];
+  }
+
+  .H5 {
+    @apply font-roboto font-bold text-lg leading-6;
+  }
+
+  .H6 {
+    @apply font-roboto font-medium text-base leading-5;
+  }
+
+  .H7 {
+    @apply font-roboto font-medium text-sm leading-[18px];
+  }
+
+  .H8 {
+    @apply font-roboto font-bold text-xs leading-[17px];
+  }
+
+  .H9 {
+    @apply font-roboto font-medium text-[10px];
+  }
+
+  /* tiêu đề chân - H-chan */
+  .H1__chan {
+    @apply font-PlayfairDisplay font-medium text-6xl leading-[68px];
+  }
+
+  .H2__chan {
+    @apply font-PlayfairDisplay font-medium text-[32px];
+  }
+
+  .H3__chan {
+    @apply font-PlayfairDisplay font-medium text-2xl;
+  }
+
+  .H4__chan {
+    @apply font-PlayfairDisplay font-medium text-xl;
+  }
+
+  /* nội dung - T */
+  .T0 {
+    @apply font-roboto font-normal text-[19px] leading-6;
+  }
+
+  .T1 {
+    @apply font-roboto font-normal text-[17px] leading-[22px];
+  }
+
+  .T2 {
+    @apply font-roboto font-normal text-base;
+  }
+
+  .T3 {
+    @apply font-roboto font-normal text-[15px] leading-6;
+  }
+
+  .T4 {
+    @apply font-roboto font-normal text-sm leading-[18px];
+  }
+
+  .T5 {
+    @apply font-roboto font-normal text-xs leading-[14px];
+  }
+
+  /* danh mục - DM */
+  .DM-14 {
+    @apply font-roboto font-medium text-sm text-[#7b7b7b] uppercase;
+  }
+
+  .DM-12 {
+    @apply font-roboto font-medium text-xs leading-5 text-[#7b7b7b] uppercase;
+  }
+
+  /* date - D */
+  .D-13 {
+    @apply font-roboto font-normal text-[13px] leading-[18px] text-[#7b7b7b];
+  }
+
+  .D-11 {
+    @apply font-roboto font-normal text-[11px] leading-[18px] text-[#7b7b7b];
+  }
+
+  .D-10 {
+    @apply font-roboto italic text-[10px] text-[#7b7b7b];
+  }
+
+  /* cac style khac */
+  .ten-tap-chi {
+    @apply font-roboto font-medium leading-4;
+  }
+
+  /* chấm ở giữa date và cate */
+  .dot {
+    @apply w-1 h-1 bg-[#d9d9d9] rounded-full;
+  }
+  .dot-red {
+    @apply w-1 h-1 bg-red-primary rounded-full;
+  }
+}
+
+/* css for reuse ultilities */
+@layer utilities {
+}
+.focus-visible\:ring-\[3px\] {
+  &:focus-visible {
+    --tw-ring-shadow: none;
+    box-shadow: none;
+  }
+}
