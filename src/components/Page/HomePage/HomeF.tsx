@@ -1,9 +1,7 @@
-import ArticleCard from '@/components/Articles/ArticleCard';
 import ArticleCustomCard from '@/components/Articles/ArticleCustomCard';
 import GridThreeCol from '@/components/LayoutGrid/GridThreeCol';
-import GridWrapper from '@/components/LayoutGrid/GridWrapper';
 import SectionTitle from '@/components/SectionTitle';
-import type { PropsGlobal } from '@/interface/articleProps';
+import type { PropsGlobal } from '@/interface/propsGlobal';
 
 const HomeF = ({ posts }: PropsGlobal) => {
   if (!posts?.length) {

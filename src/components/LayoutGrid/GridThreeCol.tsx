@@ -1,8 +1,8 @@
-import type { PropsGlobal } from '@/interface/articleProps';
 import ArticleCard from '../Articles/ArticleCard';
 import SectionTitle from '../SectionTitle';
 import GridWrapper from './GridWrapper';
 import ArticleMini from '../Articles/ArticleMini';
+import type { PropsGlobal } from '@/interface/propsGlobal';
 
 const GridThreeCol = ({
   posts,

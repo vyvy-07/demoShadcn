@@ -1,6 +1,3 @@
-import type { ReactNode } from 'react';
-import type { LayoutType } from './layoutPage';
-
 export interface Article {
   id?: string;
   title?: string;
@@ -34,32 +31,4 @@ export interface Article {
   trash?: boolean;
   hasAudio?: string;
   articleGA?: { DAY?: [{}]; HOUR?: {} };
-}
-
-export interface PropsGlobal {
-  id?: string;
-  title?: string;
-  url?: string;
-  posts?: Article[] | [] | undefined;
-  layoutPage?: LayoutType;
-  lineBreak?: boolean;
-  hasModifiedFirstPost?: boolean;
-  hasContent?: string;
-  children?: ReactNode;
-  hasMiniArticle?: boolean;
-  className?: string;
-  changeColor?: boolean;
-  cateAlias?: string;
-  hasCate?: boolean;
-  hasDate?: boolean;
-  hasSapo?: boolean;
-
-  titleStyle?: string;
-  dateStyle?: string;
-  cateStyle?: string;
-  subtitleStyle?: string;
-  sapoStyle?: string;
-  align?: string;
-  dataArticle?: Article;
-  postsSide?: Article[];
 }

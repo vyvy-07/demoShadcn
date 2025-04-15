@@ -1,8 +1,7 @@
 import ArticleCard from '@/components/Articles/ArticleCard';
 import GridFourCol from '@/components/LayoutGrid/GridFourCol';
-import GridWrapper from '@/components/LayoutGrid/GridWrapper';
 import SectionTitle from '@/components/SectionTitle';
-import type { PropsGlobal } from '@/interface/articleProps';
+import type { PropsGlobal } from '@/interface/propsGlobal';
 
 const HomeC = ({ posts }: PropsGlobal) => {
   return (

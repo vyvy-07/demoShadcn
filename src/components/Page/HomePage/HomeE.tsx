@@ -1,7 +1,7 @@
 import ArticlePerson from '@/components/Articles/ArticlePerson';
 import GridWrapper from '@/components/LayoutGrid/GridWrapper';
 import SectionTitle from '@/components/SectionTitle';
-import type { PropsGlobal } from '@/interface/articleProps';
+import type { PropsGlobal } from '@/interface/propsGlobal';
 
 const HomeE = ({ posts }: PropsGlobal) => {
   if (!posts?.length) {

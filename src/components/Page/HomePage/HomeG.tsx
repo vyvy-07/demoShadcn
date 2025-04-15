@@ -9,8 +9,8 @@ import {
 import Autoplay from 'embla-carousel-autoplay';
 
 import SectionTitle from '@/components/SectionTitle';
-import type { PropsGlobal } from '@/interface/articleProps';
 import React from 'react';
+import type { PropsGlobal } from '@/interface/propsGlobal';
 
 const HomeG = ({ posts }: PropsGlobal) => {
   const [api, setApi] = React.useState<CarouselApi>();

@@ -1,4 +1,4 @@
-import type { PropsGlobal } from '@/interface/articleProps';
+import type { PropsGlobal } from '@/interface/propsGlobal';
 import React, { type ReactNode } from 'react';
 
 const GridWrapper = ({ children, className }: PropsGlobal) => {

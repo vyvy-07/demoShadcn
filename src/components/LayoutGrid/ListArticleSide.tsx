@@ -1,7 +1,7 @@
-import type { PropsGlobal } from '@/interface/articleProps';
 import Link from 'next/link';
 import ArticleCard from '../Articles/ArticleCard';
 import SectionTitle from '../SectionTitle';
+import type { PropsGlobal } from '@/interface/propsGlobal';
 const ListArticleSide = ({
   className,
   posts,

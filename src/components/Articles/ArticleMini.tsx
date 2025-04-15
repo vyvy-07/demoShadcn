@@ -1,4 +1,4 @@
-import type { PropsGlobal } from '@/interface/articleProps';
+import type { PropsGlobal } from '@/interface/propsGlobal';
 import React from 'react';
 
 const ArticleMini = ({ dataArticle, className }: PropsGlobal) => {

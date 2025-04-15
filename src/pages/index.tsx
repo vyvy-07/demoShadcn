@@ -11,17 +11,33 @@ import HomeF from '@/components/Page/HomePage/HomeF';
 import HomeG from '@/components/Page/HomePage/HomeG';
 import HomeH from '@/components/Page/HomePage/HomeH';
 import MainLayout from '@/components/MainLayout';
+import { useEffect } from 'react';
 
 export default function Home({
   layoutPage,
   dataSectionA_Main,
   dataSectionA_Side,
   dataCate,
+  dataSectionlayout,
 }: any) {
   if (!layoutPage) {
     return null;
   }
-  console.log('layoutPage :>> ', layoutPage);
+  useEffect(() => {
+    const getArticle = async () => {
+      try {
+        const dataSectionA_Main = await fetchServerArticleList(
+          dataSectionlayout?.HomeA?.HomeA_Main,
+          5
+        );
+        console.log('ccc :>> ', dataSectionA_Main);
+      } catch (error) {
+        console.log('error :>> ', error);
+      }
+    };
+    getArticle();
+  }, []);
+
   return (
     <Container>
       <MainLayout dataCategory={dataCate}>
@@ -46,22 +62,22 @@ export async function getStaticProps() {
   const resCate = await fetchServerCategoryList();
   const posts = await res?.json();
   const dataTerm = posts?.result?.blocks;
-  const result = transformBlocks(dataTerm);
+  const dataSections = transformBlocks(dataTerm);
   const dataSectionA_Main = await fetchServerArticleList(
-    result?.HomeA?.HomeA_Main,
+    dataSections?.HomeA?.HomeA_Main,
     5
   );
   const dataSectionA_Side = await fetchServerArticleList(
-    result?.HomeA?.HomeA_Side,
+    dataSections?.HomeA?.HomeA_Side,
     5
   );
-  console.log('resCate :>> ', resCate);
   return {
     props: {
       layoutPage: posts?.result,
       dataSectionA_Main: dataSectionA_Main,
       dataSectionA_Side: dataSectionA_Side,
       dataCate: resCate,
+      dataSectionlayout: dataSections,
     },
     revalidate: 60,
   };

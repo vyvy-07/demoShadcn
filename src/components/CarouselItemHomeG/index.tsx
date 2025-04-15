@@ -1,8 +1,6 @@
-import type { PropsGlobal } from '@/interface/articleProps';
+import type { PropsGlobal } from '@/interface/propsGlobal';
 import ArticleCard from '../Articles/ArticleCard';
-import GridWrapper from '../LayoutGrid/GridWrapper';
 import GridThreeCol from '../LayoutGrid/GridThreeCol';
-import SectionTitle from '../SectionTitle';
 
 const CarouselItemHomeG = ({ posts }: PropsGlobal) => {
   if (!posts) {
