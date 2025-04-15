@@ -4,7 +4,7 @@ import React from 'react';
 const AdsBanner = ({ className, url }: PropsGlobal) => {
   return (
     <div className={`${className}`}>
-      <img src={url || '/banners/ads.png'} alt="" />
+      <img src="/banners/ads.png" className="h-full" alt="" />
     </div>
   );
 };

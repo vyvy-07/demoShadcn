@@ -53,7 +53,7 @@ const HomeG = ({ posts }: PropsGlobal) => {
           </CarouselItem>
         </CarouselContent>
       </Carousel>
-      <div className="flex justify-end  w-[80%]">
+      <div className="flex justify-end  w-[80%] mt-7">
         <div style={{ display: 'flex', gap: 8 }}>
           {Array.from({ length: count + 1 }).map((_, index) => {
             console.log(current, index);

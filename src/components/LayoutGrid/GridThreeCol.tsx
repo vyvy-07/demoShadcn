@@ -45,7 +45,7 @@ const GridThreeCol = ({
           </div>
           {hasMiniArticle && (
             <div
-              className="grid grid-cols-3 gap-5 pt-7 border-t-1
+              className="grid grid-cols-3 gap-5 pt-7 mt-7 border-t-1
             max-xs-max:flex max-xs-max:flex-col"
             >
               {posts?.slice(1, 4).map((item, index) => {
