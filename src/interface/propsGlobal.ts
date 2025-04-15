@@ -7,7 +7,7 @@ export interface PropsGlobal {
   id?: string;
   title?: string;
   url?: string;
-  posts?: Article[] | [] | undefined;
+  posts?: Article[];
   layoutPage?: LayoutType;
   lineBreak?: boolean;
   hasModifiedFirstPost?: boolean;
@@ -28,6 +28,6 @@ export interface PropsGlobal {
   sapoStyle?: string;
   align?: string;
   dataArticle?: Article;
-  dataCategory?: Category[] | undefined;
+  dataCategory?: Category[];
   postsSide?: Article[];
 }
