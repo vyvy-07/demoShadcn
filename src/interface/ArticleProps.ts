@@ -6,7 +6,7 @@ export interface Article {
   cateAlias?: string;
   hasCate?: boolean;
   hasDate?: boolean;
-  publicationTime: number;
+  publicationTime?: number | undefined;
   hasSapo?: boolean;
   sapo?: string;
   excerpt?: string;

@@ -1,12 +1,8 @@
 import { AspectRatio } from '@/components/ui/aspect-ratio';
-import type { Article } from '@/interface/articleProps';
 import type { PropsGlobal } from '@/interface/propsGlobal';
 import { formatArticleDate } from '@/utils/Format';
 import Link from 'next/link';
 import { twMerge } from 'tailwind-merge';
-interface CardProps extends PropsGlobal {
-  dataArticle: Article;
-}
 
 const ArticleCard = ({
   dataArticle,
@@ -20,7 +16,7 @@ const ArticleCard = ({
   sapoStyle,
   align,
   className,
-}: CardProps) => {
+}: PropsGlobal) => {
   const url =
     'https://api.nongthonviet.com.vn/media/2025/04/09/67f629249f9c5248f66aea69_tang-truong-kinh-te-tphcm_medium.jpg';
 
@@ -59,7 +55,8 @@ const ArticleCard = ({
           >
             {hasDate && (
               <div className={dateStyle}>
-                {formatArticleDate(dataArticle?.publicationTime)}
+                {dataArticle?.publicationTime &&
+                  formatArticleDate(dataArticle?.publicationTime)}
               </div>
             )}
             {hasDate && hasCate && <div className="dot"></div>}
