@@ -1,7 +1,6 @@
 import GridFourCol from '@/components/LayoutGrid/GridFourCol';
 import TitlteDotArticle from '@/components/LayoutGrid/TitlteDotArticle';
 import SectionTitle from '@/components/SectionTitle';
-import type { Article } from '@/interface/articleProps';
 import type { PropsGlobal } from '@/interface/propsGlobal';
 
 const HomeB = ({ posts }: PropsGlobal) => {
@@ -13,7 +12,7 @@ const HomeB = ({ posts }: PropsGlobal) => {
       <SectionTitle title="CHỦ TRƯƠNG, CHÍNH SÁCH MỚI" className="my-7" />
       <div className="">
         <GridFourCol>
-          {posts?.slice(0, 4).map((item: Article, index: number) => (
+          {posts?.slice(0, 4).map((item, index: number) => (
             <TitlteDotArticle dataArticle={item} key={item?.id} />
           ))}
         </GridFourCol>
