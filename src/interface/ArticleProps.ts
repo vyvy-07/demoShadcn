@@ -1,11 +1,7 @@
 export interface Article {
   id?: string;
   title?: string;
-  className?: string;
-  changeColor?: boolean;
-  cateAlias?: string;
-  hasCate?: boolean;
-  hasDate?: boolean;
+
   publicationTime?: number | undefined;
   hasSapo?: boolean;
   sapo?: string;
@@ -23,12 +19,12 @@ export interface Article {
     categoryId?: string;
     categoryAlias?: string;
     categoryName?: string;
-    parentCates?: [];
+    // parentCates?: [];
   };
   penName?: string;
   copyright?: string;
   alterCateIds?: [];
   trash?: boolean;
   hasAudio?: string;
-  articleGA?: { DAY?: [{}]; HOUR?: {} };
+  // articleGA?: { DAY?: [{}]; HOUR?: {} };
 }
