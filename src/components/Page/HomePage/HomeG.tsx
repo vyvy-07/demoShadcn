@@ -9,7 +9,7 @@ import {
 import Autoplay from 'embla-carousel-autoplay';
 
 import SectionTitle from '@/components/SectionTitle';
-import type { PropsGlobal } from '@/interface/ArticleProps';
+import type { PropsGlobal } from '@/interface/articleProps';
 import React from 'react';
 
 const HomeG = ({ posts }: PropsGlobal) => {
@@ -56,7 +56,6 @@ const HomeG = ({ posts }: PropsGlobal) => {
       <div className="flex justify-end  w-[80%] mt-7">
         <div style={{ display: 'flex', gap: 8 }}>
           {Array.from({ length: count + 1 }).map((_, index) => {
-            console.log(current, index);
             return (
               <div
                 key={index}

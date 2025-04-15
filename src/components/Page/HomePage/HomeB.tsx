@@ -1,7 +1,7 @@
 import GridFourCol from '@/components/LayoutGrid/GridFourCol';
 import TitlteDotArticle from '@/components/LayoutGrid/TitlteDotArticle';
 import SectionTitle from '@/components/SectionTitle';
-import type { Article, PropsGlobal } from '@/interface/ArticleProps';
+import type { Article, PropsGlobal } from '@/interface/articleProps';
 
 const HomeB = ({ posts }: PropsGlobal) => {
   if (!posts?.length) {

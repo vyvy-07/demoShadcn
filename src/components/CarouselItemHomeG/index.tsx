@@ -1,4 +1,4 @@
-import type { PropsGlobal } from '@/interface/ArticleProps';
+import type { PropsGlobal } from '@/interface/articleProps';
 import ArticleCard from '../Articles/ArticleCard';
 import GridWrapper from '../LayoutGrid/GridWrapper';
 import GridThreeCol from '../LayoutGrid/GridThreeCol';

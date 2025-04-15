@@ -1,4 +1,4 @@
-import type { Article } from '@/interface/ArticleProps';
+import type { Article } from '@/interface/articleProps';
 
 const ArticleCustomCard = ({
   dataArticle,

@@ -1,13 +1,9 @@
-import { parseParams } from '@/utils/utilitiesHandling';
-
 const fetchOptions = { next: { revalidate: 300 } };
 
-export async function fetchServerArticleList(listQuery: any, limit: number) {
+export async function fetchLayoutPage(pageName: string) {
   try {
-    const params = parseParams(listQuery, limit);
-    const queryString = new URLSearchParams(params as any).toString();
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_NTV_BASE_URL}/public/article/listing?${queryString}`,
+      `${process.env.NEXT_PUBLIC_NTV_BASE_URL_LC}/${pageName}`,
       fetchOptions
     );
     const data = await response.json();

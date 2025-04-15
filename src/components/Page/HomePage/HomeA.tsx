@@ -2,9 +2,9 @@ import AdsBanner from '@/components/AdBanners';
 import ArticleCard from '@/components/Articles/ArticleCard';
 import GridWrapper from '@/components/LayoutGrid/GridWrapper';
 import ListArticleSide from '@/components/LayoutGrid/ListArticleSide';
-import type { PropsGlobal } from '@/interface/ArticleProps';
+import type { PropsGlobal } from '@/interface/propsGlobal';
 
-const HomeA = ({ posts }: PropsGlobal) => {
+const HomeA = ({ posts, postsSide }: PropsGlobal) => {
   return (
     <div id="homeA">
       <GridWrapper>
@@ -35,7 +35,7 @@ const HomeA = ({ posts }: PropsGlobal) => {
         <div className="col-span-3">
           <ListArticleSide
             className="line-clamp-2"
-            posts={posts}
+            posts={postsSide}
             hasModifiedFirstPost={true}
           />
           <AdsBanner url="/banners/ads2.png" className="mt-5" />

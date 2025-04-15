@@ -1,4 +1,3 @@
-'use server';
 const fetchOptions = { next: { revalidate: 300 } };
 
 export async function fetchServerCategoryList() {

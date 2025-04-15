@@ -3,7 +3,7 @@
 import AdsBanner from '@/components/AdBanners';
 import GridThreeCol from '@/components/LayoutGrid/GridThreeCol';
 import SectionTitle from '@/components/SectionTitle';
-import type { PropsGlobal } from '@/interface/ArticleProps';
+import type { PropsGlobal } from '@/interface/articleProps';
 
 const HomeH = ({ posts }: PropsGlobal) => {
   return (

@@ -1,4 +1,4 @@
-import type { PropsGlobal } from '@/interface/ArticleProps';
+import type { PropsGlobal } from '@/interface/articleProps';
 import Link from 'next/link';
 
 const SectionTitle = ({

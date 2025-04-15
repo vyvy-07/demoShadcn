@@ -1,5 +1,5 @@
 import { AspectRatio } from '@/components/ui/aspect-ratio';
-import type { Article, PropsGlobal } from '@/interface/ArticleProps';
+import type { Article, PropsGlobal } from '@/interface/articleProps';
 import { formatArticleDate } from '@/utils/Format';
 import Link from 'next/link';
 import { twMerge } from 'tailwind-merge';

@@ -46,7 +46,7 @@
   --leading-28: 28px;
   --leading-38: 38px;
   --leading-47: 47px;
-
+  --gap-grid: 28px;
   /* colors */
   --color-*: initial;
   --color-white: #fff;
@@ -71,6 +71,7 @@ và tái sử dụng lại để định nghĩa cho tailwind css*/
   --font-roboto: Rochester, sans-serif;
   --font-roboto: 'Source Sans 3', sans-serif;
   --bg-background: #fff;
+  --gap-grid: 28px;
 }
 body {
   @apply font-roboto text-[16px] bg-white;

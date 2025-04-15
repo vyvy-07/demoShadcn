@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import type { LayoutType } from './layoutPage';
 
 export interface Article {
   id?: string;
@@ -34,11 +35,13 @@ export interface Article {
   hasAudio?: string;
   articleGA?: { DAY?: [{}]; HOUR?: {} };
 }
+
 export interface PropsGlobal {
   id?: string;
   title?: string;
   url?: string;
   posts?: Article[] | [] | undefined;
+  layoutPage?: LayoutType;
   lineBreak?: boolean;
   hasModifiedFirstPost?: boolean;
   hasContent?: string;
@@ -58,4 +61,5 @@ export interface PropsGlobal {
   sapoStyle?: string;
   align?: string;
   dataArticle?: Article;
+  postsSide?: Article[];
 }

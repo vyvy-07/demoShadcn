@@ -4,14 +4,16 @@ import {
   MenubarItem,
   MenubarMenu,
   MenubarSeparator,
-  MenubarShortcut,
   MenubarTrigger,
 } from '@/components/ui/menubar';
-import type { category } from '@/interface/category';
+
+import type { Category } from '@/interface/category';
+import type { PropsGlobal } from '@/interface/propsGlobal';
 import Link from 'next/link';
 import { Input } from '../ui/input';
-const Header = (dataCategory: any) => {
-  const data = dataCategory?.dataCategory;
+const Header = (dataCategory: PropsGlobal) => {
+  console.log('dataCategory :>> ', dataCategory?.dataCategory);
+  const data = dataCategory.dataCategory;
   return (
     <div>
       <>
@@ -24,7 +26,8 @@ const Header = (dataCategory: any) => {
           </div>
           <Menubar className="border-none rounded-none shadow-none ">
             {data &&
-              data?.slice(0, 6).map((item: category, index: number) => (
+              Array.isArray(data) &&
+              data?.slice(0, 6).map((item: Category, index) => (
                 <MenubarMenu key={item?.id || index}>
                   <MenubarTrigger className="uppercase cursor-pointer">
                     {item?.name}
@@ -32,10 +35,10 @@ const Header = (dataCategory: any) => {
 
                   <MenubarContent className="rounded-none bg-white border-0">
                     <MenubarSeparator />
-                    {item?.subCates?.length > 0 &&
-                      item?.subCates?.map((subCateItem, subIndex) => (
+                    {item?.subCates &&
+                      item?.subCates?.map((subCateItem: Category, subIndex) => (
                         <MenubarItem key={subCateItem?.id || subIndex}>
-                          <Link href={subCateItem?.alias}>
+                          <Link href={`${subCateItem?.alias}`}>
                             {subCateItem?.name}
                           </Link>
                         </MenubarItem>
