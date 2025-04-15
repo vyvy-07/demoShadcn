@@ -43,6 +43,7 @@ export interface PropsGlobal {
   hasModifiedFirstPost?: boolean;
   hasContent?: string;
   children?: ReactNode;
+  hasMiniArticle?: boolean;
   className?: string;
   changeColor?: boolean;
   cateAlias?: string;

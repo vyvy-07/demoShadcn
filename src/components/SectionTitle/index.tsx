@@ -1,4 +1,4 @@
-import type { ArticleProps } from '@/interface/ArticleProps';
+import type { PropsGlobal } from '@/interface/ArticleProps';
 import Link from 'next/link';
 
 const SectionTitle = ({
@@ -6,7 +6,7 @@ const SectionTitle = ({
   title,
   changeColor = false,
   cateAlias,
-}: ArticleProps) => {
+}: PropsGlobal) => {
   return (
     <>
       {title && (

@@ -4,16 +4,20 @@ import SectionTitle from '../SectionTitle';
 import GridWrapper from './GridWrapper';
 import ArticleMini from '../Articles/ArticleMini';
 
-const GridThreeCol = ({ posts, children }: PropsGlobal) => {
+const GridThreeCol = ({
+  posts,
+  children,
+  hasMiniArticle = false,
+}: PropsGlobal) => {
   if (!posts) {
     return null;
   }
   return (
     <div id="gridThreeCol">
-      <SectionTitle title="XÂY DỰNG ĐẢNG" className="my-7 " />
+      {/* <SectionTitle title="XÂY DỰNG ĐẢNG" className="my-7 " /> */}
       <GridWrapper>
         <div className="col-span-9">
-          <div className="grid grid-cols-9 gap-5">
+          <div className="grid grid-cols-9 gap-5 ">
             <div className="col-span-6">
               <ArticleCard
                 dataArticle={posts[1]}
@@ -40,19 +44,21 @@ const GridThreeCol = ({ posts, children }: PropsGlobal) => {
               </div>
             </div>
           </div>
-          <div className="grid grid-cols-3 gap-5 pt-7 border-t-1">
-            {posts?.slice(1, 4).map((item, index) => {
-              return (
-                <ArticleMini
-                  titleStyle="H6"
-                  hasCate={false}
-                  hasDate={false}
-                  key={index}
-                  dataArticle={item}
-                />
-              );
-            })}
-          </div>
+          {hasMiniArticle && (
+            <div className="grid grid-cols-3 gap-5 pt-7 border-t-1">
+              {posts?.slice(1, 4).map((item, index) => {
+                return (
+                  <ArticleMini
+                    titleStyle="H6"
+                    hasCate={false}
+                    hasDate={false}
+                    key={index}
+                    dataArticle={item}
+                  />
+                );
+              })}
+            </div>
+          )}
         </div>
 
         {/* <div className="col-span-3 ">

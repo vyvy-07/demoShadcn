@@ -2,14 +2,15 @@
 
 import AdsBanner from '@/components/AdBanners';
 import GridThreeCol from '@/components/LayoutGrid/GridThreeCol';
+import SectionTitle from '@/components/SectionTitle';
 import type { PropsGlobal } from '@/interface/ArticleProps';
 
 const HomeH = ({ posts }: PropsGlobal) => {
   return (
     <div id="HomeG">
-      <GridThreeCol posts={posts}>
+      <SectionTitle className="mb-7" title="Khoa học - công nghệ" />
+      <GridThreeCol posts={posts} hasMiniArticle={true}>
         <>
-          {/* <ListArticleSide posts={posts} /> */}
           <AdsBanner />
         </>
       </GridThreeCol>
