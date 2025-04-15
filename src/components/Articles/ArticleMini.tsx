@@ -19,7 +19,7 @@ const ArticleMini = ({ dataArticle, className }: PropsGlobal) => {
         />
       </div>
       <div className="flex-1 ">
-        <h5 className="body-2 ">{dataArticle?.title}</h5>
+        <h5 className="body-2">{dataArticle?.title}</h5>
       </div>
     </div>
   );

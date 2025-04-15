@@ -10,7 +10,7 @@ const HomeE = ({ posts }: PropsGlobal) => {
   return (
     <div id="homeE">
       <SectionTitle title="LÃNH ĐẠO ĐẢNG, NHÀ NƯỚC" className="my-7" />
-      <GridWrapper>
+      <GridWrapper className="">
         {posts?.slice(0, 3).map((item, index) => (
           <ArticlePerson
             key={index}

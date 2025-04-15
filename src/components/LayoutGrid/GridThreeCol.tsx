@@ -17,7 +17,7 @@ const GridThreeCol = ({
       {/* <SectionTitle title="XÂY DỰNG ĐẢNG" className="my-7 " /> */}
       <GridWrapper>
         <div className="col-span-9">
-          <div className="grid grid-cols-9 gap-5 ">
+          <div className="grid grid-cols-9 gap-5 max-xs-max:flex max-xs-max:flex-col">
             <div className="col-span-6">
               <ArticleCard
                 dataArticle={posts[1]}
@@ -25,7 +25,6 @@ const GridThreeCol = ({
                 cateStyle="DM-14"
                 titleStyle="H2"
                 className="mb-5"
-                // align="center"
               />
             </div>
             <div className="col-span-3 ">
@@ -33,7 +32,7 @@ const GridThreeCol = ({
                 {posts?.slice(2, 4).map((item, index) => {
                   return (
                     <ArticleCard
-                      titleStyle="H6"
+                      titleStyle="heading-1"
                       hasCate={false}
                       hasDate={false}
                       key={index}
@@ -45,11 +44,14 @@ const GridThreeCol = ({
             </div>
           </div>
           {hasMiniArticle && (
-            <div className="grid grid-cols-3 gap-5 pt-7 border-t-1">
+            <div
+              className="grid grid-cols-3 gap-5 pt-7 border-t-1
+            max-xs-max:flex max-xs-max:flex-col"
+            >
               {posts?.slice(1, 4).map((item, index) => {
                 return (
                   <ArticleMini
-                    titleStyle="H6"
+                    titleStyle="heading-2"
                     hasCate={false}
                     hasDate={false}
                     key={index}
@@ -61,21 +63,6 @@ const GridThreeCol = ({
           )}
         </div>
 
-        {/* <div className="col-span-3 ">
-          <div className="flex flex-col gap-5">
-            {posts?.slice(2, 4).map((item, index) => {
-              return (
-                <ArticleCard
-                  titleStyle="H6"
-                  hasCate={false}
-                  hasDate={false}
-                  key={index}
-                  dataArticle={item}
-                />
-              );
-            })}
-          </div>
-        </div> */}
         <div className="col-span-3">{children}</div>
       </GridWrapper>
     </div>
