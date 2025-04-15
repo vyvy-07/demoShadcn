@@ -1,14 +1,13 @@
-import GridTwoCol from '@/components/ArticleGrid/GridLayout';
-import ListArticleSide from '@/components/ArticleGrid/ListArticleSide';
 import ArticleCard from '@/components/Articles/ArticleCard';
+import GridWrapper from '@/components/LayoutGrid/GridWrapper';
 import SectionTitle from '@/components/SectionTitle';
-import type { ArticleProps } from '@/interface/ArticleProps';
+import type { PropsGlobal } from '@/interface/ArticleProps';
 
-const HomeC = ({ posts }: ArticleProps) => {
+const HomeC = ({ posts }: PropsGlobal) => {
   return (
     <div id="homeC">
-      <SectionTitle title="Chính trị" className="my-7" />
-      <GridTwoCol>
+      <SectionTitle title="CHỦ TRƯƠNG, CHÍNH SÁCH MỚI" className="my-7" />
+      <GridWrapper>
         {posts?.slice(0, 4).map((item, index) => (
           <ArticleCard
             titleStyle="H5"
@@ -19,7 +18,7 @@ const HomeC = ({ posts }: ArticleProps) => {
             dataArticle={item}
           />
         ))}
-      </GridTwoCol>
+      </GridWrapper>
     </div>
   );
 };

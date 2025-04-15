@@ -1,8 +1,4 @@
 import { AspectRatio } from '@/components/ui/aspect-ratio';
-import type { Article, ArticleProps } from '@/interface/ArticleProps';
-import { formatArticleDate } from '@/utils/Format';
-import Link from 'next/link';
-import { twMerge } from 'tailwind-merge';
 interface CardPerson {
   className?: string;
   horizonCard?: boolean;

@@ -1,18 +1,18 @@
-import GridTwoCol from '@/components/ArticleGrid/GridLayout';
-import ListArticleSide from '@/components/ArticleGrid/ListArticleSide';
-import TitlteDotArticle from '@/components/ArticleGrid/TitlteDotArticle';
+import AdsBanner from '@/components/AdBanners';
 import ArticleCard from '@/components/Articles/ArticleCard';
-import type { Article, ArticleProps } from '@/interface/ArticleProps';
+import GridWrapper from '@/components/LayoutGrid/GridWrapper';
+import ListArticleSide from '@/components/LayoutGrid/ListArticleSide';
+import type { PropsGlobal } from '@/interface/ArticleProps';
 
-const HomeA = ({ posts }: ArticleProps) => {
+const HomeA = ({ posts }: PropsGlobal) => {
   return (
-    <>
-      <GridTwoCol>
+    <div id="homeA">
+      <GridWrapper>
         <div className="col-span-9 gap-5">
           {posts && (
             <ArticleCard
               dataArticle={posts[0]}
-              titleStyle="H2"
+              titleStyle="H1"
               dateStyle="D-13"
               cateStyle="DM-14"
               className="mb-5"
@@ -20,9 +20,9 @@ const HomeA = ({ posts }: ArticleProps) => {
             />
           )}
           <div className="grid grid-cols-2 gap-5 mt-5">
-            {posts?.slice(1, 3).map((item: Article, index: number) => (
+            {posts?.slice(1, 3).map((item, index: number) => (
               <ArticleCard
-                titleStyle="H5"
+                titleStyle="H3"
                 dateStyle="D-13"
                 cateStyle="DM-14"
                 key={index}
@@ -33,10 +33,15 @@ const HomeA = ({ posts }: ArticleProps) => {
         </div>
 
         <div className="col-span-3">
-          <ListArticleSide posts={posts} hasModifiedFirstPost={true} />
+          <ListArticleSide
+            className="line-clamp-2"
+            posts={posts}
+            hasModifiedFirstPost={true}
+          />
+          <AdsBanner url="/banners/ads2.png" className="mt-5" />
         </div>
-      </GridTwoCol>
-    </>
+      </GridWrapper>
+    </div>
   );
 };
 

@@ -1,14 +1,14 @@
-import type { ArticleProps } from '@/interface/ArticleProps';
+import type { PropsGlobal } from '@/interface/ArticleProps';
 import Link from 'next/link';
-import SectionTitle from '../SectionTitle';
 import ArticleCard from '../Articles/ArticleCard';
+import SectionTitle from '../SectionTitle';
 const ListArticleSide = ({
   className,
   posts,
   lineBreak,
   hasModifiedFirstPost,
   hasContent,
-}: ArticleProps) => {
+}: PropsGlobal) => {
   if (!posts?.length) return null;
   const firstPost = posts[0];
 
@@ -26,7 +26,7 @@ const ListArticleSide = ({
           hasCate={false}
           hasSapo={true}
           dataArticle={firstPost}
-          sapoStyle="mb-3"
+          sapoStyle="mb-3 line-clamp-2"
         />
       )}
 
@@ -36,12 +36,12 @@ const ListArticleSide = ({
           <div
             className={`${
               index != posts?.length - 2
-                ? 'border-b-[0.75px]  py-3'
+                ? 'border-b-[0.75px] py-3'
                 : 'border-none  pt-3'
             } border-[#393939]  `}
             key={post.id}
           >
-            <Link href="/">
+            <Link href="/" className="font-medium">
               {/* <IconTypeArticle type={post.type} /> */}
               {post.title}
             </Link>

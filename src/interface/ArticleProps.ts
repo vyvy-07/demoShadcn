@@ -1,3 +1,5 @@
+import type { ReactNode } from 'react';
+
 export interface Article {
   id?: string;
   title?: string;
@@ -32,15 +34,15 @@ export interface Article {
   hasAudio?: string;
   articleGA?: { DAY?: [{}]; HOUR?: {} };
 }
-export interface ArticleProps {
+export interface PropsGlobal {
   id?: string;
   title?: string;
-  number?: number;
+  url?: string;
   posts?: Article[] | [] | undefined;
   lineBreak?: boolean;
   hasModifiedFirstPost?: boolean;
   hasContent?: string;
-
+  children?: ReactNode;
   className?: string;
   changeColor?: boolean;
   cateAlias?: string;

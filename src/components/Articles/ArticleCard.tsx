@@ -1,9 +1,9 @@
 import { AspectRatio } from '@/components/ui/aspect-ratio';
-import type { Article, ArticleProps } from '@/interface/ArticleProps';
+import type { Article, PropsGlobal } from '@/interface/ArticleProps';
 import { formatArticleDate } from '@/utils/Format';
 import Link from 'next/link';
 import { twMerge } from 'tailwind-merge';
-interface CardProps extends ArticleProps {
+interface CardProps extends PropsGlobal {
   dataArticle: Article;
 }
 
@@ -32,7 +32,7 @@ const ArticleCard = ({
         <img
           src={dataArticle?.featuredImage || url}
           alt="Image"
-          className=" object-cover"
+          className="w-full h-full object-cover"
         />
       </AspectRatio>
       <div className="mt-3">
@@ -42,7 +42,7 @@ const ArticleCard = ({
             align === 'center' && 'text-center'
           )} `}
         >
-          <Link className="h-auto" href="/">
+          <Link className="h-auto line-clamp-2" href="/">
             {/* <IconTypeArticle type={dataArticle?.type} /> */}
             {dataArticle?.title}
           </Link>
