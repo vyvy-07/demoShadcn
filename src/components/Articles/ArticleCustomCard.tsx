@@ -1,12 +1,6 @@
-import type { Article } from '@/interface/articleProps';
+import type { PropsGlobal } from '@/interface/propsGlobal';
 
-const ArticleCustomCard = ({
-  dataArticle,
-  className,
-}: {
-  dataArticle: Article;
-  className: string;
-}) => {
+const ArticleCustomCard = ({ dataArticle, className }: PropsGlobal) => {
   return (
     <div className={`${className} flex gap-4 overflow-hidden`}>
       <div className="max-w-[125px] overflow-hidden rounded-none border-none">
