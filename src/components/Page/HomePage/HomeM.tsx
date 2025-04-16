@@ -3,9 +3,9 @@ import GridFourCol from '@/components/LayoutGrid/GridFourCol';
 import SectionTitle from '@/components/SectionTitle';
 import type { PropsGlobal } from '@/interface/propsGlobal';
 
-const HomeC = ({ posts }: PropsGlobal) => {
+const HomeM = ({ posts }: PropsGlobal) => {
   return (
-    <div id="homeC">
+    <div id="homeM">
       <SectionTitle title="CHỦ TRƯƠNG, CHÍNH SÁCH MỚI" className="mt-7 mb-4" />
       <GridFourCol>
         {posts?.slice(0, 4).map((item, index) => (
@@ -22,4 +22,4 @@ const HomeC = ({ posts }: PropsGlobal) => {
   );
 };
 
-export default HomeC;
+export default HomeM;

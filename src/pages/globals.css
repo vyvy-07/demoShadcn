@@ -50,9 +50,12 @@
   /* colors */
   --color-*: initial;
   --color-white: #fff;
-  --color-red-primary: red;
+  --color-red-primary: #e92121;
+  --color-red-hover: #fce8e8;
   --color-grey: #b6b6b6;
-  --color-black-main: #393939;
+  --color-grey-hover: #f1f1f1;
+
+  --color-black: #393939;
   /*  */
   --color-midnight: #121063;
   --color-tahiti: #3ab7bf;
@@ -78,28 +81,28 @@ body {
 }
 @layer base {
   .title-main {
-    @apply text-40 font-bold leading-47;
+    @apply text-40 text-black font-bold leading-47;
   }
   .heading-1 {
-    @apply text-26 font-bold leading-38;
+    @apply text-26 text-black font-bold leading-38;
   }
   .heading-2 {
-    @apply text-22 font-bold leading-28;
+    @apply text-22 text-black font-bold leading-28;
   }
   .heading-3 {
-    @apply text-18 font-bold leading-21;
+    @apply text-18 text-black font-bold leading-21;
   }
   .heading-4 {
-    @apply text-16 font-semibold leading-21;
+    @apply text-16 text-black font-semibold leading-21;
   }
   .body-1 {
-    @apply text-18 leading-24;
+    @apply text-18 text-black leading-24;
   }
   .body-2 {
-    @apply text-16 leading-20 tracking-[0.5px] line-clamp-3;
+    @apply text-16 text-black leading-20 tracking-[0.5px] line-clamp-3;
   }
   .body-3 {
-    @apply text-18 font-bold leading-21;
+    @apply text-18 text-black font-bold leading-21;
   }
 
   .H0 {

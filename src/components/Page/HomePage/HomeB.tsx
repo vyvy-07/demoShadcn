@@ -9,7 +9,7 @@ const HomeB = ({ posts }: PropsGlobal) => {
   }
   return (
     <div id="homeB">
-      <SectionTitle title="CHỦ TRƯƠNG, CHÍNH SÁCH MỚI" className="my-7" />
+      <SectionTitle title="CHỦ TRƯƠNG, CHÍNH SÁCH MỚI" className="mt-7 mb-4" />
       <div className="">
         <GridFourCol>
           {posts?.slice(0, 4).map((item, index: number) => (

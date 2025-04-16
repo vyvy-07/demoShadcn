@@ -41,7 +41,7 @@ const ArticleCard = ({
         >
           <Link className="h-auto line-clamp-2" href="/">
             {/* <IconTypeArticle type={dataArticle?.type} /> */}
-            {dataArticle?.title}
+            <h4> {dataArticle?.title}</h4>
           </Link>
         </div>
 

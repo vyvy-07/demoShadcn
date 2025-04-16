@@ -35,10 +35,14 @@ export interface Article {
 
 export interface PropsGlobal {
   id?: string;
+  reverseTwoRow?: boolean;
   title?: string;
   url?: string;
   posts?: Article[];
   layoutPage?: LayoutType;
+  lineUnderTitle?: boolean;
+  hasTitle?: boolean;
+  hasBorder?: boolean;
   lineBreak?: boolean;
   hasModifiedFirstPost?: boolean;
   hasContent?: string;

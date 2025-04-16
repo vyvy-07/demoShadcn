@@ -22,8 +22,8 @@ export const convertDisplayRatio = (displayRatio: any) => {
 export const parseParams = (objList: any, limit: number) => {
   let queryParams: QueryType = {};
   queryParams.limit = limit;
-  queryParams.skip = objList.skip ?? 0;
-  switch (objList.listType ?? '') {
+  queryParams.skip = objList?.skip ?? 0;
+  switch (objList?.listType ?? '') {
     case 'Tin nổi bật':
       queryParams.isFeature = true;
       queryParams.sort = 'isFeatured=desc,publicationTime=desc';
@@ -43,11 +43,11 @@ export const parseParams = (objList: any, limit: number) => {
       queryParams.isFeature = false;
       queryParams.sort = 'publicationTime=desc,isFeature=false';
   }
-  queryParams.tag = objList.tag ?? '';
-  queryParams.categoryId = objList.cateId ?? objList.cateAlias ?? '';
-  queryParams.type = objList.type ?? '';
-  queryParams.includeChildCate = objList.includeChildCate ?? true;
-  queryParams.isRandomArrange = objList.randomArrange ?? false;
+  queryParams.tag = objList?.tag ?? '';
+  queryParams.categoryId = objList?.cateId ?? objList?.cateAlias ?? '';
+  queryParams.type = objList?.type ?? '';
+  queryParams.includeChildCate = objList?.includeChildCate ?? true;
+  queryParams.isRandomArrange = objList?.randomArrange ?? false;
   return queryParams;
 };
 

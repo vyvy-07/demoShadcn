@@ -12,10 +12,9 @@ import type { PropsGlobal } from '@/interface/propsGlobal';
 import Link from 'next/link';
 import { Input } from '../ui/input';
 const Header = (dataCategory: PropsGlobal) => {
-  console.log('dataCategory :>> ', dataCategory?.dataCategory);
   const data = dataCategory.dataCategory;
   return (
-    <div>
+    <header>
       <>
         <img srcSet="/images/banners/header.png 2x" alt="" />
       </>
@@ -57,7 +56,7 @@ const Header = (dataCategory: PropsGlobal) => {
           <img className="block w-6 h-6 " src="/icons/search.svg" alt="" />
         </div>
       </div>
-    </div>
+    </header>
   );
 };
 

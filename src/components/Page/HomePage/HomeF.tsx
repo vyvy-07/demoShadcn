@@ -9,17 +9,17 @@ const HomeF = ({ posts }: PropsGlobal) => {
   }
   return (
     <div id="homeF">
-      <SectionTitle title="XÂY DỰNG ĐẢNG" className="my-7 " />
+      <SectionTitle title="XÂY DỰNG ĐẢNG" className="mt-7 mb-4" />
 
       <GridThreeCol posts={posts} hasMiniArticle={false}>
-        <div className="flex flex-col gap-5">
+        <div className="flex flex-col gap-4">
           {posts?.length > 0 &&
             posts?.map((item, index) => {
               return (
                 <div key={index + 3}>
                   <ArticleCustomCard
                     dataArticle={item}
-                    className={`${index + 1 != posts?.length ? 'mb-5' : ''}`}
+                    className={`${index + 1 != posts?.length ? 'mb-4' : ''}`}
                   />
                   {index + 1 != posts?.length ? <hr /> : ''}
                 </div>

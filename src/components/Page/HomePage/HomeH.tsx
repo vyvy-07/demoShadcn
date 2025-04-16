@@ -7,8 +7,8 @@ import type { PropsGlobal } from '@/interface/propsGlobal';
 
 const HomeH = ({ posts }: PropsGlobal) => {
   return (
-    <div id="HomeG">
-      <SectionTitle className="my-7" title="Khoa học - công nghệ" />
+    <div id="HomeH">
+      <SectionTitle className="mt-7 mb-4" title="Khoa học - công nghệ" />
       <GridThreeCol posts={posts} hasMiniArticle={true}>
         <>
           <AdsBanner />

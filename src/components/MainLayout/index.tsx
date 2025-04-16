@@ -1,11 +1,14 @@
 import type { PropsGlobal } from '@/interface/propsGlobal';
 import React from 'react';
 import Header from '../Header';
+import Container from '../Container/Container';
 
 const MainLayout = ({ children, dataCategory }: PropsGlobal) => {
   return (
     <>
-      <Header dataCategory={dataCategory} />
+      <Container>
+        <Header dataCategory={dataCategory} />
+      </Container>
       <>{children}</>
     </>
   );

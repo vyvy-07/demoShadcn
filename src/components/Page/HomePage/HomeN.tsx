@@ -1,18 +1,21 @@
-'use client';
+import ArticleCard from '@/components/Articles/ArticleCard';
+import CarouselItemHomeG from '@/components/HomeCarouselItem';
+import GridThreeCol from '@/components/LayoutGrid/GridThreeCol';
+import SectionTitle from '@/components/SectionTitle';
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   type CarouselApi,
 } from '@/components/ui/carousel';
-import Autoplay from 'embla-carousel-autoplay';
-
-import SectionTitle from '@/components/SectionTitle';
-import React from 'react';
 import type { PropsGlobal } from '@/interface/propsGlobal';
-import CarouselItemHomeG from '@/components/HomeCarouselItem';
+import Autoplay from 'embla-carousel-autoplay';
+import React from 'react';
 
-const HomeG = ({ posts }: PropsGlobal) => {
+const HomeN = ({ posts }: PropsGlobal) => {
+  if (!posts?.length) {
+    return null;
+  }
   const [api, setApi] = React.useState<CarouselApi>();
   const [current, setCurrent] = React.useState(0);
   const [count, setCount] = React.useState(0);
@@ -29,9 +32,14 @@ const HomeG = ({ posts }: PropsGlobal) => {
     });
   }, [api]);
 
-  // if (count === 0) return null;
   return (
-    <div id="HomeG">
+    <div id="homeN" className="bg-grey-hover py-7 mt-7 px-1">
+      <SectionTitle
+        lineUnderTitle={true}
+        title="XÂY DỰNG ĐẢNG"
+        className=" mb-4"
+      />
+
       <Carousel
         plugins={[
           Autoplay({
@@ -40,7 +48,6 @@ const HomeG = ({ posts }: PropsGlobal) => {
         ]}
         setApi={setApi}
       >
-        <SectionTitle title="XÂY DỰNG ĐẢNG" className="mt-7 mb-4" />
         <CarouselContent>
           <CarouselItem>
             <CarouselItemHomeG posts={posts} />
@@ -53,26 +60,8 @@ const HomeG = ({ posts }: PropsGlobal) => {
           </CarouselItem>
         </CarouselContent>
       </Carousel>
-      <div className="flex justify-end  w-[80%] mt-7">
-        <div style={{ display: 'flex', gap: 8 }}>
-          {Array.from({ length: count + 1 }).map((_, index) => {
-            return (
-              <div
-                key={index}
-                style={{
-                  width: current === index ? 30 : 12,
-                  height: 12,
-                  borderRadius: 9999,
-                  backgroundColor: current === index ? '#7c7070' : '#d8cccc',
-                  transition: 'all 0.3s ease',
-                }}
-              />
-            );
-          })}
-        </div>
-      </div>
     </div>
   );
 };
 
-export default HomeG;
+export default HomeN;
