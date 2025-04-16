@@ -19,12 +19,12 @@ export interface Article {
     categoryId?: string;
     categoryAlias?: string;
     categoryName?: string;
-    parentCates?: [];
+    // parentCates?: [];
   };
   penName?: string;
   copyright?: string;
   alterCateIds?: [];
   trash?: boolean;
   hasAudio?: string;
-  articleGA?: { DAY?: [{}]; HOUR?: {} };
+  // articleGA?: { DAY?: [{}]; HOUR?: {} };
 }
