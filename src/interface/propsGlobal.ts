@@ -1,6 +1,5 @@
 import type { ReactNode } from 'react';
 import type { LayoutType } from './layoutPage';
-// import type { Article } from './articleProps';
 import type { Category } from './category';
 export interface Article {
   id?: string;
@@ -23,14 +22,14 @@ export interface Article {
     categoryId?: string;
     categoryAlias?: string;
     categoryName?: string;
-    // parentCates?: [];
+    parentCates?: [];
   };
   penName?: string;
   copyright?: string;
   alterCateIds?: [];
   trash?: boolean;
   hasAudio?: string;
-  // articleGA?: { DAY?: [{}]; HOUR?: {} };
+  articleGA?: { DAY?: [{}]; HOUR?: {} };
 }
 
 export interface PropsGlobal {

@@ -15,7 +15,7 @@ import HomeM from '@/components/Page/HomePage/HomeM';
 import HomeN from '@/components/Page/HomePage/HomeN';
 import HomeO from '@/components/Page/HomePage/HomeO';
 import HomeP from '@/components/Page/HomePage/HomeP';
-import type { Article } from '@/interface/articleProps';
+import type { Article } from '@/interface/propsGlobal';
 import { fetchServerArticleList } from '@/Services/articleService';
 import { fetchServerCategoryList } from '@/Services/categoryService';
 import { transformBlocks } from '@/utils/utilitiesHandling';
