@@ -37,11 +37,15 @@ export default function Home({ dataServer }: any) {
         setData(dataSectionA_Main);
       } catch (error) {
         console.log('error :>> ', error);
+        throw error;
       }
     };
     getArticle();
   }, []);
-
+  console.log(
+    'dataServer?.dataSectionC_Main :>> ',
+    dataServer?.dataSectionC_Main
+  );
   return (
     <MainLayout dataCategory={dataServer?.dataCate}>
       <Container>
@@ -51,15 +55,15 @@ export default function Home({ dataServer }: any) {
         />
         <HomeB posts={dataServer?.dataSectionB_Main} />
         <HomeC posts={dataServer?.dataSectionA_Main} />
-        <HomeD posts={dataServer?.dataSectionA_Main} />
-        <HomeC posts={dataServer?.dataSectionA_Main} />
+        <HomeD posts={dataServer?.dataSectionC_Main} />
+        <HomeC posts={dataServer?.dataSectionA_Side} />
         <HomeE posts={dataServer?.dataSectionA_Main} />
-        <HomeC posts={dataServer?.dataSectionA_Main} />
+        <HomeC posts={dataServer?.dataSectionD_Main} />
         <HomeF posts={dataServer?.dataSectionA_Main} />
-        <HomeG posts={dataServer?.dataSectionA_Main} />
-        <HomeH posts={dataServer?.dataSectionA_Main} />
+        <HomeG posts={dataServer?.dataSectionA_Side} />
+        <HomeH posts={dataServer?.dataSectionD_Main} />
         <HomeI posts={dataServer?.dataSectionA_Main} />
-        <HomeK posts={dataServer?.dataSectionA_Main} />
+        <HomeK posts={dataServer?.dataSectionD_Main} />
       </Container>
       <HomeL posts={data} />
       <Container>
@@ -94,10 +98,14 @@ export async function getStaticProps() {
       dataSections?.HomeB?.HomeB_Main,
       5
     );
-    const dataSectionB_Side = await fetchServerArticleList(
-      dataSections?.HomeB?.HomeB_Side,
+    const dataSectionC_Main = await fetchServerArticleList(
+      dataSections?.HomeC?.HomeC_Side,
       5
     );
+    // const dataSectionD_Main = await fetchServerArticleList(
+    //   dataSections?.HomeD?.HomeD_Side,
+    //   5
+    // );
     const dataServer = {
       layoutPage: posts?.result,
       dataSectionA_Main: dataSectionA_Main,
@@ -105,6 +113,8 @@ export async function getStaticProps() {
       dataCate: resCate,
       dataSectionlayout: dataSections,
       dataSectionB_Main: dataSectionB_Main,
+      dataSectionC_Main: dataSectionC_Main,
+      // dataSectionD_Main: dataSectionD_Main,
     };
     if (!res) {
       throw new Error('Failed to fetch');
