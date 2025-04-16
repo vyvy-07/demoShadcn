@@ -7,6 +7,9 @@ import type { PropsGlobal } from '@/interface/propsGlobal';
 import { useState } from 'react';
 
 const HomeL = ({ posts }: PropsGlobal) => {
+  if (!posts) {
+    return null;
+  }
   const [DataRender, setDataRender] = useState();
   return (
     <div id="HomeL" className="bg-black py-5">
