@@ -17,7 +17,7 @@ const Header = (dataCategory: PropsGlobal) => {
   return (
     <div>
       <>
-        <img srcSet="/banners/header.png 2x" alt="" />
+        <img srcSet="/images/banners/header.png 2x" alt="" />
       </>
       <div className="my-5 flex items-center justify-between border-[#393939] border-y-[1px]">
         <div className="flex items-center">
