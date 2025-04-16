@@ -42,22 +42,23 @@ export default function Home({
     <Container>
       <MainLayout dataCategory={dataCate}>
         <HomeA posts={dataSectionA_Main} postsSide={dataSectionA_Side} />
-        {/* <HomeB posts={dataSectionA} />
-        <HomeC posts={dataSectionA} />
-        <HomeD posts={dataSectionA} />
-        <HomeC posts={dataSectionA} />
-        <HomeE posts={dataSectionA} />
-        <HomeC posts={dataSectionA} />
-        <HomeF posts={dataSectionA} />
-        <HomeG posts={dataSectionA} />
-        <HomeH posts={dataSectionA} /> */}
+        <HomeB posts={dataSectionA_Main} />
+        <HomeC posts={dataSectionA_Main} />
+        <HomeD posts={dataSectionA_Main} />
+        <HomeC posts={dataSectionA_Main} />
+        <HomeE posts={dataSectionA_Main} />
+        <HomeC posts={dataSectionA_Main} />
+        <HomeF posts={dataSectionA_Main} />
+        <HomeG posts={dataSectionA_Main} />
+        <HomeH posts={dataSectionA_Main} />
       </MainLayout>
     </Container>
   );
 }
 export async function getStaticProps() {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_NTV_BASE_URL_LC}/api/HomePage`
+    `${process.env.NEXT_PUBLIC_NTV_BASE_URL}/public/layout/HomePage
+`
   );
   const resCate = await fetchServerCategoryList();
   const posts = await res?.json();
