@@ -21,7 +21,11 @@ const HomeF = ({ posts }: PropsGlobal) => {
                     dataArticle={item}
                     className={`${index + 1 != posts?.length ? 'mb-4' : ''}`}
                   />
-                  {index + 1 != posts?.length ? <hr /> : ''}
+                  {index + 1 != posts?.length ? (
+                    <hr className="text-grey" />
+                  ) : (
+                    ''
+                  )}
                 </div>
               );
             })}

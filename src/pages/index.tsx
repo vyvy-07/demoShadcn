@@ -26,6 +26,7 @@ export default function Home({ dataServer }: any) {
   if (!dataServer?.layoutPage) {
     return null;
   }
+
   useEffect(() => {
     const getArticle = async () => {
       try {

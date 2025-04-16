@@ -16,9 +16,24 @@ const HomeO = ({ posts }: PropsGlobal) => {
       />
 
       <GridThreeCol posts={posts}>
-        {posts?.map((item, index) => (
-          <ArticleCustomCard key={index} dataArticle={item} />
-        ))}
+        <div className="flex flex-col gap-4">
+          {posts?.length > 0 &&
+            posts?.map((item, index) => {
+              return (
+                <div key={index + 3}>
+                  <ArticleCustomCard
+                    dataArticle={item}
+                    className={`${index + 1 != posts?.length ? 'mb-4' : ''}`}
+                  />
+                  {index + 1 != posts?.length ? (
+                    <hr className="text-grey" />
+                  ) : (
+                    ''
+                  )}
+                </div>
+              );
+            })}
+        </div>
       </GridThreeCol>
     </div>
   );

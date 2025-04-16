@@ -1,6 +1,4 @@
-import ArticleCustomCard from '@/components/Articles/ArticleCustomCard';
-import GridThreeCol from '@/components/LayoutGrid/GridThreeCol';
-import SectionTitle from '@/components/SectionTitle';
+import { HomeKMedia } from '@/components/HomeKMedia';
 import type { PropsGlobal } from '@/interface/propsGlobal';
 
 const HomeP = ({ posts }: PropsGlobal) => {
@@ -9,17 +7,10 @@ const HomeP = ({ posts }: PropsGlobal) => {
   }
 
   return (
-    <div id="homeP" className=" mt-7 px-1">
-      <SectionTitle
-        title="HỌC TẬP VÀ LÀM THEO TƯ TƯỞNG, ĐẠO ĐỨC, PHONG CÁCH HỒ CHÍ MINH"
-        className=" mb-4"
-      />
-
-      <GridThreeCol posts={posts}>
-        {posts?.map((item, index) => (
-          <ArticleCustomCard key={index} dataArticle={item} />
-        ))}
-      </GridThreeCol>
+    <div id="homeP" className="  grid grid-cols-3 gap-5">
+      {posts && <HomeKMedia title="Video" posts={posts} />}
+      {posts && <HomeKMedia title="Audio" posts={posts} />}
+      {posts && <HomeKMedia title="Tư liệu Ảnh" posts={posts} />}
     </div>
   );
 };

@@ -27,7 +27,7 @@ export const HomeKMedia = ({ title, posts }: PropsGlobal) => {
                   dataArticle={item}
                   className={`${index + 1 != posts?.[index] ? 'mb-4' : ''}`}
                 />
-                {index != 1 && <hr />}{' '}
+                {index != 1 && <hr className="text-grey" />}{' '}
               </div>
             );
           })}

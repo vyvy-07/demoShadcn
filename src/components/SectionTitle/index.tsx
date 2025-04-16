@@ -16,9 +16,9 @@ const SectionTitle = ({
 
           <Link
             href="/"
-            className="title text-red-primary text-[22px] font-bold leading-[30px] uppercase "
+            className="heading-3 title text-red-primary text-[22px] font-bold leading-[30px] uppercase "
           >
-            <h3> {title}</h3>
+            <h3 className=""> {title}</h3>
           </Link>
 
           <div className={`flex-grow border-b border-red-primary`}></div>
@@ -27,10 +27,10 @@ const SectionTitle = ({
       {lineUnderTitle && (
         <Link
           href="/"
-          className={`text-center gap-2 ${className} justify-center text-red-primary
+          className={`text-center gap-2 ${className} heading-3 justify-center text-red-primary
            text-[22px] block font-bold leading-[30px] uppercase w-full mx-auto`}
         >
-          <h3 className="block pb-1 ">{title}</h3>
+          <h3 className="block pb-1  ">{title}</h3>
           <span className="block mx-auto w-[123px] h-[3px]  bg-red-primary" />
         </Link>
       )}
