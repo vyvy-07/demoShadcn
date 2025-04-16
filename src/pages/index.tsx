@@ -42,10 +42,7 @@ export default function Home({ dataServer }: any) {
     };
     getArticle();
   }, []);
-  console.log(
-    'dataServer?.dataSectionC_Main :>> ',
-    dataServer?.dataSectionC_Main
-  );
+
   return (
     <MainLayout dataCategory={dataServer?.dataCate}>
       <Container>
@@ -76,11 +73,17 @@ export default function Home({ dataServer }: any) {
   );
 }
 export async function getStaticProps() {
+  const controller = new AbortController(); // tạo bộ điều khiển để hủy request nếu quá lâu
+  const timeout = setTimeout(() => controller.abort(), 7000); // timeout 7 giây
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_NTV_BASE_URL}/public/layout/HomePage
-  `
+      `${process.env.NEXT_PUBLIC_NTV_BASE_URL}/public/layout/HomePage`,
+      { signal: controller.signal }
     );
+    clearTimeout(timeout);
+    if (!res) {
+      throw new Error('Failed to fetch');
+    }
     const resCate = await fetchServerCategoryList();
     const posts = await res?.json();
 
@@ -116,9 +119,7 @@ export async function getStaticProps() {
       dataSectionC_Main: dataSectionC_Main,
       // dataSectionD_Main: dataSectionD_Main,
     };
-    if (!res) {
-      throw new Error('Failed to fetch');
-    }
+
     return {
       props: {
         dataServer: dataServer,
