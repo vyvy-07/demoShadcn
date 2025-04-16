@@ -56,30 +56,42 @@ export default function Home({
   );
 }
 export async function getStaticProps() {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_NTV_BASE_URL}/public/layout/HomePage
-`
-  );
-  const resCate = await fetchServerCategoryList();
-  const posts = await res?.json();
-  const dataTerm = posts?.result?.blocks;
-  const dataSections = transformBlocks(dataTerm);
-  const dataSectionA_Main = await fetchServerArticleList(
-    dataSections?.HomeA?.HomeA_Main,
-    5
-  );
-  const dataSectionA_Side = await fetchServerArticleList(
-    dataSections?.HomeA?.HomeA_Side,
-    5
-  );
-  return {
-    props: {
-      layoutPage: posts?.result,
-      dataSectionA_Main: dataSectionA_Main,
-      dataSectionA_Side: dataSectionA_Side,
-      dataCate: resCate,
-      dataSectionlayout: dataSections,
-    },
-    revalidate: 60,
-  };
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_NTV_BASE_URL}/public/layout/HomePage
+  `
+    );
+
+    const resCate = await fetchServerCategoryList();
+    const posts = await res?.json();
+
+    const dataTerm = posts?.result?.blocks;
+    const dataSections = transformBlocks(dataTerm);
+    const dataSectionA_Main = await fetchServerArticleList(
+      dataSections?.HomeA?.HomeA_Main,
+      5
+    );
+    const dataSectionA_Side = await fetchServerArticleList(
+      dataSections?.HomeA?.HomeA_Side,
+      5
+    );
+    if (!res) {
+      throw new Error('Failed to fetch');
+    }
+    return {
+      props: {
+        layoutPage: posts?.result,
+        dataSectionA_Main: dataSectionA_Main,
+        dataSectionA_Side: dataSectionA_Side,
+        dataCate: resCate,
+        dataSectionlayout: dataSections,
+      },
+      revalidate: 60,
+    };
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    return {
+      props: { data: null }, // Or fallback
+    };
+  }
 }
