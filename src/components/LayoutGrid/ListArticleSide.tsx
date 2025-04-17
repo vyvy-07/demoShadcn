@@ -13,7 +13,6 @@ const ListArticleSide = ({
 }: PropsGlobal) => {
   if (!posts?.length) return null;
   const firstPost = posts[0];
-  console.log('title :>> ', title);
   return (
     <div id="listArtA">
       {hasTitle && (

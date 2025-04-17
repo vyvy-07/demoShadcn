@@ -97,12 +97,14 @@ export default function Home({ dataServer }: any) {
   );
 }
 export async function getStaticProps() {
+  const controller = new AbortController(); // tạo bộ điều khiển để hủy request nếu quá lâu
+  const timeout = setTimeout(() => controller.abort(), 7000); // timeout 7 giây
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_NTV_BASE_URL}/public/layout/HomePage`
-      // { signal: controller.signal }
+      `${process.env.NEXT_PUBLIC_NTV_BASE_URL}/public/layout/HomePage`,
+      { signal: controller.signal }
     );
-    // clearTimeout(timeout);
+    clearTimeout(timeout);
     if (!res?.ok) {
       throw new Error('Failed to fetch');
     }
@@ -150,6 +152,8 @@ export async function getStaticProps() {
       revalidate: 60,
     };
   } catch (error) {
+    clearTimeout(timeout);
+
     console.error('Error fetching data:', error);
     return {
       props: { dataServer: [] }, // Or fallback
