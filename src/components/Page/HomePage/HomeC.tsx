@@ -3,10 +3,13 @@ import GridFourCol from '@/components/LayoutGrid/GridFourCol';
 import SectionTitle from '@/components/SectionTitle';
 import type { PropsGlobal } from '@/interface/propsGlobal';
 
-const HomeC = ({ posts }: PropsGlobal) => {
+const HomeC = ({ posts, dataLayoutMain, dataLayoutSide }: PropsGlobal) => {
   return (
     <div id="homeC">
-      <SectionTitle title="CHỦ TRƯƠNG, CHÍNH SÁCH MỚI" className="mt-7 mb-4" />
+      <SectionTitle
+        title={dataLayoutMain?.title || 'Mới nhất'}
+        className="mt-7 mb-4"
+      />
       <GridFourCol>
         {posts?.slice(0, 4).map((item, index) => (
           <ArticleCard

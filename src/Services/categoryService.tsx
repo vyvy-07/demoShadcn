@@ -16,5 +16,6 @@ export async function fetchServerCategoryList() {
     }
   } catch (error) {
     console.log(error);
+    return [];
   }
 }

@@ -4,7 +4,12 @@ import GridWrapper from '@/components/LayoutGrid/GridWrapper';
 import ListArticleSide from '@/components/LayoutGrid/ListArticleSide';
 import type { PropsGlobal } from '@/interface/propsGlobal';
 
-const HomeA = ({ posts, postsSide }: PropsGlobal) => {
+const HomeA = ({
+  posts,
+  postsSide,
+  dataLayoutMain,
+  dataLayoutSide,
+}: PropsGlobal) => {
   return (
     <div id="homeA">
       <GridWrapper>
@@ -34,6 +39,7 @@ const HomeA = ({ posts, postsSide }: PropsGlobal) => {
 
         <div className="col-span-3">
           <ListArticleSide
+            title={dataLayoutSide?.title}
             className="line-clamp-2"
             posts={postsSide}
             hasModifiedFirstPost={true}

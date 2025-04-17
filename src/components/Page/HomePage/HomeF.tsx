@@ -3,13 +3,16 @@ import GridThreeCol from '@/components/LayoutGrid/GridThreeCol';
 import SectionTitle from '@/components/SectionTitle';
 import type { PropsGlobal } from '@/interface/propsGlobal';
 
-const HomeF = ({ posts }: PropsGlobal) => {
+const HomeF = ({ posts, dataLayoutMain }: PropsGlobal) => {
   if (!posts?.length) {
     return null;
   }
   return (
     <div id="homeF">
-      <SectionTitle title="XÂY DỰNG ĐẢNG" className="mt-7 mb-4" />
+      <SectionTitle
+        title={dataLayoutMain?.title || 'Xây dựng Đảng'}
+        className="mt-7 mb-4"
+      />
 
       <GridThreeCol posts={posts} hasMiniArticle={false}>
         <div className="flex flex-col gap-4">

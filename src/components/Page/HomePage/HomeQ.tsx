@@ -17,7 +17,7 @@ const HomeQ = ({ posts, dataSectionHomeJ_2, dataSectionHomeJ_3 }: HomeJTab) => {
   }
   const [dataRender, setDataRender] = useState(posts);
   return (
-    <div id="homeQ" className="bg-black py-5 mt-7">
+    <div id="homeQ" className="bg-black pt-5 mt-7">
       <Container>
         <div>
           <div id="section__title" className={`flex gap-2 mb-2`}>

@@ -27,7 +27,7 @@ export default function Home({ dataServer }: any) {
   if (!dataServer?.layoutPage) {
     return null;
   }
-
+  const sections = dataServer?.dataSectionlayout;
   useEffect(() => {
     const getArticle = async () => {
       const dataSectionA_Main = await fetchServerArticleList(
@@ -44,14 +44,38 @@ export default function Home({ dataServer }: any) {
         <HomeA
           posts={dataServer?.dataSectionA_Main}
           postsSide={dataServer?.dataSectionA_Side}
+          dataLayoutMain={sections?.HomeA?.HomeA_amain}
+          dataLayoutSide={sections?.HomeA?.HomeA_amain}
         />
-        <HomeB posts={dataServer?.dataSectionB_Main} />
-        <HomeC posts={dataServer?.dataSectionA_Main} />
+
+        <HomeB
+          posts={dataServer?.dataSectionB_Main}
+          dataLayoutMain={sections?.HomeB?.HomeB_Main}
+        />
+        <HomeC
+          posts={dataServer?.dataSectionA_Main}
+          dataLayoutMain={sections?.HomeC?.HomeC_Main}
+          dataLayoutSide={sections?.HomeC?.HomeC_Side}
+        />
         <HomeD posts={dataServer?.dataSectionC_Main} />
-        <HomeC posts={dataServer?.dataSectionA_Side} />
+        <HomeC
+          posts={dataServer?.dataSectionA_Main}
+          dataLayoutMain={sections?.HomeD?.HomeD_Main}
+          dataLayoutSide={sections?.HomeD?.HomeD_Side}
+        />
         <HomeE posts={dataServer?.dataSectionA_Main} />
-        <HomeC posts={dataServer?.dataSectionD_Main} />
-        <HomeF posts={dataServer?.dataSectionA_Main} />
+
+        <HomeC
+          posts={dataServer?.dataSectionA_Main}
+          dataLayoutMain={sections?.HomeE?.HomeE_Main}
+          dataLayoutSide={sections?.HomeE?.HomeE_Side}
+        />
+
+        <HomeF
+          posts={dataServer?.dataSectionA_Main}
+          dataLayoutMain={sections?.HomeE?.HomeE_Main}
+          dataLayoutSide={sections?.HomeE?.HomeE_Side}
+        />
         <HomeG posts={dataServer?.dataSectionA_Side} />
         <HomeH posts={dataServer?.dataSectionD_Main} />
         <HomeI posts={dataServer?.dataSectionA_Main} />
@@ -73,15 +97,13 @@ export default function Home({ dataServer }: any) {
   );
 }
 export async function getStaticProps() {
-  const controller = new AbortController(); // tạo bộ điều khiển để hủy request nếu quá lâu
-  const timeout = setTimeout(() => controller.abort(), 7000); // timeout 7 giây
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_NTV_BASE_URL}/public/layout/HomePage`,
-      { signal: controller.signal }
+      `${process.env.NEXT_PUBLIC_NTV_BASE_URL}/public/layout/HomePage`
+      // { signal: controller.signal }
     );
-    clearTimeout(timeout);
-    if (!res) {
+    // clearTimeout(timeout);
+    if (!res?.ok) {
       throw new Error('Failed to fetch');
     }
     const resCate = await fetchServerCategoryList();
@@ -130,7 +152,7 @@ export async function getStaticProps() {
   } catch (error) {
     console.error('Error fetching data:', error);
     return {
-      props: { data: null }, // Or fallback
+      props: { dataServer: [] }, // Or fallback
     };
   }
 }

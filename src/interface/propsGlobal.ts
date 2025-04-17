@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import type { LayoutType } from './layoutPage';
 import type { Category } from './category';
+import type { QueryType } from './queryType';
 export interface Article {
   id?: string;
   title?: string;
@@ -37,6 +38,9 @@ export interface PropsGlobal {
   reverseTwoRow?: boolean;
   title?: string;
   url?: string;
+
+  dataLayoutMain?: QueryType;
+  dataLayoutSide?: QueryType;
   posts?: Article[];
   layoutPage?: LayoutType;
   lineUnderTitle?: boolean;

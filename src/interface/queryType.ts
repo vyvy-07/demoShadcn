@@ -1,6 +1,7 @@
 export interface QueryType {
   limit?: number;
   skip?: number;
+  title?: string;
   isFeature?: boolean;
   sort?: string;
   cateId?: string;
