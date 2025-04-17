@@ -34,11 +34,7 @@ const HomeN = ({ posts }: PropsGlobal) => {
 
   return (
     <div id="homeN" className="bg-grey-hover py-7 mt-7 px-1">
-      <SectionTitle
-        lineUnderTitle={true}
-        title="XÂY DỰNG ĐẢNG"
-        className=" mb-4"
-      />
+      <SectionTitle lineUnderTitle={true} title="XÂY DỰNG ĐẢNG" className="" />
 
       <Carousel
         plugins={[
@@ -46,6 +42,7 @@ const HomeN = ({ posts }: PropsGlobal) => {
             delay: 3000,
           }),
         ]}
+        className="mt-5"
         setApi={setApi}
       >
         <CarouselContent>

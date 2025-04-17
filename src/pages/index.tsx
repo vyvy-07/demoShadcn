@@ -15,34 +15,29 @@ import HomeM from '@/components/Page/HomePage/HomeM';
 import HomeN from '@/components/Page/HomePage/HomeN';
 import HomeO from '@/components/Page/HomePage/HomeO';
 import HomeP from '@/components/Page/HomePage/HomeP';
+import HomeQ from '@/components/Page/HomePage/HomeQ';
 import type { Article } from '@/interface/propsGlobal';
 import { fetchServerArticleList } from '@/Services/articleService';
 import { fetchServerCategoryList } from '@/Services/categoryService';
 import { transformBlocks } from '@/utils/utilitiesHandling';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 export default function Home({ dataServer }: any) {
-  const [data, setData] = useState<Article[]>([]);
+  const [data, setData] = React.useState([]);
   if (!dataServer?.layoutPage) {
     return null;
   }
 
   useEffect(() => {
     const getArticle = async () => {
-      try {
-        const dataSectionA_Main = await fetchServerArticleList(
-          dataServer?.dataSectionlayout?.HomeL?.HomeL_Main,
-          10
-        );
-        setData(dataSectionA_Main);
-      } catch (error) {
-        console.log('error :>> ', error);
-        throw error;
-      }
+      const dataSectionA_Main = await fetchServerArticleList(
+        dataServer?.dataSectionlayout?.HomeL?.HomeL_Main,
+        10
+      );
+      setData(dataSectionA_Main);
     };
     getArticle();
   }, []);
-
   return (
     <MainLayout dataCategory={dataServer?.dataCate}>
       <Container>
@@ -67,8 +62,13 @@ export default function Home({ dataServer }: any) {
         <HomeM posts={dataServer?.dataSectionA_Main} />
         <HomeN posts={dataServer?.dataSectionA_Main} />
         <HomeO posts={dataServer?.dataSectionA_Main} />
-        <HomeP posts={dataServer?.dataSectionA_Main} />
+        <HomeP posts={dataServer?.dataSectionD_Main} />
       </Container>
+      <HomeQ
+        posts={dataServer?.dataSectionC_Main}
+        dataSectionHomeJ_2={dataServer?.dataSectionA_Main}
+        dataSectionHomeJ_3={dataServer?.dataSectionD_Main}
+      />
     </MainLayout>
   );
 }
@@ -105,10 +105,11 @@ export async function getStaticProps() {
       dataSections?.HomeC?.HomeC_Side,
       5
     );
-    // const dataSectionD_Main = await fetchServerArticleList(
-    //   dataSections?.HomeD?.HomeD_Side,
-    //   5
-    // );
+    const dataSectionD_Main = await fetchServerArticleList(
+      dataSections?.HomeD?.HomeD_Side,
+      5
+    );
+
     const dataServer = {
       layoutPage: posts?.result,
       dataSectionA_Main: dataSectionA_Main,
@@ -117,7 +118,7 @@ export async function getStaticProps() {
       dataSectionlayout: dataSections,
       dataSectionB_Main: dataSectionB_Main,
       dataSectionC_Main: dataSectionC_Main,
-      // dataSectionD_Main: dataSectionD_Main,
+      dataSectionD_Main: dataSectionD_Main,
     };
 
     return {

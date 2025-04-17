@@ -232,3 +232,20 @@ body {
     box-shadow: none;
   }
 }
+.scrollbar::-webkit-scrollbar {
+  @apply w-3 h-2;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+  @apply bg-grey-hover rounded-2xl;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  border: 3px solid #f6f7ed;
+  @apply bg-grey rounded-2xl;
+}
+
+.scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #c0a0b9;
+  @apply bg-black rounded-2xl;
+}

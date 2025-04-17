@@ -19,7 +19,7 @@ export const convertDisplayRatio = (displayRatio: any) => {
   return displayRatio === 'ratioDefault' ? '3/2' : displayRatio;
 };
 
-export const parseParams = (objList: any, limit: number) => {
+export const parseParams = (objList: QueryType, limit: number) => {
   let queryParams: QueryType = {};
   queryParams.limit = limit;
   queryParams.skip = objList?.skip ?? 0;

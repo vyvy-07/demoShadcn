@@ -1,9 +1,14 @@
 import type { PropsGlobal } from '@/interface/propsGlobal';
+import { twMerge } from 'tailwind-merge';
 
-const ArticleCustomCard = ({ dataArticle, className }: PropsGlobal) => {
+const ArticleCustomCard = ({
+  dataArticle,
+  className,
+  titleStyle,
+}: PropsGlobal) => {
   return (
     <div className={`${className} flex gap-4 overflow-hidden`}>
-      <div className="max-w-[125px] overflow-hidden rounded-none border-none">
+      <div className="max-w-[125px] h-[70px] rounded-none border-none">
         <img
           src={
             dataArticle?.featuredMedia?.resolutions?.medium?.uri ||
@@ -13,7 +18,9 @@ const ArticleCustomCard = ({ dataArticle, className }: PropsGlobal) => {
           className="object-cover"
         />
       </div>
-      <h4 className="heading-4 line-clamp-2 flex-1  ">{dataArticle?.title}</h4>
+      <h4 className={`${twMerge(titleStyle)} line-clamp-3 `}>
+        {dataArticle?.title}
+      </h4>
     </div>
   );
 };

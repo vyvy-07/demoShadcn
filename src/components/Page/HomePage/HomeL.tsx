@@ -50,10 +50,10 @@ const HomeL = ({ posts }: PropsGlobal) => {
               })}
           </CarouselContent>
           <div className="pt-10 max-sm:pt-7">
-            <DIV className="absolute bottom-0 ">
+            <div className="absolute right-1/2 translate-x-[-50%] bottom-0 ">
               <CarouselPrevious variant="default" className="bg-red-primary" />
               <CarouselNext variant="default" className="bg-red-primary" />
-            </DIV>
+            </div>
           </div>
         </Carousel>
       </Container>
