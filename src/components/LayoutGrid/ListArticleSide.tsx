@@ -2,21 +2,33 @@ import Link from 'next/link';
 import ArticleCard from '../Articles/ArticleCard';
 import SectionTitle from '../SectionTitle';
 import type { PropsGlobal } from '@/interface/propsGlobal';
+import { formatArticleDate } from '@/utils/Format';
 const ListArticleSide = ({
   className,
   posts,
   hasModifiedFirstPost,
-  hasContent,
+  hasDate,
   title,
   hasTitle = true,
   hasBorder = false,
+  titleCenter = false,
 }: PropsGlobal) => {
   if (!posts?.length) return null;
   const firstPost = posts[0];
   return (
-    <div id="listArtA">
-      {hasTitle && (
+    <div
+      id="listArtA"
+      className={`${className} ${hasBorder && 'border py-3 px-5'}`}
+    >
+      {hasTitle && !titleCenter && (
         <SectionTitle className="mb-5" title={title || 'Mới nhất'} />
+      )}
+      {hasTitle && titleCenter && (
+        <SectionTitle
+          lineUnderTitle={true}
+          className=""
+          title={title || 'Mới nhất'}
+        />
       )}
       {/* Img */}
       {hasModifiedFirstPost && (
@@ -44,10 +56,29 @@ const ListArticleSide = ({
             } border-[#393939]  `}
             key={post.id}
           >
-            <Link href="/" className="font-medium">
+            <Link href="/" className="font-medium line-clamp-3">
               {/* <IconTypeArticle type={post.type} /> */}
               {post.title}
             </Link>
+            {/* {hasDate && <>{post?.publicationTime}</>} */}
+            {hasDate && (
+              <div className={'flex gap-2 items-center mt-2'}>
+                {hasDate && (
+                  <div className="DM-14">{post?.category?.categoryName}</div>
+                )}
+                {hasDate && (
+                  <div className="">
+                    <img src="images/icons/schedule.png" alt="" />
+                  </div>
+                )}
+                {hasDate && (
+                  <div className="DM-14">
+                    {post?.publicationTime &&
+                      formatArticleDate(post?.publicationTime)}
+                  </div>
+                )}
+              </div>
+            )}
           </div>
         ))}
       </div>

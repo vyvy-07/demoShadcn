@@ -21,7 +21,7 @@ const Header = (dataCategory: PropsGlobal) => {
       <div className="my-5 flex items-center justify-between border-[#393939] border-y-[1px]">
         <div className="flex items-center">
           <div className="w-5">
-            <img src="/icons/menu.svg" alt="" />
+            <img src="/images/icons/menu.svg" alt="" />
           </div>
           <Menubar className="border-none rounded-none shadow-none ">
             {data &&
@@ -53,7 +53,11 @@ const Header = (dataCategory: PropsGlobal) => {
             className="block rounded-none focus-visible:--tw-ring-shadow-none border-none max-w-[300px]  outline-none  shadow-none"
           />
           |
-          <img className="block w-6 h-6 " src="/icons/search.svg" alt="" />
+          <img
+            className="block w-6 h-6 "
+            src="/images/icons/search.svg"
+            alt=""
+          />
         </div>
       </div>
     </header>

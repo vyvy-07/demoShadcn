@@ -4,7 +4,7 @@ const fetchOptions = { next: { revalidate: 300 } };
 
 export async function fetchServerArticleList(listQuery: any, limit: number) {
   try {
-    const params = parseParams(listQuery, limit);
+    const params = await parseParams(listQuery, limit);
     const queryString = new URLSearchParams(params as any).toString();
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_NTV_BASE_URL}/public/article/listing?${queryString}`,

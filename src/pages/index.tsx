@@ -1,4 +1,5 @@
 import Container from '@/components/Container/Container';
+import Footer from '@/components/Footer';
 import MainLayout from '@/components/MainLayout';
 import HomeA from '@/components/Page/HomePage/HomeA';
 import HomeB from '@/components/Page/HomePage/HomeB';
@@ -16,6 +17,8 @@ import HomeN from '@/components/Page/HomePage/HomeN';
 import HomeO from '@/components/Page/HomePage/HomeO';
 import HomeP from '@/components/Page/HomePage/HomeP';
 import HomeQ from '@/components/Page/HomePage/HomeQ';
+import HomeR from '@/components/Page/HomePage/HomeR';
+import HomeS from '@/components/Page/HomePage/HomeS';
 import type { Article } from '@/interface/propsGlobal';
 import { fetchServerArticleList } from '@/Services/articleService';
 import { fetchServerCategoryList } from '@/Services/categoryService';
@@ -30,14 +33,15 @@ export default function Home({ dataServer }: any) {
   const sections = dataServer?.dataSectionlayout;
   useEffect(() => {
     const getArticle = async () => {
-      const dataSectionA_Main = await fetchServerArticleList(
+      const dataSectionL_Main = await fetchServerArticleList(
         dataServer?.dataSectionlayout?.HomeL?.HomeL_Main,
         10
       );
-      setData(dataSectionA_Main);
+      setData(dataSectionL_Main);
     };
     getArticle();
   }, []);
+  console.log('dataCategory :>> ', dataServer?.dataCategory);
   return (
     <MainLayout dataCategory={dataServer?.dataCate}>
       <Container>
@@ -89,10 +93,15 @@ export default function Home({ dataServer }: any) {
         <HomeP posts={dataServer?.dataSectionD_Main} />
       </Container>
       <HomeQ
-        posts={dataServer?.dataSectionC_Main}
-        dataSectionHomeJ_2={dataServer?.dataSectionA_Main}
-        dataSectionHomeJ_3={dataServer?.dataSectionD_Main}
+        posts={dataServer?.dataSectionB_Main}
+        dataSectionHomeJ_2={dataServer?.dataSectionC_Main}
+        dataSectionHomeJ_3={data}
       />
+      <Container>
+        <HomeR posts={dataServer?.dataSectionC_Main} />
+        <HomeS posts={dataServer?.dataSectionC_Main} />
+      </Container>
+      <Footer dataCategory={dataServer?.dataCate} />
     </MainLayout>
   );
 }

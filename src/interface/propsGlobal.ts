@@ -38,7 +38,7 @@ export interface PropsGlobal {
   reverseTwoRow?: boolean;
   title?: string;
   url?: string;
-
+  titleCenter?: boolean;
   dataLayoutMain?: QueryType;
   dataLayoutSide?: QueryType;
   posts?: Article[];
