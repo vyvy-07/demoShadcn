@@ -1,16 +1,17 @@
 import type { PropsGlobal } from '@/interface/propsGlobal';
-import React from 'react';
-import Header from '../Header';
 import Container from '../Container/Container';
+import Footer from '../Footer';
+import Header from '../Header';
 
 const MainLayout = ({ children, dataCategory }: PropsGlobal) => {
   return (
-    <>
+    <html lang="en">
       <Container>
         <Header dataCategory={dataCategory} />
       </Container>
-      <>{children}</>
-    </>
+      <body>{children}</body>
+      <Footer dataCategory={dataCategory} />
+    </html>
   );
 };
 

@@ -1,5 +1,4 @@
 import Container from '@/components/Container/Container';
-import Footer from '@/components/Footer';
 import MainLayout from '@/components/MainLayout';
 import HomeA from '@/components/Page/HomePage/HomeA';
 import HomeB from '@/components/Page/HomePage/HomeB';
@@ -19,11 +18,11 @@ import HomeP from '@/components/Page/HomePage/HomeP';
 import HomeQ from '@/components/Page/HomePage/HomeQ';
 import HomeR from '@/components/Page/HomePage/HomeR';
 import HomeS from '@/components/Page/HomePage/HomeS';
-import type { Article } from '@/interface/propsGlobal';
+import HomeT from '@/components/Page/HomePage/HomeT';
 import { fetchServerArticleList } from '@/Services/articleService';
 import { fetchServerCategoryList } from '@/Services/categoryService';
 import { transformBlocks } from '@/utils/utilitiesHandling';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 
 export default function Home({ dataServer }: any) {
   const [data, setData] = React.useState([]);
@@ -41,15 +40,14 @@ export default function Home({ dataServer }: any) {
     };
     getArticle();
   }, []);
-  console.log('dataCategory :>> ', dataServer?.dataCategory);
   return (
     <MainLayout dataCategory={dataServer?.dataCate}>
       <Container>
         <HomeA
           posts={dataServer?.dataSectionA_Main}
           postsSide={dataServer?.dataSectionA_Side}
-          dataLayoutMain={sections?.HomeA?.HomeA_amain}
-          dataLayoutSide={sections?.HomeA?.HomeA_amain}
+          dataLayoutMain={sections?.HomeA?.HomeA_main}
+          dataLayoutSide={sections?.HomeA?.HomeA_main}
         />
 
         <HomeB
@@ -61,7 +59,7 @@ export default function Home({ dataServer }: any) {
           dataLayoutMain={sections?.HomeC?.HomeC_Main}
           dataLayoutSide={sections?.HomeC?.HomeC_Side}
         />
-        <HomeD posts={dataServer?.dataSectionC_Main} />
+        <HomeD posts={sections?.HomeB?.HomeB_Main} />
         <HomeC
           posts={dataServer?.dataSectionA_Main}
           dataLayoutMain={sections?.HomeD?.HomeD_Main}
@@ -93,15 +91,15 @@ export default function Home({ dataServer }: any) {
         <HomeP posts={dataServer?.dataSectionD_Main} />
       </Container>
       <HomeQ
-        posts={dataServer?.dataSectionB_Main}
+        posts={data}
         dataSectionHomeJ_2={dataServer?.dataSectionC_Main}
-        dataSectionHomeJ_3={data}
+        dataSectionHomeJ_3={dataServer?.dataSectionB_Main}
       />
       <Container>
         <HomeR posts={dataServer?.dataSectionC_Main} />
         <HomeS posts={dataServer?.dataSectionC_Main} />
+        <HomeT />
       </Container>
-      <Footer dataCategory={dataServer?.dataCate} />
     </MainLayout>
   );
 }

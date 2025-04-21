@@ -17,6 +17,7 @@ const Header = (dataCategory: PropsGlobal) => {
     <header>
       <>
         <img srcSet="/images/banners/header.png 2x" alt="" />
+        <title>Nông Thôn Việt</title>
       </>
       <div className="my-5 flex items-center justify-between border-[#393939] border-y-[1px]">
         <div className="flex items-center">
