@@ -91,9 +91,9 @@ export default function Home({ dataServer }: any) {
         <HomeP posts={dataServer?.dataSectionD_Main} />
       </Container>
       <HomeQ
-        posts={data}
+        posts={dataServer?.dataSectionB_Main}
         dataSectionHomeJ_2={dataServer?.dataSectionC_Main}
-        dataSectionHomeJ_3={dataServer?.dataSectionB_Main}
+        dataSectionHomeJ_3={data}
       />
       <Container>
         <HomeR posts={dataServer?.dataSectionC_Main} />

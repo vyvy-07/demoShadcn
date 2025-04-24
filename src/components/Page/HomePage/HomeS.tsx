@@ -1,5 +1,5 @@
 import GridThreeCol from '@/components/LayoutGrid/GridThreeCol';
-import ListArticleSide from '@/components/LayoutGrid/ListArticleSide';
+import ListArticleSide from '@/components/SideRight/ListArticleSide';
 import SectionTitle from '@/components/SectionTitle';
 import type { PropsGlobal } from '@/interface/propsGlobal';
 

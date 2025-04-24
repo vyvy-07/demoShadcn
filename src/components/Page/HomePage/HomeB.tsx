@@ -1,5 +1,5 @@
 import GridFourCol from '@/components/LayoutGrid/GridFourCol';
-import TitlteDotArticle from '@/components/LayoutGrid/TitlteDotArticle';
+import TitlteDotArticle from '@/components/Articles/TitlteDotArticle';
 import SectionTitle from '@/components/SectionTitle';
 import type { PropsGlobal } from '@/interface/propsGlobal';
 

@@ -45,6 +45,7 @@ export interface PropsGlobal {
   layoutPage?: LayoutType;
   lineUnderTitle?: boolean;
   hasTitle?: boolean;
+  lineLeft?: boolean;
   hasBorder?: boolean;
   lineBreak?: boolean;
   hasModifiedFirstPost?: boolean;

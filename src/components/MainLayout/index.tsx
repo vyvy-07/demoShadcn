@@ -5,13 +5,13 @@ import Header from '../Header';
 
 const MainLayout = ({ children, dataCategory }: PropsGlobal) => {
   return (
-    <html lang="en">
+    <>
       <Container>
         <Header dataCategory={dataCategory} />
       </Container>
-      <body>{children}</body>
+      <body cz-shortcut-listen="true">{children}</body>
       <Footer dataCategory={dataCategory} />
-    </html>
+    </>
   );
 };
 

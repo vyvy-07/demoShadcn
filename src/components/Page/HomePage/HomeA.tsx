@@ -1,7 +1,7 @@
 import AdsBanner from '@/components/AdBanners';
 import ArticleCard from '@/components/Articles/ArticleCard';
 import GridWrapper from '@/components/LayoutGrid/GridWrapper';
-import ListArticleSide from '@/components/LayoutGrid/ListArticleSide';
+import ListArticleSide from '@/components/SideRight/ListArticleSide';
 import type { PropsGlobal } from '@/interface/propsGlobal';
 
 const HomeA = ({

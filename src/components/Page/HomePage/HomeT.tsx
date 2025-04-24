@@ -1,6 +1,5 @@
 import GridWrapper from '@/components/LayoutGrid/GridWrapper';
-import ListDocxSide from '@/components/ListDocxSide';
-import SectionTitle from '@/components/SectionTitle';
+import ListDocxSide from '@/components/SideRight/ListDocxSide';
 import type { PropsGlobal } from '@/interface/propsGlobal';
 const dataTemp = [
   {
@@ -40,9 +39,23 @@ const dataTemp = [
 const HomeT = ({ posts }: PropsGlobal) => {
   return (
     <div id="homeT">
-      <SectionTitle title={'CÁC CƠ QUAN THAM MƯU'} className="mt-7 mb-4" />
-      <GridWrapper className="max-lg-max:flex max-lg:flex-col">
-        <ListDocxSide />
+      {/* <SectionTitle title={'CÁC CƠ QUAN THAM MƯU'} className="mt-7 mb-4" /> */}
+      <GridWrapper className="max-lg-max:flex max-lg:flex-col mt-7">
+        <ListDocxSide
+          className="col-span-4"
+          title="CÁC CƠ QUAN THAM MƯU"
+          dataTemp={dataTemp}
+        />
+        <ListDocxSide
+          className="col-span-4"
+          title="CÁC HUYỆN, THỊ , THÀNH ỦY"
+          dataTemp={dataTemp}
+        />
+        <ListDocxSide
+          className="col-span-4"
+          title="ĐẢNG ỦY CÁC CƠ QUAN ĐẢNG TỈNH"
+          dataTemp={dataTemp}
+        />
       </GridWrapper>
     </div>
   );
