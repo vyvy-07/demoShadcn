@@ -8,7 +8,7 @@ const NewsPage = ({ dataServer }: any) => {
     <MainLayout posts={[]} dataCategory={dataServer?.dataCate}>
       {dataServer?.dataSectionB_Main &&
         dataServer?.dataSectionB_Main?.map((item: any) => {
-          return <li>{item?.title}</li>;
+          return <li key={item?.id}>{item?.title}</li>;
         })}
     </MainLayout>
   );

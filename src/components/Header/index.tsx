@@ -12,7 +12,7 @@ import type { PropsGlobal } from '@/interface/propsGlobal';
 import Link from 'next/link';
 import { Input } from '../ui/input';
 const Header = (dataCategory: PropsGlobal) => {
-  const data = dataCategory.dataCategory;
+  const data = dataCategory?.dataCategory;
   return (
     <header>
       <>
@@ -27,25 +27,27 @@ const Header = (dataCategory: PropsGlobal) => {
           <Menubar className="border-none rounded-none shadow-none ">
             {data &&
               Array.isArray(data) &&
-              data?.slice(0, 6).map((item: Category, index) => (
-                <MenubarMenu key={item?.id || index}>
-                  <MenubarTrigger className="uppercase cursor-pointer">
-                    {item?.name}
-                  </MenubarTrigger>
+              data?.slice(0, 6).map((item: Category, index) => {
+                return (
+                  <MenubarMenu key={item?.id || index}>
+                    <MenubarTrigger className="uppercase cursor-pointer">
+                      {item?.name}
+                    </MenubarTrigger>
 
-                  <MenubarContent className="rounded-none bg-white border-0">
-                    <MenubarSeparator />
-                    {item?.subCates &&
-                      item?.subCates?.map((subCateItem: Category, subIndex) => (
-                        <MenubarItem key={subCateItem?.id || subIndex}>
-                          <Link href={`${subCateItem?.alias}`}>
-                            {subCateItem?.name}
-                          </Link>
-                        </MenubarItem>
-                      ))}
-                  </MenubarContent>
-                </MenubarMenu>
-              ))}
+                    <MenubarContent className="rounded-none bg-white border-0">
+                      <MenubarSeparator />
+                      {item?.subCates &&
+                        item?.subCates?.map((subCateItem, subIndex) => (
+                          <MenubarItem key={subCateItem?.id || subIndex}>
+                            <Link href={`${subCateItem?.alias}`}>
+                              {subCateItem?.name}
+                            </Link>
+                          </MenubarItem>
+                        ))}
+                    </MenubarContent>
+                  </MenubarMenu>
+                );
+              })}
           </Menubar>
         </div>
         <div className="flex items-center gap-1">

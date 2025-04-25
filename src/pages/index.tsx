@@ -22,6 +22,7 @@ import HomeT from '@/components/Page/HomePage/HomeT';
 import { fetchServerArticleList } from '@/Services/articleService';
 import { fetchServerCategoryList } from '@/Services/categoryService';
 import { transformBlocks } from '@/utils/utilitiesHandling';
+import Image from 'next/image';
 import React, { useEffect } from 'react';
 
 export default function Home({ dataServer }: any) {
@@ -43,6 +44,22 @@ export default function Home({ dataServer }: any) {
   return (
     <MainLayout dataCategory={dataServer?.dataCate}>
       <Container>
+        {/* <div>
+          <Image
+            src="/images/angghen.png"
+            width={500}
+            height={500}
+            alt="Picture of the author"
+          />
+          <Image
+            id="eeeeeeeeeeeeeeeeeeee"
+            className="eeeeeeeeeeeeeeeeeeee"
+            src="https://api.nongthonviet.com.vn/media/2025/04/25/680ad5931b61c90a857d7a4d_image_crop_tra_ca_phe.jpg"
+            width={500}
+            height={500}
+            alt="Picture of the author"
+          />
+        </div> */}
         <HomeA
           posts={dataServer?.dataSectionA_Main}
           postsSide={dataServer?.dataSectionA_Side}
@@ -116,6 +133,7 @@ export async function getStaticProps() {
       throw new Error('Failed to fetch');
     }
     const resCate = await fetchServerCategoryList();
+    // const resCate: any = [];
     const posts = await res?.json();
 
     const dataTerm = posts?.result?.blocks;
@@ -145,13 +163,12 @@ export async function getStaticProps() {
       layoutPage: posts?.result,
       dataSectionA_Main: dataSectionA_Main,
       dataSectionA_Side: dataSectionA_Side,
-      dataCate: resCate,
+      dataCate: resCate || [],
       dataSectionlayout: dataSections,
       dataSectionB_Main: dataSectionB_Main,
       dataSectionC_Main: dataSectionC_Main,
       dataSectionD_Main: dataSectionD_Main,
     };
-
     return {
       props: {
         dataServer: dataServer,

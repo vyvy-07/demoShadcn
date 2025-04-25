@@ -1,6 +1,7 @@
 import { AspectRatio } from '@/components/ui/aspect-ratio';
 import type { PropsGlobal } from '@/interface/propsGlobal';
 import { formatArticleDate } from '@/utils/Format';
+import Image from 'next/image';
 import Link from 'next/link';
 import { twMerge } from 'tailwind-merge';
 
@@ -17,17 +18,16 @@ const ArticleCard = ({
   align,
   className,
 }: PropsGlobal) => {
-  const url =
-    'https://api.nongthonviet.com.vn/media/2025/04/09/67f629249f9c5248f66aea69_tang-truong-kinh-te-tphcm_medium.jpg';
-
   return (
     <div className={className}>
       <AspectRatio
         className="overflow-hidden rounded-none border-none"
         ratio={16 / 9}
       >
-        <img
-          src={dataArticle?.featuredImage || url}
+        <Image
+          width={500}
+          height={500}
+          src={dataArticle?.featuredMedia?.resolutions?.medium?.uri || ''}
           alt="Image"
           className="w-full h-full object-cover"
         />

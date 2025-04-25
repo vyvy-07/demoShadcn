@@ -47,7 +47,7 @@ const ListArticleSide = ({
 
       {/* list */}
       <div className="list">
-        {posts?.slice(1, posts?.length).map((post, index) => (
+        {posts?.slice(1, 4).map((post, index) => (
           <div
             className={`${
               index != posts?.length - 2

@@ -1,4 +1,5 @@
 import type { PropsGlobal } from '@/interface/propsGlobal';
+import Image from 'next/image';
 import { twMerge } from 'tailwind-merge';
 
 const ArticleCustomCard = ({
@@ -9,10 +10,13 @@ const ArticleCustomCard = ({
   return (
     <div className={`${className} flex gap-4 overflow-hidden`}>
       <div className="max-w-[125px] h-[70px] rounded-none border-none">
-        <img
+        <Image
+          width={125}
+          height={70}
           src={
             dataArticle?.featuredMedia?.resolutions?.medium?.uri ||
-            dataArticle?.featuredImage
+            dataArticle?.featuredImage ||
+            ''
           }
           alt="Image"
           className="object-cover"

@@ -46,7 +46,7 @@ const HomeR = ({ posts }: PropsGlobal) => {
         <div className="col-span-9 grid grid-cols-4 gap-5 max-xl:grid-cols-2">
           <img
             className="block w-full h-full "
-            src="/images/cac-mac.png"
+            src="/images/cacMac.png"
             alt="Ph. Ăngghen"
           />
           <img
