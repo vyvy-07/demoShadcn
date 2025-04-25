@@ -5,10 +5,13 @@ import { transformBlocks } from '@/utils/utilitiesHandling';
 
 const NewsPage = ({ dataServer }: any) => {
   return (
-    <MainLayout posts={[]} dataCategory={dataServer?.dataCate}>
+    <MainLayout
+      posts={dataServer?.dataCate}
+      dataCategory={dataServer?.dataCate}
+    >
       {dataServer?.dataSectionB_Main &&
         dataServer?.dataSectionB_Main?.map((item: any) => {
-          return <li key={item?.id}>{item?.title}</li>;
+          return <li>{item?.title}</li>;
         })}
     </MainLayout>
   );
