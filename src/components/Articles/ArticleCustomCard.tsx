@@ -19,12 +19,12 @@ const ArticleCustomCard = ({
             ''
           }
           alt="Image"
-          className="object-cover"
+          className=" w-full object-cover"
         />
       </div>
-      <h4 className={`${twMerge(titleStyle)} line-clamp-3 `}>
-        {dataArticle?.title}
-      </h4>
+      <div className=" flex-1 line-clamp-3 ">
+        <h4 className={`${twMerge(titleStyle)} block`}>{dataArticle?.title}</h4>
+      </div>
     </div>
   );
 };
