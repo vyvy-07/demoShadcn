@@ -9,7 +9,7 @@ const MainLayout = ({ children, dataCategory }: PropsGlobal) => {
       <Container>
         <Header dataCategory={dataCategory} />
       </Container>
-      <body cz-shortcut-listen="true">{children}</body>
+      <>{children}</>
       <Footer dataCategory={dataCategory} />
     </>
   );
