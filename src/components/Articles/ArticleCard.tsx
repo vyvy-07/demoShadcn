@@ -39,7 +39,10 @@ const ArticleCard = ({
             align === 'center' && 'text-center'
           )} `}
         >
-          <Link className="h-auto line-clamp-2" href="/">
+          <Link
+            className="h-auto line-clamp-2"
+            href={dataArticle?.alias || '#'}
+          >
             {/* <IconTypeArticle type={dataArticle?.type} /> */}
             <h4> {dataArticle?.title}</h4>
           </Link>

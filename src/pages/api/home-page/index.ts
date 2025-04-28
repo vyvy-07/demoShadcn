@@ -165,6 +165,24 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
           ],
         },
         {
+          name: 'HomeI',
+          sections: [
+            {
+              name: 'HomeI_Main',
+              listType: 'Tin hỗn hợp',
+              cateId: '62300914b39100710b976f57',
+              cateAlias: 'su-kien',
+              title: 'Sự kiện doanh nghiệp',
+              isDisplayOnPage: true,
+              includeChildCate: true,
+              skip: 0,
+              displayRatio: '16/9',
+              randomArrange: false,
+              displayOnPage: true,
+            },
+          ],
+        },
+        {
           name: 'HomeJ',
           sections: [
             {
@@ -307,24 +325,6 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
               cateId: '62f0be902f16b160e4278828',
               cateAlias: 'song-khoe',
               title: 'Sống khỏe',
-              isDisplayOnPage: true,
-              includeChildCate: true,
-              skip: 0,
-              displayRatio: '16/9',
-              randomArrange: false,
-              displayOnPage: true,
-            },
-          ],
-        },
-        {
-          name: 'HomeR',
-          sections: [
-            {
-              name: 'HomeR_Main',
-              listType: 'Tin hỗn hợp',
-              cateId: '62300914b39100710b976f57',
-              cateAlias: 'su-kien',
-              title: 'Sự kiện doanh nghiệp',
               isDisplayOnPage: true,
               includeChildCate: true,
               skip: 0,

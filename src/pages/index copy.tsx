@@ -19,81 +19,36 @@ import HomeQ from '@/components/Page/HomePage/HomeQ';
 import HomeR from '@/components/Page/HomePage/HomeR';
 import HomeS from '@/components/Page/HomePage/HomeS';
 import HomeT from '@/components/Page/HomePage/HomeT';
-import { useFetchArticleList } from '@/hooks/useArticle';
-import { useFetchCategoryList } from '@/hooks/useCategory';
 import { fetchServerArticleList } from '@/Services/articleService';
 import { fetchServerCategoryList } from '@/Services/categoryService';
 import { transformBlocks } from '@/utils/utilitiesHandling';
+import Image from 'next/image';
 import React, { useEffect } from 'react';
 
 export default function Home({ dataServer }: any) {
+  const [data, setData] = React.useState([]);
   if (!dataServer?.layoutPage) {
     return null;
   }
-
   const sections = dataServer?.dataSectionlayout;
-
-  const { data: dataCate } = useFetchCategoryList();
-  const { data: dataHomeD } = useFetchArticleList(
-    sections?.HomeD?.HomeD_Main,
-    4,
-    dataServer?.layoutPage
-  );
-  const { data: dataHomeE } = useFetchArticleList(
-    sections?.HomeE?.HomeE_Main,
-    4,
-    dataServer?.layoutPage
-  );
-  const { data: dataHomeF } = useFetchArticleList(
-    sections?.HomeF?.HomeF_Main,
-    5,
-    dataServer?.layoutPage
-  );
-
-  const { data: dataHomeG } = useFetchArticleList(
-    sections?.HomeG?.HomeG_Main,
-    5,
-    dataServer?.layoutPage
-  );
-  const { data: dataHomeH } = useFetchArticleList(
-    sections?.HomeH?.HomeH_Main,
-    5,
-    dataServer?.layoutPage
-  );
-  const { data: dataHomeI } = useFetchArticleList(
-    sections?.HomeI?.HomeI_Main,
-    5,
-    dataServer?.layoutPage
-  );
-  const { data: dataHomeJ1 } = useFetchArticleList(
-    sections?.HomeJ?.HomeJ_1,
-    3,
-    dataServer?.layoutPage
-  );
-  const { data: dataHomeJ2 } = useFetchArticleList(
-    sections?.HomeJ?.HomeJ_2,
-    3,
-    dataServer?.layoutPage
-  );
-  const { data: dataHomeJ3 } = useFetchArticleList(
-    sections?.HomeJ?.HomeJ_3,
-    3,
-    dataServer?.layoutPage
-  );
-
-  const { data: dataHomeK } = useFetchArticleList(
-    sections?.HomeK?.HomeK_Main,
-    12,
-    dataServer?.layoutPage
-  );
+  useEffect(() => {
+    const getArticle = async () => {
+      const dataSectionL_Main = await fetchServerArticleList(
+        dataServer?.dataSectionlayout?.HomeL?.HomeL_Main,
+        10
+      );
+      setData(dataSectionL_Main);
+    };
+    getArticle();
+  }, []);
   return (
-    <MainLayout dataCategory={dataCate}>
+    <MainLayout dataCategory={dataServer?.dataCate}>
       <Container>
         <HomeA
           posts={dataServer?.dataSectionA_Main}
           postsSide={dataServer?.dataSectionA_Side}
           dataLayoutMain={sections?.HomeA?.HomeA_main}
-          dataLayoutSide={sections?.HomeA?.HomeA_Side}
+          dataLayoutSide={sections?.HomeA?.HomeA_main}
         />
 
         <HomeB
@@ -101,52 +56,36 @@ export default function Home({ dataServer }: any) {
           dataLayoutMain={sections?.HomeB?.HomeB_Main}
         />
         <HomeC
-          posts={dataServer?.dataSectionC_Main}
+          posts={dataServer?.dataSectionA_Main}
           dataLayoutMain={sections?.HomeC?.HomeC_Main}
           dataLayoutSide={sections?.HomeC?.HomeC_Side}
         />
-        {/* Lanh dao dang */}
-        <HomeD />
-        {/*  */}
+        <HomeD posts={sections?.HomeB?.HomeB_Main} />
         <HomeC
-          posts={dataHomeD}
+          posts={dataServer?.dataSectionA_Main}
           dataLayoutMain={sections?.HomeD?.HomeD_Main}
           dataLayoutSide={sections?.HomeD?.HomeD_Side}
         />
-        {/* Lanh dao nha nuoc */}
         <HomeE posts={dataServer?.dataSectionA_Main} />
 
         <HomeC
-          posts={dataHomeE}
+          posts={dataServer?.dataSectionA_Main}
           dataLayoutMain={sections?.HomeE?.HomeE_Main}
           dataLayoutSide={sections?.HomeE?.HomeE_Side}
         />
+
         <HomeF
-          posts={dataHomeF}
-          dataLayoutMain={sections?.HomeF?.HomeF_Main}
-          dataLayoutSide={sections?.HomeF?.HomeF_Side}
+          posts={dataServer?.dataSectionA_Main}
+          dataLayoutMain={sections?.HomeE?.HomeE_Main}
+          dataLayoutSide={sections?.HomeE?.HomeE_Side}
         />
-
-        <HomeG
-          posts={dataHomeG}
-          dataLayoutMain={sections?.HomeG?.HomeG_Main}
-          dataLayoutSide={sections?.HomeG?.HomeG_Side}
-        />
-        <HomeH
-          posts={dataHomeH}
-          dataLayoutMain={sections?.HomeH?.HomeH_Main}
-          dataLayoutSide={sections?.HomeH?.HomeH_Side}
-        />
-        <HomeI posts={dataHomeI} />
-
-        <HomeK
-          posts={dataHomeJ1}
-          dataHomeJ2={dataHomeJ2}
-          dataHomeJ3={dataHomeJ3}
-        />
+        <HomeG posts={dataServer?.dataSectionA_Side} />
+        <HomeH posts={dataServer?.dataSectionD_Main} />
+        <HomeI posts={dataServer?.dataSectionA_Main} />
+        <HomeK posts={dataServer?.dataSectionD_Main} />
       </Container>
-      <HomeL posts={dataHomeK} dataLayoutMain={sections?.HomeK?.HomeK_Main} />
-      {/* <Container>
+      <HomeL posts={data} />
+      <Container>
         <HomeM posts={dataServer?.dataSectionA_Main} />
         <HomeN posts={dataServer?.dataSectionA_Main} />
         <HomeO posts={dataServer?.dataSectionA_Main} />
@@ -155,13 +94,13 @@ export default function Home({ dataServer }: any) {
       <HomeQ
         posts={dataServer?.dataSectionB_Main}
         dataSectionHomeJ_2={dataServer?.dataSectionC_Main}
-        dataSectionHomeJ_3={dataHomeE}
+        dataSectionHomeJ_3={data}
       />
       <Container>
         <HomeR posts={dataServer?.dataSectionC_Main} />
         <HomeS posts={dataServer?.dataSectionC_Main} />
         <HomeT />
-      </Container> */}
+      </Container>
     </MainLayout>
   );
 }
@@ -170,41 +109,49 @@ export async function getStaticProps() {
   const timeout = setTimeout(() => controller.abort(), 7000); // timeout 7 giây
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_NTV_BASE_URL_LC}/api/home-page`, // api homepage
+      `${process.env.NEXT_PUBLIC_NTV_BASE_URL}/public/layout/HomePage`,
       { signal: controller.signal }
     );
     clearTimeout(timeout);
     if (!res?.ok) {
       throw new Error('Failed to fetch');
     }
-
-    // const resCate = await fetchServerCategoryList();
+    const resCate = await fetchServerCategoryList();
     // const resCate: any = [];
     const posts = await res?.json();
 
     const dataTerm = posts?.result?.blocks;
     const dataSections = transformBlocks(dataTerm);
-    const dataSectionA_Main =
-      dataSections?.HomeA?.HomeA_Main &&
-      (await fetchServerArticleList(dataSections?.HomeA?.HomeA_Main, 5));
-    const dataSectionA_Side =
-      dataSections?.HomeA?.HomeA_Side &&
-      (await fetchServerArticleList(dataSections?.HomeA?.HomeA_Side, 5));
-    const dataSectionB_Main =
-      dataSections?.HomeB?.HomeB_Main &&
-      (await fetchServerArticleList(dataSections?.HomeB?.HomeB_Main, 5));
-    const dataSectionC_Main =
-      dataSections?.HomeC?.HomeC_Main &&
-      (await fetchServerArticleList(dataSections?.HomeC?.HomeC_Main, 5));
+    const dataSectionA_Main = await fetchServerArticleList(
+      dataSections?.HomeA?.HomeA_Main,
+      5
+    );
+    const dataSectionA_Side = await fetchServerArticleList(
+      dataSections?.HomeA?.HomeA_Main,
+      5
+    );
+    const dataSectionB_Main = await fetchServerArticleList(
+      dataSections?.HomeB?.HomeB_Main,
+      5
+    );
+    const dataSectionC_Main = await fetchServerArticleList(
+      dataSections?.HomeC?.HomeC_Side,
+      5
+    );
+    const dataSectionD_Main = await fetchServerArticleList(
+      dataSections?.HomeD?.HomeD_Side,
+      5
+    );
 
     const dataServer = {
       layoutPage: posts?.result,
       dataSectionA_Main: dataSectionA_Main,
       dataSectionA_Side: dataSectionA_Side,
-
+      dataCate: resCate || [],
       dataSectionlayout: dataSections,
       dataSectionB_Main: dataSectionB_Main,
       dataSectionC_Main: dataSectionC_Main,
+      dataSectionD_Main: dataSectionD_Main,
     };
     return {
       props: {
@@ -213,7 +160,7 @@ export async function getStaticProps() {
       revalidate: 60,
     };
   } catch (error) {
-    clearTimeout(timeout);
+    // clearTimeout(timeout);
 
     console.error('Error fetching data:', error);
     return {

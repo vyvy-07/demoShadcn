@@ -10,7 +10,6 @@ export async function fetchServerCategoryList() {
       // fetchOptions
     );
     const data = await response.json();
-    console.log('data :>> ', data);
     const { categories } = data;
     if (categories) {
       return categories;

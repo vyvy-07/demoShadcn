@@ -13,4 +13,7 @@ export interface QueryType {
   includeChildCate?: boolean;
   isRandomArrange?: boolean;
   randomArrange?: boolean;
+  detailAlias?: string;
+  preview?: boolean;
+  params?: { preview?: boolean };
 }

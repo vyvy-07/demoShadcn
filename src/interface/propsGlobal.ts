@@ -5,7 +5,7 @@ import type { QueryType } from './queryType';
 export interface Article {
   id?: string;
   title?: string;
-
+  alias?: string;
   publicationTime?: number | undefined;
   hasSapo?: boolean;
   sapo?: string;

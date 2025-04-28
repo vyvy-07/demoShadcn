@@ -39,7 +39,7 @@ const Header = (dataCategory: PropsGlobal) => {
                       {item?.subCates &&
                         item?.subCates?.map((subCateItem, subIndex) => (
                           <MenubarItem key={subCateItem?.id || subIndex}>
-                            <Link href={`${subCateItem?.alias}`}>
+                            <Link href={subCateItem?.alias || '#'}>
                               {subCateItem?.name}
                             </Link>
                           </MenubarItem>

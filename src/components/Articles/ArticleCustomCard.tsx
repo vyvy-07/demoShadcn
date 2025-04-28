@@ -1,6 +1,7 @@
 import type { PropsGlobal } from '@/interface/propsGlobal';
 import Image from 'next/image';
 import { twMerge } from 'tailwind-merge';
+import { AspectRatio } from '../ui/aspect-ratio';
 
 const ArticleCustomCard = ({
   dataArticle,
@@ -9,7 +10,7 @@ const ArticleCustomCard = ({
 }: PropsGlobal) => {
   return (
     <div className={`${className} flex gap-4 overflow-hidden`}>
-      <div className="max-w-[125px] h-[70px] rounded-none border-none">
+      <div className="w-[125px] h-[70px] flex rounded-none border-none">
         <Image
           width={125}
           height={70}
@@ -18,11 +19,11 @@ const ArticleCustomCard = ({
             dataArticle?.featuredImage ||
             ''
           }
-          alt="Image"
-          className="object-cover"
+          alt={dataArticle?.featuredMedia?.alt || 'Image'}
+          className="w-full object-cover"
         />
       </div>
-      <h4 className={`${twMerge(titleStyle)} line-clamp-3 `}>
+      <h4 className={`${twMerge(titleStyle)} line-clamp-3  block flex-1`}>
         {dataArticle?.title}
       </h4>
     </div>
