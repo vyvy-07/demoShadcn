@@ -2,6 +2,7 @@ import MainLayout from '@/components/MainLayout';
 import { fetchServerArticleList } from '@/Services/articleService';
 import { fetchServerCategoryList } from '@/Services/categoryService';
 import { transformBlocks } from '@/utils/utilitiesHandling';
+import Link from 'next/link';
 
 const NewsPage = ({ dataServer }: any) => {
   return (
@@ -11,7 +12,11 @@ const NewsPage = ({ dataServer }: any) => {
     >
       {dataServer?.dataSectionB_Main &&
         dataServer?.dataSectionB_Main?.map((item: any) => {
-          return <li>{item?.title}</li>;
+          return (
+            <li key={item?.id} className="block p-1 cursor-pointer">
+              <Link href={`/tin-tuc/${item?.alias}`}>{item?.title}</Link>
+            </li>
+          );
         })}
     </MainLayout>
   );

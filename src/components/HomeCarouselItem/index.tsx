@@ -12,7 +12,7 @@ const CarouselItemHomeG = ({ posts }: PropsGlobal) => {
         <div className="col-span-3">
           <div className="flex flex-col gap-5">
             {posts?.length > 0 &&
-              posts?.slice(0, 2).map((item, index) => {
+              posts?.slice(3, 5).map((item, index) => {
                 return (
                   <ArticleCard
                     titleStyle="H6"

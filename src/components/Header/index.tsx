@@ -1,54 +1,28 @@
-import {
-  Menubar,
-  MenubarContent,
-  MenubarItem,
-  MenubarMenu,
-  MenubarSeparator,
-  MenubarTrigger,
-} from '@/components/ui/menubar';
-
-import type { Category } from '@/interface/category';
 import type { PropsGlobal } from '@/interface/propsGlobal';
+import Image from 'next/image';
 import Link from 'next/link';
 import { Input } from '../ui/input';
+import { NavigationMenuDemo } from './MenuHeader';
 const Header = (dataCategory: PropsGlobal) => {
-  const data = dataCategory?.dataCategory;
+  const data = dataCategory?.dataCategory || [];
   return (
     <header>
-      <>
-        <img srcSet="/images/banners/header.png 2x" alt="" />
-        <title>Nông Thôn Việt</title>
-      </>
+      <Link href="/">
+        <Image
+          width={1280}
+          height={100}
+          src="/images/banners/header.png"
+          alt="Vinh Long"
+        />
+        {/* <title>Vĩnh Long</title> */}
+      </Link>
       <div className="my-5 flex items-center justify-between border-[#393939] border-y-[1px]">
         <div className="flex items-center">
           <div className="w-5">
             <img src="/images/icons/menu.svg" alt="" />
           </div>
-          <Menubar className="border-none rounded-none shadow-none ">
-            {data &&
-              Array.isArray(data) &&
-              data?.slice(0, 6).map((item: Category, index) => {
-                return (
-                  <MenubarMenu key={item?.id || index}>
-                    <MenubarTrigger className="uppercase cursor-pointer">
-                      {item?.name}
-                    </MenubarTrigger>
 
-                    <MenubarContent className="rounded-none bg-white border-0">
-                      <MenubarSeparator />
-                      {item?.subCates &&
-                        item?.subCates?.map((subCateItem, subIndex) => (
-                          <MenubarItem key={subCateItem?.id || subIndex}>
-                            <Link href={subCateItem?.alias || '#'}>
-                              {subCateItem?.name}
-                            </Link>
-                          </MenubarItem>
-                        ))}
-                    </MenubarContent>
-                  </MenubarMenu>
-                );
-              })}
-          </Menubar>
+          <NavigationMenuDemo data={data} />
         </div>
         <div className="flex items-center gap-1">
           <Input

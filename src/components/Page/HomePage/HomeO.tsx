@@ -15,10 +15,10 @@ const HomeO = ({ posts }: PropsGlobal) => {
         className=" mb-4"
       />
 
-      <GridThreeCol posts={posts}>
+      <GridThreeCol posts={posts?.slice(0, 3)}>
         <div className="flex flex-col gap-4">
           {posts?.length > 0 &&
-            posts?.map((item, index) => {
+            posts?.slice(3, posts?.length).map((item, index) => {
               return (
                 <div key={index + 3}>
                   <ArticleCustomCard

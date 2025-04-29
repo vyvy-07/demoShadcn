@@ -1,6 +1,4 @@
-import ArticleCard from '@/components/Articles/ArticleCard';
 import CarouselItemHomeG from '@/components/HomeCarouselItem';
-import GridThreeCol from '@/components/LayoutGrid/GridThreeCol';
 import SectionTitle from '@/components/SectionTitle';
 import {
   Carousel,
@@ -47,13 +45,13 @@ const HomeN = ({ posts }: PropsGlobal) => {
       >
         <CarouselContent>
           <CarouselItem>
-            <CarouselItemHomeG posts={posts} />
+            <CarouselItemHomeG posts={posts?.slice(0, 5)} />
           </CarouselItem>
           <CarouselItem>
-            <CarouselItemHomeG posts={posts} />
+            <CarouselItemHomeG posts={posts.slice(5, 10)} />
           </CarouselItem>
           <CarouselItem>
-            <CarouselItemHomeG posts={posts} />
+            <CarouselItemHomeG posts={posts.slice(10, 15)} />
           </CarouselItem>
         </CarouselContent>
       </Carousel>

@@ -250,3 +250,13 @@ body {
   background: #c0a0b9;
   @apply bg-black rounded-2xl;
 }
+.menubar-trigger:hover + .menubar-content {
+  visibility: visible;
+  opacity: 1;
+}
+
+.menubar-content {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}

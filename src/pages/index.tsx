@@ -86,6 +86,33 @@ export default function Home({ dataServer }: any) {
     12,
     dataServer?.layoutPage
   );
+
+  const { data: dataHomeL } = useFetchArticleList(
+    sections?.HomeL?.HomeL_Main,
+    4,
+    dataServer?.layoutPage
+  );
+  const { data: dataHomeM } = useFetchArticleList(
+    sections?.HomeM?.HomeM_Main,
+    15,
+    dataServer?.layoutPage
+  );
+  const { data: dataHomeN } = useFetchArticleList(
+    sections?.HomeN?.HomeN_Main,
+    8,
+    dataServer?.layoutPage
+  );
+  const { data: dataHomeO } = useFetchArticleList(
+    sections?.HomeO?.HomeO_Main,
+    8,
+    dataServer?.layoutPage
+  );
+  const { data: dataHomeP } = useFetchArticleList(
+    sections?.HomeP?.HomeP_Main,
+    8,
+    dataServer?.layoutPage
+  );
+
   return (
     <MainLayout dataCategory={dataCate}>
       <Container>
@@ -146,22 +173,33 @@ export default function Home({ dataServer }: any) {
         />
       </Container>
       <HomeL posts={dataHomeK} dataLayoutMain={sections?.HomeK?.HomeK_Main} />
-      {/* <Container>
-        <HomeM posts={dataServer?.dataSectionA_Main} />
-        <HomeN posts={dataServer?.dataSectionA_Main} />
-        <HomeO posts={dataServer?.dataSectionA_Main} />
-        <HomeP posts={dataServer?.dataSectionD_Main} />
+      <Container>
+        <HomeM posts={dataHomeL} />
+        <HomeN posts={dataHomeM} />
+        <HomeO posts={dataHomeN} />
+        <HomeP posts={dataHomeO} />
+        <HomeK
+          posts={dataHomeJ1}
+          dataHomeJ2={dataHomeJ2}
+          dataHomeJ3={dataHomeJ3}
+        />
       </Container>
+      {/* 
+      //giống HomeK
       <HomeQ
         posts={dataServer?.dataSectionB_Main}
         dataSectionHomeJ_2={dataServer?.dataSectionC_Main}
         dataSectionHomeJ_3={dataHomeE}
       />
+   
+      */}
       <Container>
+        {/* 
+TƯ LIỆU - VĂN KIỆN ĐẢNG code cứng */}
         <HomeR posts={dataServer?.dataSectionC_Main} />
         <HomeS posts={dataServer?.dataSectionC_Main} />
         <HomeT />
-      </Container> */}
+      </Container>
     </MainLayout>
   );
 }

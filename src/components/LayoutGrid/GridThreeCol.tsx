@@ -26,7 +26,7 @@ const GridThreeCol = ({
           >
             <div className="col-span-6 max-w-[610px] w-full">
               <ArticleCard
-                dataArticle={posts[1]}
+                dataArticle={posts[0]}
                 dateStyle="D-13"
                 cateStyle="DM-14"
                 titleStyle="heading-1"
@@ -34,7 +34,7 @@ const GridThreeCol = ({
             </div>
             <div className={`col-span-3 ${reverseTwoRow && 'flex-1'}`}>
               <div className="flex flex-col gap-5">
-                {posts?.slice(2, 4).map((item, index) => {
+                {posts?.slice(1, 3).map((item, index) => {
                   return (
                     <ArticleCard
                       titleStyle="heading-4"

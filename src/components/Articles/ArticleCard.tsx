@@ -40,8 +40,8 @@ const ArticleCard = ({
           )} `}
         >
           <Link
-            className="h-auto line-clamp-2"
-            href={dataArticle?.alias || '#'}
+            className="h-auto line-clamp-2 min-h-[42px]"
+            href={`/tin-tuc/${dataArticle?.alias}` || '#'}
           >
             {/* <IconTypeArticle type={dataArticle?.type} /> */}
             <h4> {dataArticle?.title}</h4>
