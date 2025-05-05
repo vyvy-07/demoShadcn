@@ -1,6 +1,7 @@
 import ArticleCustomCard from '@/components/Articles/ArticleCustomCard';
 import GridThreeCol from '@/components/LayoutGrid/GridThreeCol';
 import SectionTitle from '@/components/SectionTitle';
+import ListArticleSideMini from '@/components/SideRight/ListArticleSideMini';
 import type { PropsGlobal } from '@/interface/propsGlobal';
 
 const HomeF = ({ posts, dataLayoutMain }: PropsGlobal) => {
@@ -15,7 +16,7 @@ const HomeF = ({ posts, dataLayoutMain }: PropsGlobal) => {
       />
 
       <GridThreeCol posts={posts} hasMiniArticle={false}>
-        <div className="flex flex-col gap-4">
+        {/* <div className="flex flex-col gap-4">
           {posts?.length > 0 &&
             posts?.map((item, index) => {
               return (
@@ -32,7 +33,12 @@ const HomeF = ({ posts, dataLayoutMain }: PropsGlobal) => {
                 </div>
               );
             })}
-        </div>
+        </div> */}
+        <ListArticleSideMini
+          className="mt-5"
+          hasTitle={false}
+          posts={posts?.slice(3, posts?.length)}
+        />
       </GridThreeCol>
     </div>
   );

@@ -17,7 +17,7 @@ const ListArticleSide = ({
   const firstPost = posts[0];
   return (
     <div
-      id="listArtA"
+      id="listArt"
       className={`${className} ${hasBorder && 'border py-3 px-5'}`}
     >
       {hasTitle && !titleCenter && (

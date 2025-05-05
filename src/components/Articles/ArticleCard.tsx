@@ -32,7 +32,7 @@ const ArticleCard = ({
           className="w-full h-full object-cover"
         />
       </AspectRatio>
-      <div className="mt-3">
+      <div className="mt-3 min-h-[42px]">
         <div
           className={`${twMerge(
             titleStyle,
@@ -40,7 +40,7 @@ const ArticleCard = ({
           )} `}
         >
           <Link
-            className="h-auto line-clamp-2 min-h-[42px]"
+            className="h-auto line-clamp-2"
             href={`/tin-tuc/${dataArticle?.alias}` || '#'}
           >
             {/* <IconTypeArticle type={dataArticle?.type} /> */}

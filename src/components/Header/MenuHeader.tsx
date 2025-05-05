@@ -9,7 +9,7 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-} from './menuBarShadcn';
+} from './MenuBarShadcn';
 
 export function NavigationMenuDemo({ data }: { data: Category[] }) {
   if (!data) return null;
@@ -18,7 +18,7 @@ export function NavigationMenuDemo({ data }: { data: Category[] }) {
       {data &&
         Array.isArray(data) &&
         data.slice(0, 6).map((item, index) => (
-          <NavigationMenu>
+          <NavigationMenu key={item?.id || index}>
             <NavigationMenuList>
               <NavigationMenuItem
                 className="menu-item relative"

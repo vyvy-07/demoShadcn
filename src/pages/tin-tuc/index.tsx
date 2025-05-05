@@ -1,15 +1,18 @@
 import MainLayout from '@/components/MainLayout';
+import SectionTitle from '@/components/SectionTitle';
+import { useFetchArticleList } from '@/hooks/useArticle';
 import { fetchServerArticleList } from '@/Services/articleService';
 import { fetchServerCategoryList } from '@/Services/categoryService';
 import { transformBlocks } from '@/utils/utilitiesHandling';
 import Link from 'next/link';
 
-const NewsPage = ({ dataServer }: any) => {
+const CatePage = ({ dataServer }: any) => {
   return (
     <MainLayout
       posts={dataServer?.dataCate}
       dataCategory={dataServer?.dataCate}
     >
+      <SectionTitle title="Cate Page" />
       {dataServer?.dataSectionB_Main &&
         dataServer?.dataSectionB_Main?.map((item: any) => {
           return (
@@ -22,13 +25,26 @@ const NewsPage = ({ dataServer }: any) => {
   );
 };
 
-export default NewsPage;
+export default CatePage;
+export const getStaticPaths = async () => {
+  return {
+    paths: [
+      {
+        params: {
+          name: 'next.js',
+        },
+      }, // See the "paths" section below
+    ],
+    fallback: true, // false or "blocking"
+  };
+};
+
 export async function getStaticProps() {
   const controller = new AbortController(); // tạo bộ điều khiển để hủy request nếu quá lâu
   const timeout = setTimeout(() => controller.abort(), 7000); // timeout 7 giây
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_NTV_BASE_URL}/public/layout/HomePage`,
+      `${process.env.NEXT_PUBLIC_NTV_BASE_URL_LC}/api/cate-page`, // api cate
       { signal: controller.signal }
     );
     clearTimeout(timeout);

@@ -1,31 +1,26 @@
 import type { PropsGlobal } from '@/interface/propsGlobal';
 import ArticleCard from '../Articles/ArticleCard';
 import GridThreeCol from '../LayoutGrid/GridThreeCol';
+import GridWrapper from '../LayoutGrid/GridWrapper';
 
 const CarouselItemHomeG = ({ posts }: PropsGlobal) => {
   if (!posts) {
     return null;
   }
   return (
-    <div>
-      <GridThreeCol posts={posts}>
-        <div className="col-span-3">
-          <div className="flex flex-col gap-5">
-            {posts?.length > 0 &&
-              posts?.slice(3, 5).map((item, index) => {
-                return (
-                  <ArticleCard
-                    titleStyle="H6"
-                    hasCate={false}
-                    hasDate={false}
-                    key={index}
-                    dataArticle={item}
-                  />
-                );
-              })}
-          </div>
-        </div>
-      </GridThreeCol>
+    <div className="grid grid-cols-2 grid-rows-2 gap-5">
+      {posts?.length > 0 &&
+        posts?.map((item, index) => {
+          return (
+            <ArticleCard
+              titleStyle="H6"
+              hasCate={false}
+              hasDate={false}
+              key={index}
+              dataArticle={item}
+            />
+          );
+        })}
     </div>
   );
 };

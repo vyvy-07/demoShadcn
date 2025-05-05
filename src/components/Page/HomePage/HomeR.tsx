@@ -38,7 +38,7 @@ const dataTemp = [
   },
 ];
 
-const HomeR = ({ posts }: PropsGlobal) => {
+const HomeR = () => {
   return (
     <div id="homeR">
       <SectionTitle title={'TƯ LIỆU - VĂN KIỆN ĐẢNG'} className="mt-7 mb-4" />

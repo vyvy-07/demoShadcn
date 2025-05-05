@@ -11,7 +11,15 @@ interface HomeJTab extends PropsGlobal {
   dataSectionHomeJ_2: Article[];
   dataSectionHomeJ_3: Article[];
 }
-const HomeQ = ({ posts, dataSectionHomeJ_2, dataSectionHomeJ_3 }: HomeJTab) => {
+const HomeQ = ({
+  posts,
+  dataHomeJ2,
+  dataHomeJ3,
+}: {
+  posts: Article[];
+  dataHomeJ2: Article[];
+  dataHomeJ3: Article[];
+}) => {
   if (!posts) {
     return null;
   }
@@ -32,14 +40,14 @@ const HomeQ = ({ posts, dataSectionHomeJ_2, dataSectionHomeJ_3 }: HomeJTab) => {
               </h3>
               |
               <h3
-                onClick={() => setDataRender(dataSectionHomeJ_2)}
+                onClick={() => setDataRender(dataHomeJ2)}
                 className="text-red-primary block cursor-pointer"
               >
                 Audio
               </h3>
               |
               <h3
-                onClick={() => setDataRender(dataSectionHomeJ_3)}
+                onClick={() => setDataRender(dataHomeJ3)}
                 className="text-red-primary block cursor-pointer"
               >
                 Ảnh

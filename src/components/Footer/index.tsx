@@ -1,6 +1,7 @@
 import type { PropsGlobal } from '@/interface/propsGlobal';
 import React from 'react';
 import Container from '../Container/Container';
+import Image from 'next/image';
 
 const Footer = ({ dataCategory }: PropsGlobal) => {
   const data = dataCategory;
@@ -61,9 +62,11 @@ const Footer = ({ dataCategory }: PropsGlobal) => {
             <p>© Bản quyền thuộc về Cổng thông tin điện tử Tỉnh ủy Vĩnh Long</p>
             <a className="block" href="https://ngn.vn/">
               © Powered by
-              <img
+              <Image
+                width={50}
+                height={30}
                 className="inline-block w-[50px] ml-2 "
-                srcSet="images/icons/ngn.png 2x"
+                src="/images/icons/ngn.png"
                 alt="NEXT GENERATION NETWORK CORPORATION"
               />
             </a>

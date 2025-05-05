@@ -1,19 +1,20 @@
-import CarouselItemHomeG from '@/components/HomeCarouselItem';
-import SectionTitle from '@/components/SectionTitle';
+'use client';
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   type CarouselApi,
 } from '@/components/ui/carousel';
-import type { PropsGlobal } from '@/interface/propsGlobal';
 import Autoplay from 'embla-carousel-autoplay';
+
+import SectionTitle from '@/components/SectionTitle';
 import React from 'react';
+import type { PropsGlobal } from '@/interface/propsGlobal';
+import CarouselItemHomeG from '@/components/HomeCarouselItem';
+import GridWrapper from '@/components/LayoutGrid/GridWrapper';
+import ArticleCard from '@/components/Articles/ArticleCard';
 
 const HomeN = ({ posts }: PropsGlobal) => {
-  if (!posts?.length) {
-    return null;
-  }
   const [api, setApi] = React.useState<CarouselApi>();
   const [current, setCurrent] = React.useState(0);
   const [count, setCount] = React.useState(0);
@@ -30,31 +31,66 @@ const HomeN = ({ posts }: PropsGlobal) => {
     });
   }, [api]);
 
+  if (!posts) return null;
   return (
-    <div id="homeN" className="bg-grey-hover py-7 mt-7 px-1">
-      <SectionTitle lineUnderTitle={true} title="XÂY DỰNG ĐẢNG" className="" />
+    <div id="HomeN">
+      <SectionTitle title="XÂY DỰNG ĐẢNG" className="mt-7 mb-4" />
 
-      <Carousel
-        plugins={[
-          Autoplay({
-            delay: 3000,
-          }),
-        ]}
-        className="mt-5"
-        setApi={setApi}
-      >
-        <CarouselContent>
-          <CarouselItem>
-            <CarouselItemHomeG posts={posts?.slice(0, 5)} />
-          </CarouselItem>
-          <CarouselItem>
-            <CarouselItemHomeG posts={posts.slice(5, 10)} />
-          </CarouselItem>
-          <CarouselItem>
-            <CarouselItemHomeG posts={posts.slice(10, 15)} />
-          </CarouselItem>
-        </CarouselContent>
-      </Carousel>
+      <GridWrapper>
+        <div className="col-span-6">
+          <ArticleCard
+            titleStyle="H6"
+            hasCate={false}
+            hasDate={false}
+            key={posts[0]?.id}
+            dataArticle={posts[0]}
+          />
+        </div>
+        <div className="col-span-6">
+          <Carousel
+            plugins={[
+              Autoplay({
+                delay: 3000,
+              }),
+            ]}
+            setApi={setApi}
+          >
+            <CarouselContent>
+              <CarouselItem>
+                <CarouselItemHomeG posts={posts?.slice(0, 4)} />
+              </CarouselItem>
+              <CarouselItem>
+                <CarouselItemHomeG posts={posts?.slice(4, 8)} />
+              </CarouselItem>
+              <CarouselItem>
+                <CarouselItemHomeG posts={posts?.slice(8, 12)} />
+              </CarouselItem>
+              <CarouselItem>
+                <CarouselItemHomeG posts={posts?.slice(12, 16)} />
+              </CarouselItem>
+            </CarouselContent>
+          </Carousel>
+          <div className="flex justify-end  w-[60%] mt-7">
+            <div style={{ display: 'flex', gap: 8 }}>
+              {Array.from({ length: count + 1 }).map((_, index) => {
+                return (
+                  <div
+                    key={index}
+                    style={{
+                      width: current === index ? 30 : 12,
+                      height: 12,
+                      borderRadius: 9999,
+                      backgroundColor:
+                        current === index ? '#7c7070' : '#d8cccc',
+                      transition: 'all 0.3s ease',
+                    }}
+                  />
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </GridWrapper>
     </div>
   );
 };

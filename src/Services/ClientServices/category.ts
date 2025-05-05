@@ -25,14 +25,14 @@ export async function fetchCategory({
 export async function fetchCategoryList({ signal }: { signal: AbortSignal }) {
   try {
     const response = await axios.get(
-      `${process.env.NEXT_PUBLIC_NTV_BASE_URL}/public/category/list`,
+      `${process.env.NEXT_PUBLIC_NTV_BASE_URL_LC}/api/category`,
       {
         signal,
       }
     );
     if (response) {
-      const { result } = response.data;
-      return result;
+      const { categories } = response.data;
+      return categories;
     }
   } catch (error) {
     console.log(error);

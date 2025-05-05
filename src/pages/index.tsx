@@ -12,19 +12,14 @@ import HomeI from '@/components/Page/HomePage/HomeI';
 import HomeK from '@/components/Page/HomePage/HomeK';
 import HomeL from '@/components/Page/HomePage/HomeL';
 import HomeM from '@/components/Page/HomePage/HomeM';
-import HomeN from '@/components/Page/HomePage/HomeN';
 import HomeO from '@/components/Page/HomePage/HomeO';
-import HomeP from '@/components/Page/HomePage/HomeP';
 import HomeQ from '@/components/Page/HomePage/HomeQ';
 import HomeR from '@/components/Page/HomePage/HomeR';
 import HomeS from '@/components/Page/HomePage/HomeS';
 import HomeT from '@/components/Page/HomePage/HomeT';
 import { useFetchArticleList } from '@/hooks/useArticle';
-import { useFetchCategoryList } from '@/hooks/useCategory';
 import { fetchServerArticleList } from '@/Services/articleService';
-import { fetchServerCategoryList } from '@/Services/categoryService';
 import { transformBlocks } from '@/utils/utilitiesHandling';
-import React, { useEffect } from 'react';
 
 export default function Home({ dataServer }: any) {
   if (!dataServer?.layoutPage) {
@@ -33,7 +28,6 @@ export default function Home({ dataServer }: any) {
 
   const sections = dataServer?.dataSectionlayout;
 
-  const { data: dataCate } = useFetchCategoryList();
   const { data: dataHomeD } = useFetchArticleList(
     sections?.HomeD?.HomeD_Main,
     4,
@@ -46,13 +40,13 @@ export default function Home({ dataServer }: any) {
   );
   const { data: dataHomeF } = useFetchArticleList(
     sections?.HomeF?.HomeF_Main,
-    5,
+    8,
     dataServer?.layoutPage
   );
 
   const { data: dataHomeG } = useFetchArticleList(
     sections?.HomeG?.HomeG_Main,
-    5,
+    16,
     dataServer?.layoutPage
   );
   const { data: dataHomeH } = useFetchArticleList(
@@ -67,17 +61,17 @@ export default function Home({ dataServer }: any) {
   );
   const { data: dataHomeJ1 } = useFetchArticleList(
     sections?.HomeJ?.HomeJ_1,
-    3,
+    12,
     dataServer?.layoutPage
   );
   const { data: dataHomeJ2 } = useFetchArticleList(
     sections?.HomeJ?.HomeJ_2,
-    3,
+    12,
     dataServer?.layoutPage
   );
   const { data: dataHomeJ3 } = useFetchArticleList(
     sections?.HomeJ?.HomeJ_3,
-    3,
+    12,
     dataServer?.layoutPage
   );
 
@@ -94,7 +88,7 @@ export default function Home({ dataServer }: any) {
   );
   const { data: dataHomeM } = useFetchArticleList(
     sections?.HomeM?.HomeM_Main,
-    15,
+    16,
     dataServer?.layoutPage
   );
   const { data: dataHomeN } = useFetchArticleList(
@@ -114,7 +108,7 @@ export default function Home({ dataServer }: any) {
   );
 
   return (
-    <MainLayout dataCategory={dataCate}>
+    <MainLayout>
       <Container>
         <HomeA
           posts={dataServer?.dataSectionA_Main}
@@ -122,7 +116,6 @@ export default function Home({ dataServer }: any) {
           dataLayoutMain={sections?.HomeA?.HomeA_main}
           dataLayoutSide={sections?.HomeA?.HomeA_Side}
         />
-
         <HomeB
           posts={dataServer?.dataSectionB_Main}
           dataLayoutMain={sections?.HomeB?.HomeB_Main}
@@ -134,7 +127,6 @@ export default function Home({ dataServer }: any) {
         />
         {/* Lanh dao dang */}
         <HomeD />
-        {/*  */}
         <HomeC
           posts={dataHomeD}
           dataLayoutMain={sections?.HomeD?.HomeD_Main}
@@ -142,7 +134,6 @@ export default function Home({ dataServer }: any) {
         />
         {/* Lanh dao nha nuoc */}
         <HomeE posts={dataServer?.dataSectionA_Main} />
-
         <HomeC
           posts={dataHomeE}
           dataLayoutMain={sections?.HomeE?.HomeE_Main}
@@ -153,7 +144,6 @@ export default function Home({ dataServer }: any) {
           dataLayoutMain={sections?.HomeF?.HomeF_Main}
           dataLayoutSide={sections?.HomeF?.HomeF_Side}
         />
-
         <HomeG
           posts={dataHomeG}
           dataLayoutMain={sections?.HomeG?.HomeG_Main}
@@ -165,7 +155,6 @@ export default function Home({ dataServer }: any) {
           dataLayoutSide={sections?.HomeH?.HomeH_Side}
         />
         <HomeI posts={dataHomeI} />
-
         <HomeK
           posts={dataHomeJ1}
           dataHomeJ2={dataHomeJ2}
@@ -175,29 +164,31 @@ export default function Home({ dataServer }: any) {
       <HomeL posts={dataHomeK} dataLayoutMain={sections?.HomeK?.HomeK_Main} />
       <Container>
         <HomeM posts={dataHomeL} />
-        <HomeN posts={dataHomeM} />
+        <HomeG
+          posts={dataHomeM}
+          dataLayoutMain={sections?.HomeG?.HomeG_Main}
+          dataLayoutSide={sections?.HomeG?.HomeG_Side}
+        />
+        <HomeC posts={dataHomeP} />
         <HomeO posts={dataHomeN} />
-        <HomeP posts={dataHomeO} />
+        {/* <HomeP posts={dataHomeO} /> */}
         <HomeK
           posts={dataHomeJ1}
           dataHomeJ2={dataHomeJ2}
           dataHomeJ3={dataHomeJ3}
         />
       </Container>
-      {/* 
-      //giống HomeK
+      {/* //giống HomeK */}
       <HomeQ
-        posts={dataServer?.dataSectionB_Main}
-        dataSectionHomeJ_2={dataServer?.dataSectionC_Main}
-        dataSectionHomeJ_3={dataHomeE}
+        posts={dataHomeJ1}
+        dataHomeJ2={dataHomeJ2}
+        dataHomeJ3={dataHomeJ3}
       />
-   
-      */}
       <Container>
         {/* 
 TƯ LIỆU - VĂN KIỆN ĐẢNG code cứng */}
-        <HomeR posts={dataServer?.dataSectionC_Main} />
-        <HomeS posts={dataServer?.dataSectionC_Main} />
+        <HomeR />
+        <HomeS posts={dataHomeP} />
         <HomeT />
       </Container>
     </MainLayout>
