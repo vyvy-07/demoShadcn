@@ -13,12 +13,13 @@ const ListArticleSideMini = ({
   hasTitle = true,
   hasBorder = false,
   titleCenter = false,
+  titleStyle,
 }: PropsGlobal) => {
   if (!posts?.length) return null;
   const firstPost = posts[0];
   return (
     <>
-      {hasTitle && <SectionTitle title={`${title || 'mới'}`} />}
+      {hasTitle && <SectionTitle title={`${title}`} className={titleStyle} />}
       <div className={`flex flex-col gap-4 ${className}`}>
         {posts?.length > 0 &&
           posts?.map((item, index) => {
@@ -26,6 +27,7 @@ const ListArticleSideMini = ({
               <div key={index + 3}>
                 <ArticleCustomCard
                   dataArticle={item}
+                  titleStyle="heading-4"
                   className={`${index + 1 != posts?.length ? 'mb-4' : ''}`}
                 />
                 {index + 1 != posts?.length ? <hr className="text-grey" /> : ''}

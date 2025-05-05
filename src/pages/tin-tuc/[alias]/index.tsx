@@ -1,44 +1,70 @@
+import ArticleCustomCard from '@/components/Articles/ArticleCustomCard';
 import Container from '@/components/Container/Container';
+import GridWrapper from '@/components/LayoutGrid/GridWrapper';
 import MainLayout from '@/components/MainLayout';
 import SectionTitle from '@/components/SectionTitle';
-import {
-  useFetchArticleList,
-  useFetchRelatedArticleList,
-} from '@/hooks/useArticle';
+import ListArticleSide from '@/components/SideRight/ListArticleSide';
+import ListArticleSideMini from '@/components/SideRight/ListArticleSideMini';
+import ViewMore from '@/components/ViewMoreBtn';
+import { useFetchArticleList } from '@/hooks/useArticle';
+import type { Article } from '@/interface/propsGlobal';
 import { fetchServerArticleList } from '@/Services/articleService';
 import { fetchServerCategoryList } from '@/Services/categoryService';
 import { fetchLayoutPage } from '@/Services/layoutPage';
 import { transformBlocks } from '@/utils/utilitiesHandling';
-import Link from 'next/link';
 
-const CatePage = ({ dataServer }: any) => {
-  const { data: dataPosts } = useFetchRelatedArticleList({}, 5);
-  console.log('object :>> ', dataPosts);
+const CatePageDynamic = ({ dataServer }: any) => {
+  const dataLayout = dataServer?.dataSections?.CateHead;
+  const { data: dataSide } = useFetchArticleList(dataLayout?.CateHead_Side, 5);
   return (
-    <MainLayout
-      posts={dataServer?.dataCate}
-      dataCategory={dataServer?.dataCate}
-    >
+    <MainLayout>
       <Container>
-        <SectionTitle title="Cate Page" />
-        {dataServer?.dataSectionB_Main &&
-          dataServer?.dataSectionB_Main?.map((item: any) => {
-            return (
-              <li key={item?.id} className="block p-1 cursor-pointer">
-                <Link href={`/tin-tuc/${item?.alias}`}>{item?.title}</Link>
-              </li>
-            );
-          })}
+        <GridWrapper>
+          <div className="col-span-9">
+            <SectionTitle
+              title={dataLayout?.CateHead_Main?.title || 'hoat dong'}
+              className="mb-5"
+            />
+            {dataServer?.cateHead_Main &&
+              dataServer?.cateHead_Main?.map((item: Article, index: number) => {
+                return (
+                  <div key={item?.id || index}>
+                    <ArticleCustomCard
+                      dataArticle={item}
+                      width={286}
+                      height={162}
+                      hasSapo={true}
+                      hasCate={true}
+                      hasDate={true}
+                      sapoStyle="line-clamp-3"
+                      titleStyle="heading-3"
+                    />
+                    {index !== dataServer?.cateHead_Main?.length - 1 && (
+                      <hr className="pb-5 mt-5 text-grey"></hr>
+                    )}
+                  </div>
+                );
+              })}
+            <ViewMore dataLayout={dataLayout} />
+          </div>
+          <div className="col-span-3">
+            <ListArticleSideMini
+              posts={dataSide}
+              titleStyle="mb-5"
+              title={dataLayout?.CateHead_Side?.title}
+            />
+          </div>
+        </GridWrapper>
       </Container>
     </MainLayout>
   );
 };
 
-export default CatePage;
+export default CatePageDynamic;
 export const getStaticPaths = async () => {
   const dataCate = await fetchServerCategoryList();
   const paths = dataCate?.map((post: any) => {
-    return { params: { alias: post?.alias.toString() } };
+    return { params: { alias: `${post?.alias}` } };
   });
   return {
     paths: paths || [],
@@ -46,12 +72,26 @@ export const getStaticPaths = async () => {
   };
 };
 
-export async function getStaticProps({ params }: any) {
-  const datalayout = await fetchLayoutPage('category');
-  // console.log('datalayout :>> ', datalayout);
+export async function getStaticProps() {
+  const datalayout = await fetchLayoutPage('cate-page');
+  const dataTerm = datalayout?.result?.blocks;
+  const dataSections = transformBlocks(dataTerm);
+
+  const cateHead_Main = await fetchServerArticleList(
+    dataSections?.CateHead?.CateHead_Main,
+    7
+  );
+  // const cateHead_Main = await fetchServerArticleList(
+  //   dataSections?.CateHead?.CateHead_Main,
+  //   7
+  // );
+  const dataServer = {
+    cateHead_Main: cateHead_Main,
+    dataSections: dataSections,
+  };
   try {
     return {
-      props: {},
+      props: { dataServer },
       revalidate: 60,
     };
   } catch (error) {

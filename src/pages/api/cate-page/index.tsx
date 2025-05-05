@@ -26,26 +26,8 @@ export default function handlerCatePage(
               randomArrange: false,
               displayOnPage: true,
             },
-          ],
-        },
-        {
-          name: 'CateFoot',
-          sections: [
             {
-              name: 'CateFoot_Main',
-              listType: 'Tin hỗn hợp',
-              cateId: null,
-              cateAlias: null,
-              title: 'Mới nhất',
-              isDisplayOnPage: false,
-              includeChildCate: true,
-              skip: 0,
-              displayRatio: '16/9',
-              randomArrange: false,
-              displayOnPage: false,
-            },
-            {
-              name: 'CateFoot_Side',
+              name: 'CateHead_Side',
               listType: 'Tin nổi bật',
               cateId: null,
               cateAlias: null,

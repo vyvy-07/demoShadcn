@@ -45,6 +45,8 @@ export interface PropsGlobal {
   layoutPage?: LayoutType;
   lineUnderTitle?: boolean;
   hasTitle?: boolean;
+  width?: number;
+  height?: number;
   lineLeft?: boolean;
   hasBorder?: boolean;
   lineBreak?: boolean;

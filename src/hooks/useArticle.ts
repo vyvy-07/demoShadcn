@@ -12,7 +12,7 @@ export const useFetchArticleList = (
   layout = true
 ) => {
   const params = parseParams(queryList, limit);
-  const qrKey = queryList.cateId ?? queryList.cateAlias;
+  const qrKey = queryList?.cateId ?? queryList?.cateAlias;
 
   return useQuery({
     queryKey: [qrKey, { ...params }],
@@ -20,7 +20,20 @@ export const useFetchArticleList = (
     enabled: !!layout,
   });
 };
+export const useReFetchArticleList = (
+  queryList: QueryType,
+  limit: number,
+  layout = true
+) => {
+  const params = parseParams(queryList, limit);
+  const qrKey = queryList?.cateId ?? queryList?.cateAlias;
 
+  return useQuery({
+    queryKey: [qrKey, { ...params }],
+    queryFn: ({ signal }) => fetchArticleList({ signal }, params),
+    enabled: !!layout,
+  });
+};
 export const useFetchRelatedArticleList = (
   queryList: QueryType,
   limit: number
