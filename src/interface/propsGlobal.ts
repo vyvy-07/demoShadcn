@@ -5,6 +5,7 @@ import type { QueryType } from './queryType';
 export interface Article {
   id?: string;
   title?: string;
+  type?: string;
   alias?: string;
   publicationTime?: number | undefined;
   hasSapo?: boolean;
@@ -29,6 +30,15 @@ export interface Article {
   copyright?: string;
   alterCateIds?: [];
   trash?: boolean;
+  postMedia?: [
+    {
+      name: string;
+      file: string;
+      type: string;
+      caption: string;
+      disableAd: boolean;
+    }
+  ];
   hasAudio?: string;
   articleGA?: { DAY?: [{}]; HOUR?: {} };
 }
@@ -37,6 +47,7 @@ export interface PropsGlobal {
   id?: string;
   reverseTwoRow?: boolean;
   title?: string;
+  titleSide?: string;
   url?: string;
   titleCenter?: boolean;
   dataLayoutMain?: QueryType;
@@ -45,6 +56,7 @@ export interface PropsGlobal {
   layoutPage?: LayoutType;
   lineUnderTitle?: boolean;
   hasTitle?: boolean;
+  iconType?: string;
   width?: number;
   height?: number;
   lineLeft?: boolean;

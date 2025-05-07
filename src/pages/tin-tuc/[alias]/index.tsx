@@ -13,14 +13,14 @@ import { fetchServerCategoryList } from '@/Services/categoryService';
 import { fetchLayoutPage } from '@/Services/layoutPage';
 import { transformBlocks } from '@/utils/utilitiesHandling';
 
-const CatePageDynamic = ({ dataServer }: any) => {
+const CateNewsPage = ({ dataServer }: any) => {
   const dataLayout = dataServer?.dataSections?.CateHead;
   const { data: dataSide } = useFetchArticleList(dataLayout?.CateHead_Side, 5);
   return (
     <MainLayout>
       <Container>
         <GridWrapper>
-          <div className="col-span-9">
+          <div className="col-span-8">
             <SectionTitle
               title={dataLayout?.CateHead_Main?.title || 'hoat dong'}
               className="mb-5"
@@ -47,7 +47,7 @@ const CatePageDynamic = ({ dataServer }: any) => {
               })}
             <ViewMore dataLayout={dataLayout} />
           </div>
-          <div className="col-span-3">
+          <div className="col-span-4">
             <ListArticleSideMini
               posts={dataSide}
               titleStyle="mb-5"
@@ -60,14 +60,10 @@ const CatePageDynamic = ({ dataServer }: any) => {
   );
 };
 
-export default CatePageDynamic;
+export default CateNewsPage;
 export const getStaticPaths = async () => {
-  const dataCate = await fetchServerCategoryList();
-  const paths = dataCate?.map((post: any) => {
-    return { params: { alias: `${post?.alias}` } };
-  });
   return {
-    paths: paths || [],
+    paths: [],
     fallback: true, // false or "blocking"
   };
 };
@@ -81,10 +77,7 @@ export async function getStaticProps() {
     dataSections?.CateHead?.CateHead_Main,
     7
   );
-  // const cateHead_Main = await fetchServerArticleList(
-  //   dataSections?.CateHead?.CateHead_Main,
-  //   7
-  // );
+
   const dataServer = {
     cateHead_Main: cateHead_Main,
     dataSections: dataSections,

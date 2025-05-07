@@ -22,3 +22,22 @@ export async function fetchServerArticleList(listQuery: any, limit: number) {
     console.log(error);
   }
 }
+
+export async function fetchServerArticleDetail(articleId: string) {
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_NTV_BASE_URL}/public/article/${articleId}`,
+      fetchOptions
+    );
+    const data = await response.json();
+    const { result } = data;
+    if (result) {
+      return result;
+    }
+    if (!response.ok) {
+      throw new Error('Lỗi get category list');
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}

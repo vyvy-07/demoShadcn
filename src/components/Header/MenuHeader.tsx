@@ -25,9 +25,7 @@ export function NavigationMenuDemo({ data }: { data: Category[] }) {
                 key={item?.id || index}
               >
                 <NavigationMenuTrigger className="uppercase cursor-pointer hover:text-red-primary hover:transition-[0.03s] transition-[0.03s]">
-                  <Link href={`/tin-tuc/${item?.alias || '#'}`}>
-                    {item?.name}
-                  </Link>
+                  <Link href={`${item?.alias || '#'}`}>{item?.name}</Link>
                 </NavigationMenuTrigger>
 
                 <NavigationMenuContent className=" whitespace-nowrap bg-white ">
@@ -39,9 +37,7 @@ export function NavigationMenuDemo({ data }: { data: Category[] }) {
                           className="hover:bg-red-hover px-3 py-2"
                         >
                           <NavigationMenuLink asChild>
-                            <Link
-                              href={`/tin-tuc/${subCateItem?.alias || '#'}`}
-                            >
+                            <Link href={`${subCateItem?.alias || '#'}`}>
                               {subCateItem?.name}
                             </Link>
                           </NavigationMenuLink>
