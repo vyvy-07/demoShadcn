@@ -64,7 +64,6 @@ const CateNewsPage = ({ dataServer }: any) => {
 export default CateNewsPage;
 export const getStaticPaths = async () => {
   const dataCate = await fetchServerCategoryList();
-  // console.log('cate :>> ', cate);
   const data = dataCate?.filter((item: any) => item?.type == 'tin-tuc');
   const paths = data[0]?.subCates?.map((itemSub: any) => {
     return { params: { alias: `${itemSub?.alias}` } };
@@ -76,20 +75,21 @@ export const getStaticPaths = async () => {
 };
 
 export async function getStaticProps() {
-  const datalayout = await fetchLayoutPage('cate-page');
-  const dataTerm = datalayout?.result?.blocks;
-  const dataSections = transformBlocks(dataTerm);
-
-  const cateHead_Main = await fetchServerArticleList(
-    dataSections?.CateHead?.CateHead_Main,
-    7
-  );
-
-  const dataServer = {
-    cateHead_Main: cateHead_Main,
-    dataSections: dataSections,
-  };
   try {
+    const datalayout = await fetchLayoutPage('cate-page');
+    const dataTerm = datalayout?.result?.blocks;
+    const dataSections = transformBlocks(dataTerm);
+
+    const cateHead_Main = await fetchServerArticleList(
+      dataSections?.CateHead?.CateHead_Main,
+      7
+    );
+
+    const dataServer = {
+      cateHead_Main: cateHead_Main,
+      dataSections: dataSections,
+    };
+
     return {
       props: { dataServer },
       revalidate: 60,

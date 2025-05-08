@@ -5,7 +5,6 @@ const ViewMore = ({ dataLayout }: { dataLayout: any }) => {
     <div
       onClick={() => {
         // setIsEnable(true);
-        console.log('34 :>> ', 34);
       }}
       className="flex justify-between items-center"
     >

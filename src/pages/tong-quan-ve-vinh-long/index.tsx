@@ -28,13 +28,14 @@ const IntroPage = ({ dataServer }: { dataServer: any }) => {
 
 export default IntroPage;
 export async function getStaticProps() {
-  const datalayout = await fetchLayoutPage('detail-page');
-  const dataTerm = datalayout?.result?.blocks;
-  const dataSections = transformBlocks(dataTerm);
-  const dataServer = {
-    dataSections: dataSections,
-  };
   try {
+    const datalayout = await fetchLayoutPage('detail-page');
+    const dataTerm = datalayout?.result?.blocks;
+    const dataSections = transformBlocks(dataTerm);
+    const dataServer = {
+      dataSections: dataSections,
+    };
+
     return {
       props: { dataServer },
       revalidate: 60,

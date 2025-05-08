@@ -8,12 +8,10 @@ import type { GetStaticPaths } from 'next';
 import ReactPlayer from 'react-player';
 
 const DetailVideoPage = ({ dataServer }: { dataServer: any }) => {
-  console.log('dataServer?.dataArticle :>> ', dataServer?.dataArticle);
   const dataArticle = dataServer?.dataArticle;
   const dataVideo =
     dataArticle?.postMedia?.[0]?.file &&
     useFetchMediaById(dataArticle?.postMedia?.[0]?.file);
-  console.log('dataVideo?.data :>> ', dataVideo?.data);
   const urlVideo = 'www.youtube.com/embed/CJ6hij46oxA';
 
   return (
@@ -51,16 +49,17 @@ export async function getStaticProps({
 }: {
   params: { alias: string };
 }) {
-  const datalayout = await fetchLayoutPage('video-page');
-  const dataArticle =
-    params?.alias && (await fetchServerArticleDetail(params?.alias));
-  const dataTerm = datalayout?.result?.blocks;
-  const dataSections = transformBlocks(dataTerm);
-  const dataServer = {
-    dataSections: dataSections,
-    dataArticle: dataArticle,
-  };
   try {
+    const datalayout = await fetchLayoutPage('video-page');
+    const dataArticle =
+      params?.alias && (await fetchServerArticleDetail(params?.alias));
+    const dataTerm = datalayout?.result?.blocks;
+    const dataSections = transformBlocks(dataTerm);
+    const dataServer = {
+      dataSections: dataSections,
+      dataArticle: dataArticle,
+    };
+
     return {
       props: { dataServer },
       revalidate: 60,

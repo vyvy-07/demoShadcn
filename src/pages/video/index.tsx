@@ -69,13 +69,14 @@ const VideoPage = ({ dataServer }: { dataServer: any }) => {
 
 export default VideoPage;
 export async function getStaticProps() {
-  const datalayout = await fetchLayoutPage('video-page');
-  const dataTerm = datalayout?.result?.blocks;
-  const dataSections = transformBlocks(dataTerm);
-  const dataServer = {
-    dataSections: dataSections,
-  };
   try {
+    const datalayout = await fetchLayoutPage('video-page');
+    const dataTerm = datalayout?.result?.blocks;
+    const dataSections = transformBlocks(dataTerm);
+    const dataServer = {
+      dataSections: dataSections,
+    };
+
     return {
       props: { dataServer },
       revalidate: 60,

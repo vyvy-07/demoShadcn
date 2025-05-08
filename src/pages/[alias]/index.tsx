@@ -73,7 +73,6 @@ export const getStaticPaths = async () => {
       });
     }
   });
-  console.log('datapaths :>> ', datapaths);
   return {
     paths: datapaths,
     fallback: true, // false or "blocking"
