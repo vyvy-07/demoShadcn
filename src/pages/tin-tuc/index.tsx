@@ -26,12 +26,6 @@ const CatePage = ({ dataServer }: any) => {
 };
 
 export default CatePage;
-export const getStaticPaths = async () => {
-  return {
-    paths: [],
-    fallback: true, // false or "blocking"
-  };
-};
 
 export async function getStaticProps() {
   const controller = new AbortController(); // tạo bộ điều khiển để hủy request nếu quá lâu
