@@ -65,14 +65,13 @@ export default CateNewsPage;
 export const getStaticPaths = async () => {
   const dataCate = await fetchServerCategoryList();
   // console.log('cate :>> ', cate);
-  const data = dataCate?.find((item: any) => item?.type == 'tin-tuc');
-  const paths = data?.subCates?.map((itemSub: any) => {
+  const data = dataCate?.filter((item: any) => item?.type == 'tin-tuc');
+  const paths = data[0]?.subCates?.map((itemSub: any) => {
     return { params: { alias: `${itemSub?.alias}` } };
   });
-  console.log('paths :>> ', paths);
   return {
-    paths: paths,
-    fallback: true, // false or "blocking"
+    paths: paths || [],
+    fallback: false, // false or "blocking"
   };
 };
 
