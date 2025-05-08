@@ -78,6 +78,18 @@ export const getPostDetailUrl = (type: string, alias: string, id = '') => {
       return `/${alias}${id && `-${id}`}.ngn`;
   }
 };
+export const formatCatePath = (type?: string, alias?: string, id = '') => {
+  switch (type) {
+    case 'tin-tuc':
+      return `/tin-tuc-va-su-kien/${alias}`;
+    case 'Tạp chí giấy':
+      return `/tap-chi-in/${alias}${id && `-${id}`}.ngn`;
+    case 'Audio':
+      return `/podcast/${alias}${id && `-${id}`}.ngn`;
+    default:
+      return `/${alias}`;
+  }
+};
 
 export const formatBookmarkParams = (params: any) => {
   const {

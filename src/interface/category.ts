@@ -2,6 +2,7 @@ export interface Category {
   id?: string;
   name?: string;
   alias?: string;
+  type?: string;
   isDisplayOnMenu?: boolean;
   parentId?: string;
   subCates?: [
@@ -11,9 +12,11 @@ export interface Category {
       alias?: string;
       isDisplayOnMenu?: boolean;
       parentId?: string;
+      type?: string;
       subCates?: [
         {
           id?: string;
+          type?: string;
           name?: string;
           alias?: string;
           isDisplayOnMenu?: boolean;

@@ -9,7 +9,7 @@ export default function handleCategory(
       {
         id: 'a9d2f3x1c',
         name: 'Giới thiệu',
-        alias: 'gioi-thieu',
+        alias: 'tong-quan-ve-vinh-long',
         type: '',
         subCates: [
           {
@@ -249,21 +249,21 @@ export default function handleCategory(
           },
         ],
       },
-      {
-        id: 'c2184fa3b',
-        name: 'Tin tức',
-        alias: 'tin-tuc',
-        type: '',
-        subCates: [
-          {
-            id: '117ba6439',
-            name: 'Bản tin thị trường ngày 20/2',
-            alias: 'ban-tin-thi-truong-20240220',
-            type: '',
-          },
-          { id: 'dc94820aa', name: '...', alias: 'khac', type: '' },
-        ],
-      },
+      // {
+      //   id: 'c2184fa3b',
+      //   name: 'Tin tức',
+      //   alias: 'tin-tuc',
+      //   type: 'tin-tuc',
+      //   subCates: [
+      //     {
+      //       id: '117ba6439',
+      //       name: 'Bản tin thị trường ngày 20/2',
+      //       alias: 'ban-tin-thi-truong-20240220',
+      //       type: 'tin-tuc',
+      //     },
+      //     // { id: 'dc94820aa', name: '...', alias: 'khac', type: '' },
+      //   ],
+      // },
       {
         id: '08d63c1bb',
         name: 'Liên hệ',

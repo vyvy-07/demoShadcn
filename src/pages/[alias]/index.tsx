@@ -6,7 +6,9 @@ import SectionTitle from '@/components/SectionTitle';
 import ListArticleSide from '@/components/SideRight/ListArticleSide';
 import ListArticleSideMini from '@/components/SideRight/ListArticleSideMini';
 import ViewMore from '@/components/ViewMoreBtn';
+import { SPECIAL_PATH } from '@/constant/dataVinhLong/specialPath';
 import { useFetchArticleList } from '@/hooks/useArticle';
+import type { Category } from '@/interface/category';
 import type { Article } from '@/interface/propsGlobal';
 import { fetchServerArticleList } from '@/Services/articleService';
 import { fetchServerCategoryList } from '@/Services/categoryService';
@@ -63,11 +65,17 @@ const CatePageDynamic = ({ dataServer }: any) => {
 export default CatePageDynamic;
 export const getStaticPaths = async () => {
   const dataCate = await fetchServerCategoryList();
-  const paths = dataCate?.map((post: any) => {
-    return { params: { alias: `${post?.alias}` } };
+  const datapaths: any = [];
+  dataCate.forEach((element: any) => {
+    if (!SPECIAL_PATH.includes(element.alias)) {
+      datapaths.push({
+        params: { alias: element.alias },
+      });
+    }
   });
+  console.log('datapaths :>> ', datapaths);
   return {
-    paths: paths || [],
+    paths: datapaths,
     fallback: true, // false or "blocking"
   };
 };
@@ -81,10 +89,7 @@ export async function getStaticProps() {
     dataSections?.CateHead?.CateHead_Main,
     7
   );
-  // const cateHead_Main = await fetchServerArticleList(
-  //   dataSections?.CateHead?.CateHead_Main,
-  //   7
-  // );
+
   const dataServer = {
     cateHead_Main: cateHead_Main,
     dataSections: dataSections,

@@ -2,6 +2,8 @@ import type { PropsGlobal } from '@/interface/propsGlobal';
 import { formatArticleDate } from '@/utils/Format';
 import Image from 'next/image';
 import { twMerge } from 'tailwind-merge';
+import IconTypeArticle from '../IconTypeArticle';
+import Link from 'next/link';
 
 const ArticleCustomCard = ({
   dataArticle,
@@ -17,12 +19,12 @@ const ArticleCustomCard = ({
   subtitleStyle,
   sapoStyle,
   align,
+  iconType = 'left',
 }: PropsGlobal) => {
   return (
     <div className={`${className} flex gap-4 overflow-hidden`}>
       <div
-        className={`
-      flex rounded-none border-none`}
+        className={`relative flex rounded-none border-none`}
         style={{
           width: `${width}px`,
           height: `${height}px`,
@@ -39,11 +41,22 @@ const ArticleCustomCard = ({
           alt={dataArticle?.featuredMedia?.alt || 'Image'}
           className="w-full object-cover"
         />
+        <IconTypeArticle
+          className={
+            iconType == 'align'
+              ? 'absolute top-[50%] left-1/2 -translate-[50%] z-20 '
+              : 'absolute bottom-0 right-0  z-20 '
+          }
+          type={dataArticle?.type || ''}
+          styleImg={iconType == 'align' ? 'w-[50px]' : 'w-[22px]'}
+        />
       </div>
       <div className=" flex-1  ">
-        <h4 className={`${twMerge(titleStyle)} line-clamp-3`}>
-          {dataArticle?.title}
-        </h4>
+        <Link href={`/${dataArticle?.alias}` || '#'}>
+          <h4 className={`${twMerge(titleStyle)} line-clamp-3`}>
+            {dataArticle?.title}
+          </h4>
+        </Link>
         {(hasCate || hasDate) && (
           <div
             className={twMerge(

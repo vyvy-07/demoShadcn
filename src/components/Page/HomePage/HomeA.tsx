@@ -22,6 +22,7 @@ const HomeA = ({
               cateStyle="DM-14"
               className="mb-5"
               align="center"
+              iconType="align"
             />
           )}
           <div className="grid grid-cols-2 gap-5 mt-5">

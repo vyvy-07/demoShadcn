@@ -10,6 +10,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from './MenuBarShadcn';
+import { formatCatePath } from '@/utils/utilitiesHandling';
 
 export function NavigationMenuDemo({ data }: { data: Category[] }) {
   if (!data) return null;
@@ -18,14 +19,16 @@ export function NavigationMenuDemo({ data }: { data: Category[] }) {
       {data &&
         Array.isArray(data) &&
         data.slice(0, 6).map((item, index) => (
-          <NavigationMenu key={item?.id || index}>
+          <NavigationMenu key={item?.id || index} className="relative z-30">
             <NavigationMenuList>
               <NavigationMenuItem
                 className="menu-item relative"
                 key={item?.id || index}
               >
                 <NavigationMenuTrigger className="uppercase cursor-pointer hover:text-red-primary hover:transition-[0.03s] transition-[0.03s]">
-                  <Link href={`${item?.alias || '#'}`}>{item?.name}</Link>
+                  <Link href={`${formatCatePath('', item?.alias)}`}>
+                    {item?.name}
+                  </Link>
                 </NavigationMenuTrigger>
 
                 <NavigationMenuContent className=" whitespace-nowrap bg-white ">
@@ -37,7 +40,12 @@ export function NavigationMenuDemo({ data }: { data: Category[] }) {
                           className="hover:bg-red-hover px-3 py-2"
                         >
                           <NavigationMenuLink asChild>
-                            <Link href={`${subCateItem?.alias || '#'}`}>
+                            <Link
+                              href={`${formatCatePath(
+                                subCateItem?.type,
+                                subCateItem?.alias
+                              )}`}
+                            >
                               {subCateItem?.name}
                             </Link>
                           </NavigationMenuLink>

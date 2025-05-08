@@ -6,6 +6,7 @@ import SectionTitle from '@/components/SectionTitle';
 import ListArticleSide from '@/components/SideRight/ListArticleSide';
 import ListArticleSideMini from '@/components/SideRight/ListArticleSideMini';
 import ViewMore from '@/components/ViewMoreBtn';
+import { SPECIAL_PATH } from '@/constant/dataVinhLong/specialPath';
 import { useFetchArticleList } from '@/hooks/useArticle';
 import type { Article } from '@/interface/propsGlobal';
 import { fetchServerArticleList } from '@/Services/articleService';
@@ -63,13 +64,14 @@ const CateNewsPage = ({ dataServer }: any) => {
 export default CateNewsPage;
 export const getStaticPaths = async () => {
   const dataCate = await fetchServerCategoryList();
-  const paths = dataCate?.find((post: any) => {
-    const dataPaths = post?.type == 'news';
-    return dataPaths;
+  // console.log('cate :>> ', cate);
+  const data = dataCate?.find((item: any) => item?.type == 'tin-tuc');
+  const paths = data?.subCates?.map((itemSub: any) => {
+    return { params: { alias: `${itemSub?.alias}` } };
   });
   console.log('paths :>> ', paths);
   return {
-    paths: [],
+    paths: paths,
     fallback: true, // false or "blocking"
   };
 };
