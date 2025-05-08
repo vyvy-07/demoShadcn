@@ -62,9 +62,15 @@ const CateNewsPage = ({ dataServer }: any) => {
 
 export default CateNewsPage;
 export const getStaticPaths = async () => {
+  const dataCate = await fetchServerCategoryList();
+  const paths = dataCate?.find((post: any) => {
+    const dataPaths = post?.type == 'news';
+    return dataPaths;
+  });
+  console.log('paths :>> ', paths);
   return {
     paths: [],
-    fallback: 'blocking', // false or "blocking"
+    fallback: true, // false or "blocking"
   };
 };
 
