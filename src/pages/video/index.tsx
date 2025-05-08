@@ -69,9 +69,19 @@ const VideoPage = ({ dataServer }: { dataServer: any }) => {
 
 export default VideoPage;
 export async function getStaticProps() {
+  const controller = new AbortController(); // tạo bộ điều khiển để hủy request nếu quá lâu
+  const timeout = setTimeout(() => controller.abort(), 7000); // timeout 7 giây
   try {
-    const datalayout = await fetchLayoutPage('video-page');
-    const dataTerm = datalayout?.result?.blocks;
+    const datalayout = await fetch(
+      `${process.env.NEXT_PUBLIC_NTV_BASE_URL_LC}/api/video-page`, // api cate
+      { signal: controller.signal }
+    );
+    clearTimeout(timeout);
+    if (!datalayout?.ok) {
+      throw new Error('Failed to fetch');
+    }
+    const posts = await datalayout?.json();
+    const dataTerm = posts?.result?.blocks;
     const dataSections = transformBlocks(dataTerm);
     const dataServer = {
       dataSections: dataSections,
