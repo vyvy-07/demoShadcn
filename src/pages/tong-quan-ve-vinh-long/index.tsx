@@ -7,6 +7,9 @@ import { fetchLayoutPage } from '@/Services/layoutPage';
 import { transformBlocks } from '@/utils/utilitiesHandling';
 
 const IntroPage = ({ dataServer }: { dataServer: any }) => {
+  if (!dataServer?.dataSections) {
+    return null;
+  }
   const head = dataServer?.dataSections?.DetailHead;
   const detailHead_Side = useFetchArticleList(head?.DetailHead_Side, 5);
   return (

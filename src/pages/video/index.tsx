@@ -9,6 +9,9 @@ import { fetchLayoutPage } from '@/Services/layoutPage';
 import { transformBlocks } from '@/utils/utilitiesHandling';
 
 const VideoPage = ({ dataServer }: { dataServer: any }) => {
+  if (!dataServer?.dataSections) {
+    return null;
+  }
   const videoHead = dataServer?.dataSections?.VideoHead;
   const detailHead_Side = useFetchArticleList(videoHead?.BlockHead_Main, 10);
   return (

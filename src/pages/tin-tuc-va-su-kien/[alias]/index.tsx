@@ -15,6 +15,9 @@ import { fetchLayoutPage } from '@/Services/layoutPage';
 import { transformBlocks } from '@/utils/utilitiesHandling';
 
 const CateNewsPage = ({ dataServer }: any) => {
+  if (!dataServer?.dataSections) {
+    return null;
+  }
   const dataLayout = dataServer?.dataSections?.CateHead;
   const { data: dataSide } = useFetchArticleList(dataLayout?.CateHead_Side, 5);
   return (
