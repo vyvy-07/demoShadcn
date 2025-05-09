@@ -199,7 +199,7 @@ export async function getStaticProps() {
   const timeout = setTimeout(() => controller.abort(), 7000); // timeout 7 giây
   try {
     const res = await fetch(
-      `${process.env.NTV_BASE_URL_LC}/api/home-page`, // api homepage
+      `${process.env.NEXT_PUBLIC_NTV_BASE_URL_LC}/api/home-page`, // api homepage
       { signal: controller.signal }
     );
     clearTimeout(timeout);
@@ -242,7 +242,7 @@ export async function getStaticProps() {
       revalidate: 60,
     };
   } catch (error) {
-    clearTimeout(timeout);
+    // clearTimeout(timeout);
 
     console.error('Error fetching data:', error);
     return {
