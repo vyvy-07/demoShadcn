@@ -81,8 +81,16 @@ export const getStaticPaths = async () => {
 };
 
 export async function getStaticProps() {
+  const controller = new AbortController(); // tạo bộ điều khiển để hủy request nếu quá lâu
+  const timeout = setTimeout(() => controller.abort(), 7000); // timeout 7 giây
+
   try {
     const datalayout = await fetchLayoutPage('cate-page');
+
+    clearTimeout(timeout);
+    if (!datalayout?.ok) {
+      throw new Error('Failed to fetch');
+    }
     const dataTerm = datalayout?.result?.blocks;
     const dataSections = transformBlocks(dataTerm);
 
