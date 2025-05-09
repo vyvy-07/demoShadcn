@@ -199,7 +199,7 @@ export async function getStaticProps() {
   const timeout = setTimeout(() => controller.abort(), 7000); // timeout 7 giây
   try {
     const res = await fetch(
-      `/api/home-page`, // api homepage
+      `${process.env.NTV_BASE_URL_LC}/api/home-page`, // api homepage
       { signal: controller.signal }
     );
     clearTimeout(timeout);
