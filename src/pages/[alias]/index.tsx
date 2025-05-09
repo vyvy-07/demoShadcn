@@ -80,20 +80,21 @@ export const getStaticPaths = async () => {
 };
 
 export async function getStaticProps() {
-  const datalayout = await fetchLayoutPage('cate-page');
-  const dataTerm = datalayout?.result?.blocks;
-  const dataSections = transformBlocks(dataTerm);
-
-  const cateHead_Main = await fetchServerArticleList(
-    dataSections?.CateHead?.CateHead_Main,
-    7
-  );
-
-  const dataServer = {
-    cateHead_Main: cateHead_Main,
-    dataSections: dataSections,
-  };
   try {
+    const datalayout = await fetchLayoutPage('cate-page');
+    const dataTerm = datalayout?.result?.blocks;
+    const dataSections = transformBlocks(dataTerm);
+
+    const cateHead_Main = await fetchServerArticleList(
+      dataSections?.CateHead?.CateHead_Main,
+      7
+    );
+
+    const dataServer = {
+      cateHead_Main: cateHead_Main,
+      dataSections: dataSections,
+    };
+
     return {
       props: { dataServer },
       revalidate: 60,
