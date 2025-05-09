@@ -87,7 +87,7 @@ export async function getStaticProps() {
   try {
     // const datalayout = await fetchLayoutPage('cate-page');
     const datalayout = await fetch(
-      `${process.env.NEXT_PUBLIC_NTV_BASE_URL_LC}/api/cate-page`, // api homepage
+      `/api/cate-page`, // api homepage
       { signal: controller.signal }
     );
     clearTimeout(timeout);
