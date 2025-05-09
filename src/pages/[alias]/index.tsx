@@ -85,13 +85,18 @@ export async function getStaticProps() {
   const timeout = setTimeout(() => controller.abort(), 7000); // timeout 7 giây
 
   try {
-    const datalayout = await fetchLayoutPage('cate-page');
-
+    // const datalayout = await fetchLayoutPage('cate-page');
+    const datalayout = await fetch(
+      `${process.env.NEXT_PUBLIC_NTV_BASE_URL_LC}/api/cate-page`, // api homepage
+      { signal: controller.signal }
+    );
     clearTimeout(timeout);
     if (!datalayout?.ok) {
       throw new Error('Failed to fetch');
     }
-    const dataTerm = datalayout?.result?.blocks;
+    const posts = await datalayout?.json();
+
+    const dataTerm = posts?.result?.blocks;
     const dataSections = transformBlocks(dataTerm);
 
     const cateHead_Main = await fetchServerArticleList(
