@@ -204,9 +204,8 @@ export async function getStaticProps() {
     );
     clearTimeout(timeout);
     if (!res?.ok) {
-      throw new Error('Failed to fetch');
+      throw new Error('Failed to fetch home page');
     }
-
     // const resCate = await fetchServerCategoryList();
     // const resCate: any = [];
     const posts = await res?.json();
@@ -246,7 +245,15 @@ export async function getStaticProps() {
 
     console.error('Error fetching data:', error);
     return {
-      props: { dataServer: [] }, // Or fallback
+      props: {
+        dataServer: [],
+        dataSectionA_Main: [],
+        dataSectionA_Side: [],
+
+        dataSectionlayout: [],
+        dataSectionB_Main: [],
+        dataSectionC_Main: [],
+      }, // Or fallback
     };
   }
 }
