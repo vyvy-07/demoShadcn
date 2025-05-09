@@ -1,70 +1,97 @@
+import ArticleCustomCard from '@/components/Articles/ArticleCustomCard';
+import Container from '@/components/Container/Container';
+import GridWrapper from '@/components/LayoutGrid/GridWrapper';
 import MainLayout from '@/components/MainLayout';
 import SectionTitle from '@/components/SectionTitle';
+import ListArticleSide from '@/components/SideRight/ListArticleSide';
+import ListArticleSideMini from '@/components/SideRight/ListArticleSideMini';
+import ViewMore from '@/components/ViewMoreBtn';
+import { SPECIAL_PATH } from '@/constant/dataVinhLong/specialPath';
 import { useFetchArticleList } from '@/hooks/useArticle';
+import type { Article } from '@/interface/propsGlobal';
 import { fetchServerArticleList } from '@/Services/articleService';
 import { fetchServerCategoryList } from '@/Services/categoryService';
+import { fetchLayoutPage } from '@/Services/layoutPage';
 import { transformBlocks } from '@/utils/utilitiesHandling';
-import Link from 'next/link';
 
-const CatePage = ({ dataServer }: any) => {
+const NewsMixedPage = ({ dataServer }: any) => {
+  const dataLayout = dataServer?.dataSections?.CateHead;
+  const { data: dataSide } = useFetchArticleList(dataLayout?.CateHead_Side, 5);
   return (
-    <MainLayout
-      posts={dataServer?.dataCate}
-      dataCategory={dataServer?.dataCate}
-    >
-      <SectionTitle title="Cate Page" />
-      {dataServer?.dataSectionB_Main &&
-        dataServer?.dataSectionB_Main?.map((item: any) => {
-          return (
-            <li key={item?.id} className="block p-1 cursor-pointer">
-              <Link href={`/tin-tuc/${item?.alias}`}>{item?.title}</Link>
-            </li>
-          );
-        })}
+    <MainLayout>
+      <Container>
+        <GridWrapper>
+          <div className="col-span-8">
+            <SectionTitle title={'Tin tổng hợp'} className="mb-5" />
+            {dataServer?.cateHead_Main &&
+              dataServer?.cateHead_Main?.map((item: Article, index: number) => {
+                return (
+                  <div key={item?.id || index}>
+                    <ArticleCustomCard
+                      dataArticle={item}
+                      width={286}
+                      height={162}
+                      hasSapo={true}
+                      hasCate={true}
+                      hasDate={true}
+                      sapoStyle="line-clamp-3"
+                      titleStyle="heading-3"
+                    />
+                    {index !== dataServer?.cateHead_Main?.length - 1 && (
+                      <hr className="pb-5 mt-5 text-grey"></hr>
+                    )}
+                  </div>
+                );
+              })}
+            <ViewMore dataLayout={dataLayout} />
+          </div>
+          <div className="col-span-4">
+            <ListArticleSideMini
+              posts={dataSide}
+              titleStyle="mb-5"
+              title={dataLayout?.CateHead_Side?.title}
+            />
+          </div>
+        </GridWrapper>
+      </Container>
     </MainLayout>
   );
 };
 
-export default CatePage;
+export default NewsMixedPage;
 
 export async function getStaticProps() {
   const controller = new AbortController(); // tạo bộ điều khiển để hủy request nếu quá lâu
   const timeout = setTimeout(() => controller.abort(), 7000); // timeout 7 giây
   try {
-    const res = await fetch(
+    const datalayout = await fetch(
       `${process.env.NEXT_PUBLIC_NTV_BASE_URL_LC}/api/cate-page`, // api cate
       { signal: controller.signal }
     );
     clearTimeout(timeout);
-    if (!res?.ok) {
+    if (!datalayout?.ok) {
       throw new Error('Failed to fetch');
     }
-
-    const posts = await res?.json();
-
-    const resCate = await fetchServerCategoryList();
+    const posts = await datalayout?.json();
+    // const datalayout = await fetchLayoutPage('cate-page');
     const dataTerm = posts?.result?.blocks;
     const dataSections = transformBlocks(dataTerm);
-    const dataSectionB_Main = await fetchServerArticleList(
-      dataSections?.HomeB?.HomeB_Main,
-      5
+
+    const cateHead_Main = await fetchServerArticleList(
+      dataSections?.CateHead?.CateHead_Main,
+      7
     );
+
     const dataServer = {
-      layoutPage: posts?.result,
-      dataCate: resCate,
+      cateHead_Main: cateHead_Main,
       dataSections: dataSections,
-      dataSectionB_Main: dataSectionB_Main,
     };
 
     return {
-      props: {
-        dataServer: dataServer,
-      },
+      props: { dataServer },
       revalidate: 60,
     };
   } catch (error) {
-    // clearTimeout(timeout);
-
     console.error('Error fetching data:', error);
     return {
       props: { dataServer: [] }, // Or fallback

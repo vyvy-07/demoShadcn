@@ -4,7 +4,7 @@ export default function handlerCatePage(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const catePage = {
+  const CatePage = {
     status: 200,
     result: {
       page: 'CateParentPage',
@@ -45,5 +45,5 @@ export default function handlerCatePage(
     },
   };
 
-  res.status(200).json(catePage);
+  res.status(200).json(CatePage);
 }
