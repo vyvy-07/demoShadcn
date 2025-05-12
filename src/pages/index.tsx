@@ -19,6 +19,7 @@ import HomeS from '@/components/Page/HomePage/HomeS';
 import HomeT from '@/components/Page/HomePage/HomeT';
 import { useFetchArticleList } from '@/hooks/useArticle';
 import { fetchServerArticleList } from '@/Services/articleService';
+import { fetchServerCategoryList } from '@/Services/categoryService';
 import { transformBlocks } from '@/utils/utilitiesHandling';
 
 export default function Home({ dataServer }: any) {
@@ -199,12 +200,12 @@ export async function getStaticProps() {
   const timeout = setTimeout(() => controller.abort(), 7000); // timeout 7 giây
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_NTV_BASE_URL}/public/layout/VideoCatePage`, // api homepage
+      `${process.env.NEXT_PUBLIC_NTV_BASE_URL}/public/layout/HomePage`,
       { signal: controller.signal }
     );
     clearTimeout(timeout);
     if (!res?.ok) {
-      throw new Error('Failed to fetch home page');
+      throw new Error('Failed to fetch');
     }
     // const resCate = await fetchServerCategoryList();
     // const resCate: any = [];
@@ -229,7 +230,6 @@ export async function getStaticProps() {
       layoutPage: posts?.result,
       dataSectionA_Main: dataSectionA_Main,
       dataSectionA_Side: dataSectionA_Side,
-
       dataSectionlayout: dataSections,
       dataSectionB_Main: dataSectionB_Main,
       dataSectionC_Main: dataSectionC_Main,
