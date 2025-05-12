@@ -66,7 +66,6 @@ export default NewsMixedPage;
 export async function getStaticProps() {
   try {
     const datalayout = await fetchLayoutPage('NewsCatePage');
-    console.log('datalayout :>> ', datalayout);
     if (!datalayout) {
       throw new Error('Failed to fetch');
     }
