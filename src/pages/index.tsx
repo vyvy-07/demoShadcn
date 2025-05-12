@@ -241,8 +241,6 @@ export async function getStaticProps() {
       revalidate: 60,
     };
   } catch (error) {
-    // clearTimeout(timeout);
-
     console.error('Error fetching data:', error);
     return {
       props: {

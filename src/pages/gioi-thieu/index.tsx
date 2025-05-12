@@ -7,16 +7,13 @@ import { fetchLayoutPage } from '@/Services/layoutPage';
 import { transformBlocks } from '@/utils/utilitiesHandling';
 
 const IntroPage = ({ dataServer }: { dataServer: any }) => {
-  if (!dataServer?.dataSections) {
-    console.log('chưa có layout trang chi tiết :>> ', 1);
-  }
-  const head = dataServer?.dataSections?.DetailHead;
-  const detailHead_Side = useFetchArticleList(head?.DetailHead_Side, 5);
+  // if (!dataServer?.dataSections) {
+  //   console.log('chưa có layout trang chi tiết :>> ', 1);
+  // }
+  // const head = dataServer?.dataSections?.DetailHead;
+  // const detailHead_Side = useFetchArticleList(head?.DetailHead_Side, 5);
   return (
-    <DetailPageLayout
-      posts={detailHead_Side?.data}
-      titleSide={head?.DetailHead_Side?.title}
-    >
+    <DetailPageLayout>
       <Container>
         <SectionTitle
           title="Giới thiệu tổng quan về Vĩnh Long"
@@ -30,26 +27,26 @@ const IntroPage = ({ dataServer }: { dataServer: any }) => {
 };
 
 export default IntroPage;
-export async function getStaticProps() {
-  try {
-    const datalayout = await fetchLayoutPage('cate-page');
-    if (!datalayout) {
-      throw new Error('Failed to fetch');
-    }
-    const dataTerm = datalayout?.result?.blocks;
-    const dataSections = transformBlocks(dataTerm);
-    const dataServer = {
-      dataSections: dataSections,
-    };
+// export async function getStaticProps() {
+//   try {
+//     const datalayout = await fetchLayoutPage('cate-page');
+//     if (!datalayout) {
+//       throw new Error('Failed to fetch');
+//     }
+//     const dataTerm = datalayout?.result?.blocks;
+//     const dataSections = transformBlocks(dataTerm);
+//     const dataServer = {
+//       dataSections: dataSections,
+//     };
 
-    return {
-      props: { dataServer },
-      revalidate: 60,
-    };
-  } catch (error) {
-    console.error('Error fetching data:', error);
-    return {
-      props: { dataServer: [] }, // Or fallback
-    };
-  }
-}
+//     return {
+//       props: { dataServer },
+//       revalidate: 60,
+//     };
+//   } catch (error) {
+//     console.error('Error fetching data:', error);
+//     return {
+//       props: { dataServer: [] }, // Or fallback
+//     };
+//   }
+// }
