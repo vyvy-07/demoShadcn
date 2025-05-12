@@ -23,7 +23,8 @@ const NewsMixedPage = ({ dataServer }: any) => {
   return (
     <MainLayout>
       <Container>
-        <GridWrapper>
+        <p>helloo </p>
+        {/* <GridWrapper>
           <div className="col-span-8">
             <SectionTitle title={'Tin tổng hợp'} className="mb-5" />
             {dataServer?.cateHead_Main &&
@@ -55,7 +56,7 @@ const NewsMixedPage = ({ dataServer }: any) => {
               title={dataLayout?.CateHead_Side?.title}
             />
           </div>
-        </GridWrapper>
+        </GridWrapper> */}
       </Container>
     </MainLayout>
   );
@@ -65,8 +66,8 @@ export default NewsMixedPage;
 
 export async function getStaticProps() {
   try {
-    const controller = new AbortController(); // tạo bộ điều khiển để hủy request nếu quá lâu
-    const timeout = setTimeout(() => controller.abort(), 7000); // timeout 7 giây
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 7000);
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_NTV_BASE_URL}/public/layout/NewsCatePage`,
       { signal: controller.signal }
@@ -85,10 +86,12 @@ export async function getStaticProps() {
       7
     );
 
-    const dataServer = {
-      cateHead_Main: cateHead_Main,
-      dataSections: dataSections,
-    };
+    const dataServer = JSON.parse(
+      JSON.stringify({
+        cateHead_Main,
+        dataSections,
+      })
+    );
 
     return {
       props: { dataServer },

@@ -225,14 +225,17 @@ export async function getStaticProps() {
       dataSections?.HomeC?.HomeC_Main &&
       (await fetchServerArticleList(dataSections?.HomeC?.HomeC_Main, 5));
 
-    const dataServer = {
-      layoutPage: posts?.result,
-      dataSectionA_Main: dataSectionA_Main,
-      dataSectionA_Side: dataSectionA_Side,
-      dataSectionlayout: dataSections,
-      dataSectionB_Main: dataSectionB_Main,
-      dataSectionC_Main: dataSectionC_Main,
-    };
+    const dataServer = JSON.parse(
+      JSON.stringify({
+        layoutPage: posts?.result,
+        dataSectionA_Main: dataSectionA_Main,
+        dataSectionA_Side: dataSectionA_Side,
+        dataSectionlayout: dataSections,
+        dataSectionB_Main: dataSectionB_Main,
+        dataSectionC_Main: dataSectionC_Main,
+      })
+    );
+
     return {
       props: {
         dataServer: dataServer,
