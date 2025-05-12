@@ -79,23 +79,24 @@ export const getStaticPaths = async () => {
 
 export async function getStaticProps() {
   try {
-    const datalayout = await fetchLayoutPage('NewsSubCatePage');
-
-    if (!datalayout) {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 7000);
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_NTV_BASE_URL}/public/layout/NewsSubCatePage`,
+      { signal: controller.signal }
+    );
+    clearTimeout(timeout);
+    if (!res?.ok) {
       throw new Error('Failed to fetch');
     }
-    const dataTerm = datalayout?.result?.blocks;
+    const posts = await res?.json();
+    const dataTerm = posts?.result?.blocks;
     const dataSections = dataTerm && transformBlocks(dataTerm);
-
     const cateHead_Main = await fetchServerArticleList(
       dataSections?.CateHead?.CateHead_Main,
       7
     );
 
-    // const dataServer = {
-    //   cateHead_Main: cateHead_Main,
-    //   dataSections: dataSections,
-    // };
     const dataServer = JSON.parse(
       JSON.stringify({
         cateHead_Main: cateHead_Main,
