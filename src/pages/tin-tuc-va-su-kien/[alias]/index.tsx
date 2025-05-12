@@ -10,14 +10,19 @@ import { SPECIAL_PATH } from '@/constant/dataVinhLong/specialPath';
 import { useFetchArticleList } from '@/hooks/useArticle';
 import type { Article } from '@/interface/propsGlobal';
 import { fetchServerArticleList } from '@/Services/articleService';
-import { fetchServerCategoryList } from '@/Services/categoryService';
+import {
+  fetchServerCategoryId,
+  fetchServerCategoryList,
+} from '@/Services/categoryService';
 import { fetchLayoutPage } from '@/Services/layoutPage';
 import { transformBlocks } from '@/utils/utilitiesHandling';
 
 const CateNewsPage = ({ dataServer }: any) => {
   if (!dataServer?.dataSections) {
-    console.log('2 :>> ', 2);
+    return null;
   }
+  console.log('dataServer :>> ', dataServer?.dataCate);
+
   const dataLayout = dataServer?.dataSections?.CateHead;
   const { data: dataSide } = useFetchArticleList(dataLayout?.CateHead_Side, 5);
   return (
@@ -25,10 +30,7 @@ const CateNewsPage = ({ dataServer }: any) => {
       <Container>
         <GridWrapper>
           <div className="col-span-8">
-            <SectionTitle
-              title={dataLayout?.CateHead_Main?.title || 'subCate_News'}
-              className="mb-5"
-            />
+            <SectionTitle title={dataServer?.dataCate?.name} className="mb-5" />
             {dataServer?.cateHead_Main &&
               dataServer?.cateHead_Main?.map((item: Article, index: number) => {
                 return (
@@ -77,7 +79,7 @@ export const getStaticPaths = async () => {
   };
 };
 
-export async function getStaticProps() {
+export async function getStaticProps({ params }: { params: any }) {
   try {
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 7000);
@@ -92,21 +94,29 @@ export async function getStaticProps() {
     const posts = await res?.json();
     const dataTerm = posts?.result?.blocks;
     const dataSections = dataTerm && transformBlocks(dataTerm);
-    const cateHead_Main = await fetchServerArticleList(
-      dataSections?.CateHead?.CateHead_Main,
-      7
-    );
-
+    const cateHead_Main =
+      dataSections?.BlockHead &&
+      (await fetchServerArticleList(
+        {
+          ...dataSections?.BlockHead?.BlockHead_Main,
+          categoryId: params?.alias,
+        },
+        7
+      ));
+    const dataCate = await fetchServerCategoryId(params?.alias);
     const dataServer = JSON.parse(
       JSON.stringify({
         cateHead_Main: cateHead_Main,
         dataSections: dataSections,
+        dataCate: dataCate,
       })
     );
-    return {
-      props: { dataServer },
-      revalidate: 60,
-    };
+    if (dataServer?.dataSections) {
+      return {
+        props: { dataServer },
+        revalidate: 60,
+      };
+    }
   } catch (error) {
     console.error('Error fetching data:', error);
     return {
