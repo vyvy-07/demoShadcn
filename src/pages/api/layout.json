@@ -1,0 +1,606 @@
+[
+  {
+    "page": "HomePage",
+    "name": "Trang chủ",
+    "blocks": [
+      {
+        "name": "HomeA",
+        "sections": [
+          {
+            "name": "HomeA_Main",
+            "listType": "Tin nổi bật",
+            "cateId": null,
+            "cateAlias": null,
+            "title": "",
+            "isDisplayOnPage": true,
+            "includeChildCate": false,
+            "skip": 0,
+            "displayRatio": "16/9",
+            "randomArrange": false,
+            "displayOnPage": true
+          },
+          {
+            "name": "HomeA_Side",
+            "listType": "Tin hỗn hợp",
+            "cateId": "",
+            "cateAlias": "goc-nhin",
+            "title": "Góc nhìn ",
+            "isDisplayOnPage": true,
+            "includeChildCate": true,
+            "skip": 0,
+            "displayRatio": "16/9",
+            "randomArrange": false,
+            "displayOnPage": true
+          }
+        ]
+      },
+      {
+        "name": "HomeB",
+        "sections": [
+          {
+            "name": "HomeB_Main",
+            "listType": "Tin nổi bật",
+            "cateId": null,
+            "cateAlias": null,
+            "title": "Theo dòng",
+            "isDisplayOnPage": true,
+            "includeChildCate": true,
+            "skip": 3,
+            "displayRatio": "16/9",
+            "randomArrange": false,
+            "displayOnPage": true
+          }
+        ]
+      },
+      {
+        "name": "HomeC",
+        "sections": [
+          {
+            "name": "HomeC_Main",
+            "listType": "Tin hỗn hợp",
+            "cateId": "",
+            "cateAlias": "",
+            "title": "Kinh tế xanh",
+            "isDisplayOnPage": true,
+            "includeChildCate": true,
+            "skip": 0,
+            "displayRatio": "16/9",
+            "randomArrange": false,
+            "displayOnPage": true
+          }
+        ]
+      },
+      {
+        "name": "HomeD",
+        "sections": [
+          {
+            "name": "HomeD_Main",
+            "listType": "Tin hỗn hợp",
+            "cateId": "",
+            "cateAlias": "",
+            "title": "Phát triển bền vững",
+            "isDisplayOnPage": true,
+            "includeChildCate": true,
+            "skip": 6,
+            "displayRatio": "16/9",
+            "randomArrange": false,
+            "displayOnPage": true
+          }
+        ]
+      },
+      {
+        "name": "HomeE",
+        "sections": [
+          {
+            "name": "HomeE_Main",
+            "listType": "Tin hỗn hợp",
+            "cateId": "",
+            "cateAlias": "di-trong-dat",
+            "title": "Phóng sự - Ký sự",
+            "isDisplayOnPage": true,
+            "includeChildCate": true,
+            "skip": 0,
+            "displayRatio": "ratioDefault",
+            "randomArrange": false,
+            "displayOnPage": true
+          }
+        ]
+      },
+      {
+        "name": "HomeF",
+        "sections": [
+          {
+            "name": "HomeF_Main",
+            "listType": "Tin hỗn hợp",
+            "cateId": "",
+            "cateAlias": "nong-thon-moi",
+            "title": "Nông thôn thịnh vượng",
+            "isDisplayOnPage": true,
+            "includeChildCate": true,
+            "skip": 0,
+            "displayRatio": "16/9",
+            "randomArrange": false,
+            "displayOnPage": true
+          }
+        ]
+      },
+      {
+        "name": "HomeG",
+        "sections": [
+          {
+            "name": "HomeG_Main",
+            "listType": "Tin hỗn hợp",
+            "cateId": "",
+            "cateAlias": "nguoi-que-toi",
+            "title": "Người Quê Tôi",
+            "isDisplayOnPage": true,
+            "includeChildCate": true,
+            "skip": 0,
+            "displayRatio": "16/9",
+            "randomArrange": false,
+            "displayOnPage": true
+          }
+        ]
+      },
+      {
+        "name": "HomeH",
+        "sections": [
+          {
+            "name": "HomeH_Main",
+            "listType": "Tin hỗn hợp",
+            "cateId": "",
+            "cateAlias": "vi-cong-dong",
+            "title": "Vì cộng đồng",
+            "isDisplayOnPage": true,
+            "includeChildCate": true,
+            "skip": 0,
+            "displayRatio": "16/9",
+            "randomArrange": false,
+            "displayOnPage": true
+          }
+        ]
+      },
+      {
+        "name": "HomeI",
+        "sections": [
+          {
+            "name": "HomeI_Main",
+            "listType": "Tin hỗn hợp",
+            "cateId": "",
+            "cateAlias": "su-kien",
+            "title": "Sự kiện doanh nghiệp",
+            "isDisplayOnPage": true,
+            "includeChildCate": true,
+            "skip": 0,
+            "displayRatio": "16/9",
+            "randomArrange": false,
+            "displayOnPage": true
+          }
+        ]
+      },
+      {
+        "name": "HomeJ",
+        "sections": [
+          {
+            "name": "HomeJ_1",
+            "listType": "Tin hỗn hợp",
+            "cateId": "",
+            "cateAlias": "video",
+            "title": "Video",
+            "isDisplayOnPage": true,
+            "includeChildCate": true,
+            "skip": 0,
+            "displayRatio": "16/9",
+            "randomArrange": false,
+            "displayOnPage": true
+          },
+          {
+            "name": "HomeJ_2",
+            "listType": "Tin hỗn hợp",
+            "cateId": "",
+            "cateAlias": "podcast",
+            "title": "Podcast",
+            "isDisplayOnPage": true,
+            "includeChildCate": true,
+            "skip": 0,
+            "displayRatio": "16/9",
+            "randomArrange": false,
+            "displayOnPage": true
+          },
+          {
+            "name": "HomeJ_3",
+            "listType": "Tin hỗn hợp",
+            "cateId": "",
+            "cateAlias": "phong-su-anh",
+            "title": "Ảnh",
+            "isDisplayOnPage": true,
+            "includeChildCate": true,
+            "skip": 0,
+            "displayRatio": "16/9",
+            "randomArrange": false,
+            "displayOnPage": true
+          }
+        ]
+      },
+      {
+        "name": "HomeK",
+        "sections": [
+          {
+            "name": "HomeK_Main",
+            "listType": "Tin hỗn hợp",
+            "cateId": "",
+            "cateAlias": "van-hoa",
+            "title": "Sức sống mới",
+            "isDisplayOnPage": true,
+            "includeChildCate": true,
+            "skip": 0,
+            "displayRatio": "16/9",
+            "randomArrange": false,
+            "displayOnPage": true
+          }
+        ]
+      },
+      {
+        "name": "HomeL",
+        "sections": [
+          {
+            "name": "HomeL_Main",
+            "listType": "Mặc định",
+            "cateId": "",
+            "cateAlias": "thoi-su",
+            "title": "",
+            "isDisplayOnPage": true,
+            "includeChildCate": true,
+            "skip": 0,
+            "displayRatio": "16/9",
+            "randomArrange": false,
+            "displayOnPage": true
+          }
+        ]
+      },
+      {
+        "name": "HomeM",
+        "sections": [
+          {
+            "name": "HomeM_Main",
+            "listType": "Tin hỗn hợp",
+            "cateId": "",
+            "cateAlias": "doi-song",
+            "title": "",
+            "isDisplayOnPage": true,
+            "includeChildCate": true,
+            "skip": 0,
+            "displayRatio": "16/9",
+            "randomArrange": false,
+            "displayOnPage": true
+          }
+        ]
+      },
+      {
+        "name": "HomeN",
+        "sections": [
+          {
+            "name": "HomeN_Main",
+            "listType": "Tin hỗn hợp",
+            "cateId": "",
+            "cateAlias": "giai-tri",
+            "title": "",
+            "isDisplayOnPage": true,
+            "includeChildCate": true,
+            "skip": 0,
+            "displayRatio": "3/4",
+            "randomArrange": false,
+            "displayOnPage": true
+          }
+        ]
+      },
+      {
+        "name": "HomeO",
+        "sections": [
+          {
+            "name": "HomeO_Main",
+            "listType": "Tin hỗn hợp",
+            "cateId": "",
+            "cateAlias": "xecong-nghe",
+            "title": "Xe/Công nghệ",
+            "isDisplayOnPage": true,
+            "includeChildCate": true,
+            "skip": 0,
+            "displayRatio": "16/9",
+            "randomArrange": false,
+            "displayOnPage": true
+          }
+        ]
+      },
+      {
+        "name": "HomeP",
+        "sections": [
+          {
+            "name": "HomeP_Main",
+            "listType": "Tin hỗn hợp",
+            "cateId": "",
+            "cateAlias": "song-khoe",
+            "title": "Sống khỏe",
+            "isDisplayOnPage": true,
+            "includeChildCate": true,
+            "skip": 0,
+            "displayRatio": "16/9",
+            "randomArrange": false,
+            "displayOnPage": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "page": "NewsCatePage",
+    "name": "Trang danh mục Tin tức",
+    "blocks": [
+      {
+        "name": "BlockHead",
+        "sections": [
+          {
+            "name": "BlockHead_Main",
+            "listType": "Tin hỗn hợp",
+            "cateId": "",
+            "cateAlias": "",
+            "title": "",
+            "isDisplayOnPage": true,
+            "includeChildCate": true,
+            "skip": 0,
+            "displayRatio": "16/9",
+            "randomArrange": false,
+            "displayOnPage": true
+          }
+        ]
+      },
+      {
+        "name": "BlockFoot",
+        "sections": [
+          {
+            "name": "BlockFoot_Main",
+            "listType": "Tin hỗn hợp",
+            "cateId": "",
+            "cateAlias": "emagazine",
+            "title": "Nổi bật",
+            "isDisplayOnPage": true,
+            "includeChildCate": true,
+            "skip": 0,
+            "displayRatio": "16/9",
+            "randomArrange": false,
+            "displayOnPage": true
+          }
+        ]
+      }
+    ]
+  },
+
+  {
+    "page": "NewsSubCatePage",
+    "name": "Trang danh mục con Tin tức",
+    "blocks": [
+      {
+        "name": "BlockHead",
+        "sections": [
+          {
+            "name": "BlockHead_Main",
+            "listType": "Tin hỗn hợp",
+            "cateId": "",
+            "cateAlias": "",
+            "title": "",
+            "isDisplayOnPage": true,
+            "includeChildCate": true,
+            "skip": 0,
+            "displayRatio": "16/9",
+            "randomArrange": false,
+            "displayOnPage": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "page": "PodcastCatePage",
+    "name": "Trang danh mục Radio",
+    "blocks": [
+      {
+        "name": "BlockHead",
+        "sections": [
+          {
+            "name": "BlockHead_Main",
+            "listType": "Tin hỗn hợp",
+            "cateId": "621ee24fb39100710b1a214a",
+            "cateAlias": "radio",
+            "title": "",
+            "isDisplayOnPage": true,
+            "includeChildCate": true,
+            "skip": 0,
+            "displayRatio": "1/1",
+            "randomArrange": true,
+            "displayOnPage": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "page": "PodcastDetailPage",
+    "name": "Trang post Radio",
+    "blocks": [
+      {
+        "name": "DetailMiddle",
+        "sections": [
+          {
+            "name": "DetailMiddle_Main",
+            "listType": "Tin hỗn hợp",
+            "cateId": null,
+            "cateAlias": null,
+            "title": "Bài viết liên quan",
+            "isDisplayOnPage": true,
+            "includeChildCate": true,
+            "skip": 0,
+            "displayRatio": "16/9",
+            "randomArrange": false,
+            "displayOnPage": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "page": "VideoDetailPage",
+    "name": "Trang post Video",
+    "blocks": [
+      {
+        "name": "DetailMiddle",
+        "sections": [
+          {
+            "name": "DetailMiddle_Main",
+            "listType": "Tin hỗn hợp",
+            "cateId": null,
+            "cateAlias": null,
+            "title": "Có thể bạn quan tâm",
+            "isDisplayOnPage": true,
+            "includeChildCate": true,
+            "skip": 0,
+            "displayRatio": "16/9",
+            "randomArrange": false,
+            "displayOnPage": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "page": "VideoCatePage",
+    "name": "Trang danh mục Video",
+    "blocks": [
+      {
+        "name": "BlockHead",
+        "sections": [
+          {
+            "name": "BlockHead_Main",
+            "listType": "Tin hỗn hợp",
+            "cateId": "606c205bd5514b17fb0580a6",
+            "cateAlias": "video",
+            "title": "Video",
+            "isDisplayOnPage": true,
+            "includeChildCate": true,
+            "skip": 0,
+            "displayRatio": "16/9",
+            "randomArrange": false,
+            "displayOnPage": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "page": "MegaStoryCatePage",
+    "name": "Trang danh mục MegaStory",
+    "blocks": [
+      {
+        "name": "BlockHead",
+        "sections": [
+          {
+            "name": "BlockHead_Main",
+            "listType": "Tin hỗn hợp",
+            "cateId": "606c205bd5514b17fb0580a6",
+            "cateAlias": "video",
+            "title": "MegaStory",
+            "isDisplayOnPage": true,
+            "includeChildCate": true,
+            "skip": 0,
+            "displayRatio": "16/9",
+            "randomArrange": false,
+            "displayOnPage": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "page": "MegaStoryDetailPage",
+    "name": "Trang post MegaStory",
+    "blocks": [
+      {
+        "name": "DetailMiddle",
+        "sections": [
+          {
+            "name": "DetailMiddle_Main",
+            "listType": "Tin hỗn hợp",
+            "cateId": null,
+            "cateAlias": null,
+            "title": "Tin liên quan",
+            "isDisplayOnPage": true,
+            "includeChildCate": true,
+            "skip": 0,
+            "displayRatio": "16/9",
+            "randomArrange": false,
+            "displayOnPage": true
+          }
+        ]
+      },
+      {
+        "name": "DetailFoot",
+        "sections": [
+          {
+            "name": "DetailFoot_Main",
+            "listType": "Tin hỗn hợp",
+            "cateId": "606c205bd5514b17fb0580a6",
+            "cateAlias": "video",
+            "title": "Dành cho bạn",
+            "isDisplayOnPage": true,
+            "includeChildCate": true,
+            "skip": 0,
+            "displayRatio": "16/9",
+            "randomArrange": false,
+            "displayOnPage": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "page": "ThuVienAnhCatePage",
+    "name": "Trang danh mục Thư viện ảnh",
+    "blocks": [
+      {
+        "name": "BlockHead",
+        "sections": [
+          {
+            "name": "BlockHead_Main",
+            "listType": "Tin hỗn hợp",
+            "cateId": "611b70130963ee0a41330ae3",
+            "cateAlias": "phong-su-anh",
+            "title": "Thư viện ảnh",
+            "isDisplayOnPage": true,
+            "includeChildCate": true,
+            "skip": 0,
+            "displayRatio": "16/9",
+            "randomArrange": false,
+            "displayOnPage": true
+          }
+        ]
+      },
+      {
+        "name": "BlockFoot",
+        "sections": [
+          {
+            "name": "BlockFoot_Main",
+            "listType": "Tin nổi bật",
+            "cateId": "611b70130963ee0a41330ae3",
+            "cateAlias": "phong-su-anh",
+            "title": "",
+            "isDisplayOnPage": true,
+            "includeChildCate": true,
+            "skip": 0,
+            "displayRatio": "16/9",
+            "randomArrange": false,
+            "displayOnPage": true
+          }
+        ]
+      }
+    ]
+  }
+]

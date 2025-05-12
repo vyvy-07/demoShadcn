@@ -5,4 +5,5 @@ export const SPECIAL_PATH = [
   'sitemap',
   'ban-do-hanh-chinh',
   'tin-tuc',
+  'video',
 ];

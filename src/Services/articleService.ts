@@ -7,7 +7,7 @@ export async function fetchServerArticleList(listQuery: any, limit: number) {
     const params = await parseParams(listQuery, limit);
     const queryString = new URLSearchParams(params as any).toString();
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_NTV_BASE_URL}/public/article/listing?${queryString}`,
+      `${process.env.NEXT_PUBLIC_NTV_BASE_URL_TEST}/public/article/listing?${queryString}`,
       fetchOptions
     );
     const data = await response.json();
@@ -26,7 +26,7 @@ export async function fetchServerArticleList(listQuery: any, limit: number) {
 export async function fetchServerArticleDetail(articleId: string) {
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_NTV_BASE_URL}/public/article/${articleId}`,
+      `${process.env.NEXT_PUBLIC_NTV_BASE_URL_TEST}/public/article/${articleId}`,
       fetchOptions
     );
     const data = await response.json();

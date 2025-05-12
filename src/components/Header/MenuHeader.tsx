@@ -11,6 +11,7 @@ import {
   NavigationMenuTrigger,
 } from './MenuBarShadcn';
 import { formatCatePath } from '@/utils/utilitiesHandling';
+import { navigationMenuTriggerStyle } from '../ui/navigation-menu';
 
 export function NavigationMenuDemo({ data }: { data: Category[] }) {
   if (!data) return null;
@@ -21,40 +22,55 @@ export function NavigationMenuDemo({ data }: { data: Category[] }) {
         data.slice(0, 6).map((item, index) => (
           <NavigationMenu key={item?.id || index} className="relative z-30">
             <NavigationMenuList>
-              <NavigationMenuItem
-                className="menu-item relative"
-                key={item?.id || index}
-              >
-                <NavigationMenuTrigger className="uppercase cursor-pointer hover:text-red-primary hover:transition-[0.03s] transition-[0.03s]">
-                  <Link href={`${formatCatePath('', item?.alias)}`}>
-                    {item?.name}
-                  </Link>
-                </NavigationMenuTrigger>
+              {item?.subCates && item?.subCates?.length > 0 ? (
+                <NavigationMenuItem
+                  className="menu-item relative"
+                  key={item?.id || index}
+                >
+                  <NavigationMenuTrigger className="uppercase cursor-pointer hover:text-red-primary hover:transition-[0.03s] transition-[0.03s]">
+                    <Link href={`${formatCatePath('', item?.alias)}`}>
+                      {item?.name}
+                    </Link>
+                  </NavigationMenuTrigger>
 
-                <NavigationMenuContent className=" whitespace-nowrap bg-white ">
                   {item?.subCates && item?.subCates.length > 0 && (
-                    <ul className="w-full border-0 ">
-                      {item.subCates.map((subCateItem, subIndex) => (
-                        <li
-                          key={subCateItem?.id || subIndex}
-                          className="hover:bg-red-hover px-3 py-2"
-                        >
-                          <NavigationMenuLink asChild>
-                            <Link
-                              href={`${formatCatePath(
-                                subCateItem?.type,
-                                subCateItem?.alias
-                              )}`}
-                            >
-                              {subCateItem?.name}
-                            </Link>
-                          </NavigationMenuLink>
-                        </li>
-                      ))}
-                    </ul>
+                    <NavigationMenuContent className=" whitespace-nowrap bg-white ">
+                      <ul className="w-full border-0 ">
+                        {item.subCates.map((subCateItem, subIndex) => (
+                          <li
+                            key={subCateItem?.id || subIndex}
+                            className="hover:bg-red-hover px-3 py-2"
+                          >
+                            <NavigationMenuLink asChild>
+                              <Link
+                                href={`${formatCatePath(
+                                  subCateItem?.type,
+                                  subCateItem?.alias
+                                )}`}
+                              >
+                                {subCateItem?.name}
+                              </Link>
+                            </NavigationMenuLink>
+                          </li>
+                        ))}
+                      </ul>
+                    </NavigationMenuContent>
                   )}
-                </NavigationMenuContent>
-              </NavigationMenuItem>
+                </NavigationMenuItem>
+              ) : (
+                <NavigationMenuItem>
+                  <Link
+                    href={`${formatCatePath('', item?.alias)}`}
+                    className="uppercase cursor-pointer hover:text-red-primary hover:transition-[0.03s] transition-[0.03s]"
+                  >
+                    <NavigationMenuLink
+                      className={navigationMenuTriggerStyle()}
+                    >
+                      {item?.name}
+                    </NavigationMenuLink>
+                  </Link>
+                </NavigationMenuItem>
+              )}
             </NavigationMenuList>
           </NavigationMenu>
         ))}

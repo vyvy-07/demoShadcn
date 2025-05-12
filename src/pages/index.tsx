@@ -19,6 +19,7 @@ import HomeS from '@/components/Page/HomePage/HomeS';
 import HomeT from '@/components/Page/HomePage/HomeT';
 import { useFetchArticleList } from '@/hooks/useArticle';
 import { fetchServerArticleList } from '@/Services/articleService';
+import { fetchLayoutPage } from '@/Services/layoutPage';
 import { transformBlocks } from '@/utils/utilitiesHandling';
 
 export default function Home({ dataServer }: any) {
@@ -198,19 +199,13 @@ export async function getStaticProps() {
   const controller = new AbortController(); // tạo bộ điều khiển để hủy request nếu quá lâu
   const timeout = setTimeout(() => controller.abort(), 7000); // timeout 7 giây
   try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_NTV_BASE_URL_LC}/api/home-page`, // api homepage
-      { signal: controller.signal }
-    );
-    clearTimeout(timeout);
-    if (!res?.ok) {
-      throw new Error('Failed to fetch home page');
-    }
+    const datalayout = await fetchLayoutPage('HomePage');
+
     // const resCate = await fetchServerCategoryList();
     // const resCate: any = [];
-    const posts = await res?.json();
+    // const posts = await res?.json();
 
-    const dataTerm = posts?.result?.blocks;
+    const dataTerm = datalayout?.result?.blocks;
     const dataSections = transformBlocks(dataTerm);
     const dataSectionA_Main =
       dataSections?.HomeA?.HomeA_Main &&
@@ -226,7 +221,7 @@ export async function getStaticProps() {
       (await fetchServerArticleList(dataSections?.HomeC?.HomeC_Main, 5));
 
     const dataServer = {
-      layoutPage: posts?.result,
+      layoutPage: datalayout?.result,
       dataSectionA_Main: dataSectionA_Main,
       dataSectionA_Side: dataSectionA_Side,
 
@@ -247,12 +242,6 @@ export async function getStaticProps() {
     return {
       props: {
         dataServer: [],
-        dataSectionA_Main: [],
-        dataSectionA_Side: [],
-
-        dataSectionlayout: [],
-        dataSectionB_Main: [],
-        dataSectionC_Main: [],
       }, // Or fallback
     };
   }

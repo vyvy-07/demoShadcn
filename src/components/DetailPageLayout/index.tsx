@@ -9,7 +9,6 @@ import ListArticleSideMini from '../SideRight/ListArticleSideMini';
 
 const DetailPageLayout = ({ children, posts, titleSide }: PropsGlobal) => {
   const { data } = useFetchCategoryList();
-  const { data: banner } = useFetchCategoryList();
   return (
     <>
       <Container>{data && <Header dataCategory={data} />}</Container>
