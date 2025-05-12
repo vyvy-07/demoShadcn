@@ -5,6 +5,7 @@ export interface Category {
   type?: string;
   isDisplayOnMenu?: boolean;
   parentId?: string;
+  displayType?: string;
   subCates?: [
     {
       id?: string;

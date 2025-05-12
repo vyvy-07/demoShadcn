@@ -78,14 +78,16 @@ export const getPostDetailUrl = (type: string, alias: string, id = '') => {
       return `/${alias}${id && `-${id}`}.ngn`;
   }
 };
-export const formatCatePath = (type?: string, alias?: string, id = '') => {
+export const formatCatePath = (type = '', alias?: string, id = '') => {
   switch (type) {
-    case 'tin-tuc':
+    case 'TinTuc':
       return `/tin-tuc-va-su-kien/${alias}`;
     case 'Tạp chí giấy':
       return `/tap-chi-in/${alias}${id && `-${id}`}.ngn`;
     case 'Audio':
       return `/podcast/${alias}${id && `-${id}`}.ngn`;
+    case 'VanKien':
+      return `/van-kien/${alias}${id && `-${id}`}.ngn`;
     default:
       return `/${alias}`;
   }

@@ -36,23 +36,34 @@ export function NavigationMenuDemo({ data }: { data: Category[] }) {
                   {item?.subCates && item?.subCates.length > 0 && (
                     <NavigationMenuContent className=" whitespace-nowrap bg-white ">
                       <ul className="w-full border-0 ">
-                        {item.subCates.map((subCateItem, subIndex) => (
-                          <li
-                            key={subCateItem?.id || subIndex}
-                            className="hover:bg-red-hover px-3 py-2"
-                          >
-                            <NavigationMenuLink asChild>
-                              <Link
-                                href={`${formatCatePath(
-                                  subCateItem?.type,
-                                  subCateItem?.alias
-                                )}`}
+                        {item.subCates.map(
+                          (subCateItem: Category, subIndex) => {
+                            console.log(
+                              'dwddw :>> ',
+                              formatCatePath(
+                                subCateItem?.displayType,
+                                subCateItem?.alias
+                              )
+                            );
+                            return (
+                              <li
+                                key={subCateItem?.id || subIndex}
+                                className="hover:bg-red-hover px-3 py-2"
                               >
-                                {subCateItem?.name}
-                              </Link>
-                            </NavigationMenuLink>
-                          </li>
-                        ))}
+                                <NavigationMenuLink asChild>
+                                  <Link
+                                    href={`${formatCatePath(
+                                      subCateItem?.displayType,
+                                      subCateItem?.alias
+                                    )}`}
+                                  >
+                                    {subCateItem?.name}
+                                  </Link>
+                                </NavigationMenuLink>
+                              </li>
+                            );
+                          }
+                        )}
                       </ul>
                     </NavigationMenuContent>
                   )}
