@@ -24,7 +24,7 @@ import { transformBlocks } from '@/utils/utilitiesHandling';
 
 export default function Home({ dataServer }: any) {
   if (!dataServer?.layoutPage) {
-    return null;
+    console.log('111 :>> ', 111);
   }
 
   const sections = dataServer?.dataSectionlayout;
