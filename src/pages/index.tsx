@@ -24,7 +24,8 @@ import { transformBlocks } from '@/utils/utilitiesHandling';
 
 export default function Home({ dataServer }: any) {
   if (!dataServer?.layoutPage) {
-    console.log('111 :>> ', 111);
+    console.log('index page :>> ', 111);
+    return <>Chua co du lieu!</>;
   }
 
   const sections = dataServer?.dataSectionlayout;
@@ -196,9 +197,9 @@ TƯ LIỆU - VĂN KIỆN ĐẢNG code cứng */}
   );
 }
 export async function getStaticProps() {
-  const controller = new AbortController(); // tạo bộ điều khiển để hủy request nếu quá lâu
-  const timeout = setTimeout(() => controller.abort(), 7000); // timeout 7 giây
   try {
+    const controller = new AbortController(); // tạo bộ điều khiển để hủy request nếu quá lâu
+    const timeout = setTimeout(() => controller.abort(), 7000); // timeout 7 giây
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_NTV_BASE_URL}/public/layout/HomePage`,
       { signal: controller.signal }

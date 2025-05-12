@@ -64,9 +64,9 @@ const NewsMixedPage = ({ dataServer }: any) => {
 export default NewsMixedPage;
 
 export async function getStaticProps() {
-  const controller = new AbortController(); // tạo bộ điều khiển để hủy request nếu quá lâu
-  const timeout = setTimeout(() => controller.abort(), 7000); // timeout 7 giây
   try {
+    const controller = new AbortController(); // tạo bộ điều khiển để hủy request nếu quá lâu
+    const timeout = setTimeout(() => controller.abort(), 7000); // timeout 7 giây
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_NTV_BASE_URL}/public/layout/NewsCatePage`,
       { signal: controller.signal }
@@ -97,7 +97,7 @@ export async function getStaticProps() {
   } catch (error) {
     console.error('Error fetching data:', error);
     return {
-      props: { dataServer: [] }, // Or fallback
+      props: { dataServer: {} }, // Or fallback
     };
   }
 }
