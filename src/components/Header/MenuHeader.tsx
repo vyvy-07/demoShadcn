@@ -38,13 +38,6 @@ export function NavigationMenuDemo({ data }: { data: Category[] }) {
                       <ul className="w-full border-0 ">
                         {item.subCates.map(
                           (subCateItem: Category, subIndex) => {
-                            console.log(
-                              'dwddw :>> ',
-                              formatCatePath(
-                                subCateItem?.displayType,
-                                subCateItem?.alias
-                              )
-                            );
                             return (
                               <li
                                 key={subCateItem?.id || subIndex}

@@ -16,7 +16,9 @@ export async function fetchCategory({
     );
 
     const { result } = response.data;
-    return result;
+    if (result) {
+      return response?.data?.result;
+    }
   } catch (error) {
     console.log(error);
   }

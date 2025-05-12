@@ -98,7 +98,7 @@ export async function getStaticProps({ params }: { params: any }) {
       (await fetchServerArticleList(
         {
           ...dataSections?.BlockHead?.BlockHead_Main,
-          categoryId: params?.alias,
+          categoryId: 'video',
         },
         7
       ));

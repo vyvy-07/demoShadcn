@@ -13,7 +13,6 @@ export const useFetchArticleList = (
 ) => {
   const params = parseParams(queryList, limit);
   const qrKey = queryList?.cateId ?? queryList?.cateAlias;
-
   return useQuery({
     queryKey: [qrKey, { ...params }],
     queryFn: ({ signal }) => fetchArticleList({ signal }, params),
