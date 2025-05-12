@@ -94,12 +94,10 @@ export async function getStaticProps({ params }: { params: any }) {
         dataCate: dataCate,
       })
     );
-    if (!dataSections) {
-      return {
-        props: { dataServer },
-        revalidate: 60,
-      };
-    }
+    return {
+      props: { dataServer },
+      revalidate: 60,
+    };
   } catch (error) {
     console.error('Error fetching data:', error);
     return {
