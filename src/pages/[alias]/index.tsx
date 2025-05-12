@@ -3,7 +3,6 @@ import Container from '@/components/Container/Container';
 import GridWrapper from '@/components/LayoutGrid/GridWrapper';
 import MainLayout from '@/components/MainLayout';
 import SectionTitle from '@/components/SectionTitle';
-import ListArticleSide from '@/components/SideRight/ListArticleSide';
 import ListArticleSideMini from '@/components/SideRight/ListArticleSideMini';
 import ViewMore from '@/components/ViewMoreBtn';
 import { SPECIAL_PATH } from '@/constant/dataVinhLong/specialPath';
@@ -14,44 +13,25 @@ import {
   fetchServerCategoryId,
   fetchServerCategoryList,
 } from '@/Services/categoryService';
-import { fetchLayoutPage } from '@/Services/layoutPage';
 import { transformBlocks } from '@/utils/utilitiesHandling';
 
-const CateNewsPage = ({ dataServer }: any) => {
-  if (!dataServer?.dataSections) {
-    return null;
-  }
-  const dataLayout = dataServer?.dataSections?.CateHead;
-  const { data: dataSide } = useFetchArticleList(dataLayout?.CateHead_Side, 5);
+const CatePageDynamic = ({ dataServer }: any) => {
+  const dataLayout = dataServer?.dataSections?.BlockHead;
+  const { data: dataSide } = useFetchArticleList(dataLayout?.BlockHead_Main, 5);
   return (
     <MainLayout>
       <Container>
         <GridWrapper>
-          <div className="col-span-8">
-            <SectionTitle title={dataServer?.dataCate?.name} className="mb-5" />
-            {dataServer?.cateHead_Main &&
-              dataServer?.cateHead_Main?.map((item: Article, index: number) => {
-                return (
-                  <div key={item?.id || index}>
-                    <ArticleCustomCard
-                      dataArticle={item}
-                      width={286}
-                      height={162}
-                      hasSapo={true}
-                      hasCate={true}
-                      hasDate={true}
-                      sapoStyle="line-clamp-3"
-                      titleStyle="heading-3"
-                    />
-                    {index !== dataServer?.cateHead_Main?.length - 1 && (
-                      <hr className="pb-5 mt-5 text-grey"></hr>
-                    )}
-                  </div>
-                );
-              })}
-            <ViewMore dataLayout={dataLayout} />
+          <div className="col-span-9">
+            <SectionTitle
+              // title={dataLayout?.CateHead_Main?.title || 'hoat dong'}
+              title={dataServer?.dataCate?.name}
+              className="mb-5"
+            />
+            <>Trang thường .... đa dạng nội dung</>
+            {/* <ViewMore dataLayout={dataLayout} /> */}
           </div>
-          <div className="col-span-4">
+          <div className="col-span-3">
             <ListArticleSideMini
               posts={dataSide}
               titleStyle="mb-5"
@@ -64,16 +44,20 @@ const CateNewsPage = ({ dataServer }: any) => {
   );
 };
 
-export default CateNewsPage;
+export default CatePageDynamic;
 export const getStaticPaths = async () => {
   const dataCate = await fetchServerCategoryList();
-  const data = dataCate?.filter((item: any) => item?.type == 'tin-tuc');
-  const paths = data[0]?.subCates?.map((itemSub: any) => {
-    return { params: { alias: `${itemSub?.alias}` } };
+  const datapaths: any = [];
+  dataCate.forEach((element: any) => {
+    if (!SPECIAL_PATH.includes(element.alias)) {
+      datapaths.push({
+        params: { alias: element.alias },
+      });
+    }
   });
   return {
-    paths: paths || [],
-    fallback: true, // false or "blocking"
+    paths: datapaths,
+    fallback: true,
   };
 };
 
@@ -110,7 +94,7 @@ export async function getStaticProps({ params }: { params: any }) {
         dataCate: dataCate,
       })
     );
-    if (!dataServer) {
+    if (!dataSections) {
       return {
         props: { dataServer },
         revalidate: 60,
