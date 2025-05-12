@@ -16,7 +16,7 @@ import { transformBlocks } from '@/utils/utilitiesHandling';
 
 const NewsMixedPage = ({ dataServer }: any) => {
   if (!dataServer?.dataSections) {
-    return null;
+    return <>Chua co du lieu!</>;
   }
   const dataLayout = dataServer?.dataSections?.BlockHead;
   const { data: dataSide } = useFetchArticleList(dataLayout?.BlockHead_Main, 5);
@@ -64,16 +64,24 @@ const NewsMixedPage = ({ dataServer }: any) => {
 export default NewsMixedPage;
 
 export async function getStaticProps() {
+  const controller = new AbortController(); // tạo bộ điều khiển để hủy request nếu quá lâu
+  const timeout = setTimeout(() => controller.abort(), 7000); // timeout 7 giây
   try {
-    const datalayout = await fetchLayoutPage('NewsCatePage');
-    if (!datalayout) {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_NTV_BASE_URL}/public/layout/NewsCatePage`,
+      { signal: controller.signal }
+    );
+    clearTimeout(timeout);
+    if (!res?.ok) {
       throw new Error('Failed to fetch');
     }
-    const dataTerm = datalayout?.result?.blocks;
+    const posts = await res?.json();
+
+    const dataTerm = posts?.result?.blocks;
     const dataSections = transformBlocks(dataTerm);
 
     const cateHead_Main = await fetchServerArticleList(
-      dataSections?.CateHead?.CateHead_Main,
+      dataSections?.BlockHead?.BlockHead_Main,
       7
     );
 
