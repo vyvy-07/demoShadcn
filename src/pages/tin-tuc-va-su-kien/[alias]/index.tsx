@@ -21,8 +21,6 @@ const CateNewsPage = ({ dataServer }: any) => {
   if (!dataServer?.dataSections) {
     return null;
   }
-  console.log('dataServer :>> ', dataServer?.dataCate);
-
   const dataLayout = dataServer?.dataSections?.CateHead;
   const { data: dataSide } = useFetchArticleList(dataLayout?.CateHead_Side, 5);
   return (
@@ -75,7 +73,7 @@ export const getStaticPaths = async () => {
   });
   return {
     paths: paths || [],
-    fallback: false, // false or "blocking"
+    fallback: true, // false or "blocking"
   };
 };
 
