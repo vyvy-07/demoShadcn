@@ -6,4 +6,5 @@ export const SPECIAL_PATH = [
   'ban-do-hanh-chinh',
   'tin-tuc',
   'video',
+  'van-kien-tu-lieu',
 ];
