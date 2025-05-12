@@ -207,8 +207,6 @@ export async function getStaticProps() {
     if (!res?.ok) {
       throw new Error('Failed to fetch');
     }
-    // const resCate = await fetchServerCategoryList();
-    // const resCate: any = [];
     const posts = await res?.json();
 
     const dataTerm = posts?.result?.blocks;
@@ -244,7 +242,7 @@ export async function getStaticProps() {
     console.error('Error fetching data:', error);
     return {
       props: {
-        dataServer: [],
+        dataServer: {},
       }, // Or fallback
     };
   }
