@@ -23,8 +23,7 @@ const NewsMixedPage = ({ dataServer }: any) => {
   return (
     <MainLayout>
       <Container>
-        <p>helloo </p>
-        {/* <GridWrapper>
+        <GridWrapper>
           <div className="col-span-8">
             <SectionTitle title={'Tin tổng hợp'} className="mb-5" />
             {dataServer?.cateHead_Main &&
@@ -56,7 +55,7 @@ const NewsMixedPage = ({ dataServer }: any) => {
               title={dataLayout?.CateHead_Side?.title}
             />
           </div>
-        </GridWrapper> */}
+        </GridWrapper>
       </Container>
     </MainLayout>
   );
@@ -81,10 +80,12 @@ export async function getStaticProps() {
     const dataTerm = posts?.result?.blocks;
     const dataSections = transformBlocks(dataTerm);
 
-    const cateHead_Main = await fetchServerArticleList(
-      dataSections?.BlockHead?.BlockHead_Main,
-      7
-    );
+    const cateHead_Main =
+      dataSections?.BlockHead &&
+      (await fetchServerArticleList(
+        dataSections?.BlockHead?.BlockHead_Main,
+        7
+      ));
 
     const dataServer = JSON.parse(
       JSON.stringify({
