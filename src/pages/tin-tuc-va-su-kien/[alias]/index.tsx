@@ -119,7 +119,7 @@ export async function getStaticProps({ params }: { params: any }) {
   } catch (error) {
     console.error('Error fetching data:', error);
     return {
-      props: { dataServer: [] }, // Or fallback
+      props: { dataServer: {} }, // Or fallback
     };
   }
 }
