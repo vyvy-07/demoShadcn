@@ -1,17 +1,13 @@
 import ArticleCustomCard from '@/components/Articles/ArticleCustomCard';
+import ViewMoreButton from '@/components/Button/ViewMoreButton';
 import Container from '@/components/Container/Container';
 import GridWrapper from '@/components/LayoutGrid/GridWrapper';
 import MainLayout from '@/components/MainLayout';
 import SectionTitle from '@/components/SectionTitle';
-import ListArticleSide from '@/components/SideRight/ListArticleSide';
 import ListArticleSideMini from '@/components/SideRight/ListArticleSideMini';
-import ViewMore from '@/components/ViewMoreBtn';
-import { SPECIAL_PATH } from '@/constant/dataVinhLong/specialPath';
 import { useFetchArticleList } from '@/hooks/useArticle';
 import type { Article } from '@/interface/propsGlobal';
 import { fetchServerArticleList } from '@/Services/articleService';
-import { fetchServerCategoryList } from '@/Services/categoryService';
-import { fetchLayoutPage } from '@/Services/layoutPage';
 import { transformBlocks } from '@/utils/utilitiesHandling';
 
 const NewsMixedPage = ({ dataServer }: any) => {
@@ -46,7 +42,7 @@ const NewsMixedPage = ({ dataServer }: any) => {
                   </div>
                 );
               })}
-            <ViewMore dataLayout={dataLayout} />
+            <ViewMoreButton dataLayout={dataLayout} />
           </div>
           <div className="col-span-4">
             <ListArticleSideMini

@@ -83,3 +83,27 @@ export interface PropsGlobal {
   dataCategory?: Category[];
   postsSide?: Article[];
 }
+
+export interface DocxType {
+  createdTime?: number;
+  decisionType?: string;
+  docCategoryId?: string;
+  documentCode?: string;
+  documentType?: string;
+  effectiveDate?: number;
+  fieldType?: string;
+  id?: string;
+  issuedAgencyName?: string;
+  issuedDate?: string;
+  publicInfo?: string;
+  shortId?: string;
+  signer?: string;
+  status?: string;
+  summary?: string;
+  tenantId?: string;
+  trash?: boolean;
+  updatedTime?: number;
+  updatingUnit?: string;
+  validityStatus?: string;
+  websiteId?: string;
+}

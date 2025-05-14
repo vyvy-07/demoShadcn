@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const fetchOptions = { next: { revalidate: 300 } };
 
-export async function fetchDocxList({ params }: { params: QueryType }) {
+export async function fetchDocxList(params: QueryType) {
   try {
     const response = await axios.get(
       `${process.env.NEXT_PUBLIC_NTV_BASE_URL}/public/modules/docs/get-list-docs`,

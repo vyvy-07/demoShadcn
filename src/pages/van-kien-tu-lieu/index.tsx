@@ -3,38 +3,76 @@ import MainLayout from '@/components/MainLayout';
 import SectionTitle from '@/components/SectionTitle';
 import { useFetchCategory } from '@/hooks/useCategory';
 import { useFetchCateDocxList } from '@/hooks/useDocx';
-import { transformBlocks } from '@/utils/utilitiesHandling';
-import { usePathname, useRouter } from 'next/navigation';
-import { useState } from 'react';
-import styled from 'styled-components';
-import TableDocx from './TableDocx';
 import { fetchDocxList } from '@/Services/docx';
+import { transformBlocks } from '@/utils/utilitiesHandling';
+import { usePathname } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import styled from 'styled-components';
+import TableGroup from './TableGroup';
 const Button = styled.button`
   max-width: 300px;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  border: 1px solid var(--color-grey);
-  padding: 10px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border: 1px solid var(--color-grey-bold);
+  padding: 5px;
   width: 100%;
   text-transform: uppercase;
 `;
 const DocxPage = () => {
-  const [tabCurrent, setTabCurrent] = useState('trung-uong');
-  const listTab = useFetchCateDocxList()?.data;
-  const route = useRouter();
-  const path = usePathname();
-  const dataCate = path && useFetchCategory(path)?.data;
+  const [idTabCurrent, setIdTabCurrent] = useState('');
+  const { data: listCateDocx, error } = useFetchCateDocxList();
+  const [listDocx, setListDocx] = useState([]);
+  const path = usePathname() || '';
+  const { data: dataCate } = useFetchCategory(path);
+  useEffect(() => {
+    const valueIdTabcurrent = () => {
+      if (listCateDocx && !idTabCurrent) {
+        setIdTabCurrent(listCateDocx[0]?.id);
+      }
+    };
+    valueIdTabcurrent();
+  }, [listCateDocx]);
+  useEffect(() => {
+    const getlistDocx = async () => {
+      try {
+        const payload = {
+          limit: -1,
+          skip: 0,
+          categoryId: idTabCurrent,
+        };
+        if (idTabCurrent) {
+          const data = await fetchDocxList(payload);
+          setListDocx(data);
+        }
+      } catch (error) {
+        console.log('error :>> ', error);
+      }
+    };
+    getlistDocx();
+  }, [idTabCurrent]);
   return (
     <MainLayout>
       <Container>
         <SectionTitle title={dataCate?.name} className="mb-5" />
         <div className="">
-          {listTab &&
-            listTab?.map((item: any) => {
-              return <Button>{item?.name}</Button>;
+          {listCateDocx &&
+            listCateDocx?.map((item: any, index: number) => {
+              return (
+                <Button
+                  onClick={() => setIdTabCurrent(item?.id)}
+                  className={`heading-4 py-[5px] uppercase transition-[0.3s] ${
+                    idTabCurrent == item?.id
+                      ? 'bg-white text-red-primary transition-[0.3s]'
+                      : 'bg-grey-hover text-grey-bold'
+                  }`}
+                  key={item?.id || index}
+                >
+                  {item?.name}
+                </Button>
+              );
             })}
         </div>
-        <TableDocx />
+        {listDocx && <TableGroup posts={listDocx} />}
       </Container>
     </MainLayout>
   );
@@ -59,7 +97,7 @@ export async function getStaticProps() {
 
     const params = { limit: 10, skip: 0 };
 
-    const listDocx = await fetchDocxList({ params });
+    // const listDocx = await fetchDocxList({ params });
     const dataServer = {
       dataSections: dataSections,
     };

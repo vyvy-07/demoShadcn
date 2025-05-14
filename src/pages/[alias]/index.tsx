@@ -1,13 +1,10 @@
-import ArticleCustomCard from '@/components/Articles/ArticleCustomCard';
 import Container from '@/components/Container/Container';
 import GridWrapper from '@/components/LayoutGrid/GridWrapper';
 import MainLayout from '@/components/MainLayout';
 import SectionTitle from '@/components/SectionTitle';
 import ListArticleSideMini from '@/components/SideRight/ListArticleSideMini';
-import ViewMore from '@/components/ViewMoreBtn';
 import { SPECIAL_PATH } from '@/constant/dataVinhLong/specialPath';
 import { useFetchArticleList } from '@/hooks/useArticle';
-import type { Article } from '@/interface/propsGlobal';
 import { fetchServerArticleList } from '@/Services/articleService';
 import {
   fetchServerCategoryId,
@@ -29,7 +26,7 @@ const CatePageDynamic = ({ dataServer }: any) => {
               className="mb-5"
             />
             <>Trang thường .... đa dạng nội dung</>
-            {/* <ViewMore dataLayout={dataLayout} /> */}
+            {/* <ViewMoreButton dataLayout={dataLayout} /> */}
           </div>
           <div className="col-span-3">
             <ListArticleSideMini

@@ -5,15 +5,14 @@ import {
 } from '@/Services/ClientServices/docx';
 import { useQuery } from '@tanstack/react-query';
 
-export const useFetchDocxList = (params: QueryType) => {
+export const useFetchDocxList = (params: any, isEnable: boolean) => {
   return useQuery({
     queryKey: ['docxList'],
     queryFn: ({ signal }) => fetchDocxList({ signal, params }),
-    enabled: !!params,
+    enabled: isEnable,
   });
 };
 let initParams = { limit: -1, keyword: null, skip: 0 };
-
 export const useFetchCateDocxList = (params = initParams) => {
   return useQuery({
     queryKey: ['cateDocx'],

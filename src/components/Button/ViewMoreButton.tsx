@@ -1,4 +1,4 @@
-const ViewMore = ({ dataLayout }: { dataLayout: any }) => {
+const ViewMoreButton = ({ dataLayout }: { dataLayout: any }) => {
   //   const [isEnable, setIsEnable] = useState(false);
 
   return (
@@ -15,4 +15,4 @@ const ViewMore = ({ dataLayout }: { dataLayout: any }) => {
   );
 };
 
-export default ViewMore;
+export default ViewMoreButton;

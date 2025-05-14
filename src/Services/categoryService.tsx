@@ -23,7 +23,7 @@ export async function fetchServerCategoryList() {
 export async function fetchServerCategoryId(id: string) {
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_NTV_BASE_URL}/public/category/${id}`,
+      `${process.env.NEXT_PUBLIC_NTV_BASE_URL}/public/category${id}`,
       fetchOptions
     );
     const data = await response.json();
