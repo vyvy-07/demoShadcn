@@ -10,7 +10,7 @@ export async function fetchDocxList({
 }) {
   try {
     const response = await axios.get(
-      `${process.env.NEXT_PUBLIC_NTV_BASE_URL}/public/modules/docs/get-list-docs`,
+      `${process.env.NEXT_PUBLIC_VL_BASE_URL}/public/modules/docs/get-list-docs`,
       {
         signal,
         params,
@@ -34,7 +34,7 @@ export async function fetchCateDocxList({
 }) {
   try {
     const response = await axios.get(
-      `${process.env.NEXT_PUBLIC_NTV_BASE_URL}/public/modules/docs/get-list-categories`,
+      `${process.env.NEXT_PUBLIC_VL_BASE_URL}/public/modules/docs/get-list-categories`,
       {
         signal,
         params,

@@ -6,7 +6,7 @@ const fetchOptions = { next: { revalidate: 300 } };
 export async function fetchDocxList(params: QueryType) {
   try {
     const response = await axios.get(
-      `${process.env.NEXT_PUBLIC_NTV_BASE_URL}/public/modules/docs/get-list-docs`,
+      `${process.env.NEXT_PUBLIC_VL_BASE_URL}/public/modules/docs/get-list-docs`,
       {
         params,
       }

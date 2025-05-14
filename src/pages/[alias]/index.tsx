@@ -63,7 +63,7 @@ export async function getStaticProps({ params }: { params: any }) {
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 7000);
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_NTV_BASE_URL}/public/layout/NewsSubCatePage`,
+      `${process.env.NEXT_PUBLIC_VL_BASE_URL}/public/layout/NewsSubCatePage`,
       { signal: controller.signal }
     );
     clearTimeout(timeout);
@@ -71,6 +71,8 @@ export async function getStaticProps({ params }: { params: any }) {
       throw new Error('Failed to fetch');
     }
     const posts = await res?.json();
+
+    console.log('params :>> ', params);
     const dataTerm = posts?.result?.blocks;
     const dataSections = dataTerm && transformBlocks(dataTerm);
     //cate list article
@@ -83,7 +85,8 @@ export async function getStaticProps({ params }: { params: any }) {
         },
         7
       ));
-    const dataCate = await fetchServerCategoryId(params?.alias);
+    const dataCate = params && (await fetchServerCategoryId(params?.alias));
+    console.log('dataCate :>> ', dataCate);
     const dataServer = JSON.parse(
       JSON.stringify({
         cateHead_Main: cateHead_Main,

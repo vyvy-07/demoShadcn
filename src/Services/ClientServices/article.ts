@@ -7,7 +7,7 @@ export async function fetchArticleList(
 ) {
   try {
     const response = await axios.get(
-      `${process.env.NEXT_PUBLIC_NTV_BASE_URL_TEST}/public/article/listing`,
+      `${process.env.NEXT_PUBLIC_VL_BASE_URL_TEST}/public/article/listing`,
       {
         signal,
         params,
@@ -33,7 +33,7 @@ export async function fetchDetailArticle({
 }) {
   try {
     const response = await axios.get(
-      `${process.env.NEXT_PUBLIC_NTV_BASE_URL_TEST}/public/article/${articleId}`,
+      `${process.env.NEXT_PUBLIC_VL_BASE_URL_TEST}/public/article/${articleId}`,
       {
         signal,
         params,

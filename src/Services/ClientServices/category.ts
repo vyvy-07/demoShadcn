@@ -9,7 +9,7 @@ export async function fetchCategory({
 }) {
   try {
     const response = await axios.get(
-      `${process.env.NEXT_PUBLIC_NTV_BASE_URL}/public/category${cateId}`,
+      `${process.env.NEXT_PUBLIC_VL_BASE_URL}/public/category/${cateId}`,
       {
         signal,
       }
@@ -27,7 +27,7 @@ export async function fetchCategory({
 export async function fetchCategoryList({ signal }: { signal: AbortSignal }) {
   try {
     const response = await axios.get(
-      `${process.env.NEXT_PUBLIC_NTV_BASE_URL}/public/category/list`,
+      `${process.env.NEXT_PUBLIC_VL_BASE_URL}/public/category/list`,
       {
         signal,
       }

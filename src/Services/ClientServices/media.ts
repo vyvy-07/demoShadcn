@@ -16,7 +16,7 @@ export async function fetchMediaById({
 }) {
   try {
     const response = await axios.get(
-      `${process.env.NEXT_PUBLIC_NTV_BASE_URL}/public/common/media/${mediaId}`,
+      `${process.env.NEXT_PUBLIC_VL_BASE_URL}/public/common/media/${mediaId}`,
       // `${process.env.NEXT_PUBLIC_NTV_TEST_URL}/public/common/media/${mediaId}`,
       {
         signal,

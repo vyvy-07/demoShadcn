@@ -64,7 +64,7 @@ export async function getStaticProps() {
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 7000);
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_NTV_BASE_URL}/public/layout/NewsCatePage`,
+      `${process.env.NEXT_PUBLIC_VL_BASE_URL}/public/layout/NewsCatePage`,
       { signal: controller.signal }
     );
     clearTimeout(timeout);

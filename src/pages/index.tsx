@@ -201,7 +201,7 @@ export async function getStaticProps() {
     const controller = new AbortController(); // tạo bộ điều khiển để hủy request nếu quá lâu
     const timeout = setTimeout(() => controller.abort(), 7000); // timeout 7 giây
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_NTV_BASE_URL}/public/layout/HomePage`,
+      `${process.env.NEXT_PUBLIC_VL_BASE_URL}/public/layout/HomePage`,
       { signal: controller.signal }
     );
     clearTimeout(timeout);

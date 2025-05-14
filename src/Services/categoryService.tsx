@@ -3,7 +3,7 @@ const fetchOptions = { next: { revalidate: 300 } };
 export async function fetchServerCategoryList() {
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_NTV_BASE_URL}/public/category/list`,
+      `${process.env.NEXT_PUBLIC_VL_BASE_URL}/public/category/list`,
       fetchOptions
     );
     const data = await response.json();
@@ -23,7 +23,7 @@ export async function fetchServerCategoryList() {
 export async function fetchServerCategoryId(id: string) {
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_NTV_BASE_URL}/public/category${id}`,
+      `${process.env.NEXT_PUBLIC_VL_BASE_URL}/public/category/${id}`,
       fetchOptions
     );
     const data = await response.json();
@@ -32,7 +32,7 @@ export async function fetchServerCategoryId(id: string) {
       return result;
     }
     if (!response.ok) {
-      throw new Error('Lỗi get category list');
+      throw new Error('Lỗi get category id');
     }
   } catch (error) {
     console.log(error);
