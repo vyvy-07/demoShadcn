@@ -18,16 +18,16 @@ const CateNewsPage = ({ dataServer }: any) => {
   if (!dataServer?.dataSections) {
     return null;
   }
-  const dataLayout = dataServer?.dataSections?.CateHead;
-  const { data: dataSide } = useFetchArticleList(dataLayout?.CateHead_Side, 5);
+  const dataLayout = dataServer?.dataSections?.BlockHead;
+  const { data: dataSide } = useFetchArticleList(dataLayout?.BlockHead_Side, 5);
   return (
     <MainLayout>
       <Container>
         <GridWrapper>
           <div className="col-span-8">
             <SectionTitle title={dataServer?.dataCate?.name} className="mb-5" />
-            {dataServer?.cateHead_Main &&
-              dataServer?.cateHead_Main?.map((item: Article, index: number) => {
+            {dataServer?.dataBlockHead &&
+              dataServer?.dataBlockHead?.map((item: Article, index: number) => {
                 return (
                   <div key={item?.id || index}>
                     <ArticleCustomCard
@@ -40,7 +40,7 @@ const CateNewsPage = ({ dataServer }: any) => {
                       sapoStyle="line-clamp-3"
                       titleStyle="heading-3"
                     />
-                    {index !== dataServer?.cateHead_Main?.length - 1 && (
+                    {index !== dataServer?.dataBlockHead?.length - 1 && (
                       <hr className="pb-5 mt-5 text-grey"></hr>
                     )}
                   </div>
@@ -52,7 +52,7 @@ const CateNewsPage = ({ dataServer }: any) => {
             <ListArticleSideMini
               posts={dataSide}
               titleStyle="mb-5"
-              title={dataLayout?.CateHead_Side?.title}
+              title={dataLayout?.BlockHead_Side?.title}
             />
           </div>
         </GridWrapper>
@@ -70,7 +70,7 @@ export const getStaticPaths = async () => {
   });
   return {
     paths: paths || [],
-    fallback: 'blocking', // false or "blocking"
+    fallback: true,
   };
 };
 
@@ -89,20 +89,19 @@ export async function getStaticProps({ params }: { params: any }) {
     const posts = await res?.json();
     const dataTerm = posts?.result?.blocks;
     const dataSections = dataTerm && transformBlocks(dataTerm);
-    //cate list article
-    const cateHead_Main =
-      dataSections?.BlockHead &&
-      (await fetchServerArticleList(
-        {
-          ...dataSections?.BlockHead?.BlockHead_Main,
-          categoryId: 'video',
-        },
-        7
-      ));
     const dataCate = await fetchServerCategoryId(params?.alias);
+
+    //cate list article
+    const payload = {
+      ...dataSections?.BlockHead?.BlockHead_Main,
+      cateAlias: params?.alias,
+      cateId: dataCate?.id,
+    };
+    const dataBlockHead =
+      dataSections?.BlockHead && (await fetchServerArticleList(payload, 7));
     const dataServer = JSON.parse(
       JSON.stringify({
-        cateHead_Main: cateHead_Main,
+        dataBlockHead: dataBlockHead,
         dataSections: dataSections,
         dataCate: dataCate,
       })

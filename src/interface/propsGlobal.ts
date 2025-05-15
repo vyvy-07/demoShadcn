@@ -12,6 +12,7 @@ export interface Article {
   sapo?: string;
   excerpt?: string;
   featuredImage?: string;
+  external: string;
   featuredMedia?: {
     id?: string;
     alt?: string;

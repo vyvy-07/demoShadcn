@@ -29,7 +29,11 @@ const ArticleCard = ({
         <Image
           width={500}
           height={500}
-          src={dataArticle?.featuredMedia?.resolutions?.medium?.uri || ''}
+          src={
+            dataArticle?.featuredMedia?.resolutions?.medium?.uri ||
+            dataArticle?.featuredImage ||
+            ''
+          }
           alt="Image"
           className="w-full h-full object-cover"
         />
@@ -76,7 +80,7 @@ const ArticleCard = ({
             {hasDate && hasCate && <div className="dot"></div>}
             {hasCate && (
               <div className={cateStyle}>
-                {dataArticle?.category?.categoryName}
+                {dataArticle?.penName || dataArticle?.external}
               </div>
             )}
           </div>

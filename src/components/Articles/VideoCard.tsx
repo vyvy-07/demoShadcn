@@ -36,10 +36,15 @@ const VideoCard = ({
         <Image
           width={500}
           height={500}
-          src={dataArticle?.featuredMedia?.resolutions?.medium?.uri || ''}
+          src={
+            dataArticle?.featuredMedia?.resolutions?.medium?.uri ||
+            dataArticle?.featuredImage ||
+            ''
+          }
           alt="Image"
           className="w-full h-full object-cover"
         />
+
         <IconTypeArticle
           className={
             iconType == 'align'
@@ -63,6 +68,7 @@ const VideoCard = ({
             formatPodcastArticleDate(dataArticle?.publicationTime)}{' '}
         </div>
       )}
+
       <div className="mt-3 min-h-[42px]">
         <div
           className={`${twMerge(

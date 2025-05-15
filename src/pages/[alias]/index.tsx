@@ -14,7 +14,7 @@ import { transformBlocks } from '@/utils/utilitiesHandling';
 
 const CatePageDynamic = ({ dataServer }: any) => {
   const dataLayout = dataServer?.dataSections?.BlockHead;
-  const { data: dataSide } = useFetchArticleList(dataLayout?.BlockHead_Main, 5);
+  const { data: dataSide } = useFetchArticleList(dataLayout?.BlockHead_Side, 5);
   return (
     <MainLayout>
       <Container>
@@ -32,7 +32,7 @@ const CatePageDynamic = ({ dataServer }: any) => {
             <ListArticleSideMini
               posts={dataSide}
               titleStyle="mb-5"
-              title={dataLayout?.CateHead_Side?.title}
+              title={dataLayout?.BlockHead_Side?.title}
             />
           </div>
         </GridWrapper>
@@ -54,7 +54,7 @@ export const getStaticPaths = async () => {
   });
   return {
     paths: datapaths,
-    fallback: true,
+    fallback: 'blocking',
   };
 };
 
@@ -63,7 +63,7 @@ export async function getStaticProps({ params }: { params: any }) {
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 7000);
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_VL_BASE_URL}/public/layout/NewsSubCatePage`,
+      `${process.env.NEXT_PUBLIC_VL_BASE_URL}/public/layout/DetailPage`,
       { signal: controller.signal }
     );
     clearTimeout(timeout);
