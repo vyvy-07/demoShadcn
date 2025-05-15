@@ -1,7 +1,10 @@
+import Container from '@/components/Container/Container';
 import { Table, TableCell, TableRow } from '@/components/ui/table';
 import { HEADER_TABLE_DOCX } from '@/constant/headerTableDocx';
 import type { DocxType } from '@/interface/propsGlobal';
 import { formatArticleDate } from '@/utils/Format';
+import Image from 'next/image';
+import Link from 'next/link';
 import { type Dispatch, type SetStateAction } from 'react';
 
 const PopUpDocx = ({
@@ -11,6 +14,8 @@ const PopUpDocx = ({
   docx: DocxType;
   setOpenPopUp: Dispatch<SetStateAction<boolean>>;
 }) => {
+  const fileURL = docx?.filePDF && docx?.filePDF[0]?.split('_');
+  console.log('fileURL[fil] :>> ', fileURL && fileURL[fileURL?.length - 1]);
   return (
     <div
       className="fixed overflow-hidden
@@ -19,17 +24,18 @@ const PopUpDocx = ({
       <div
         onClick={() => setOpenPopUp(false)}
         className="bg-grey-bold opacity-[0.5] overflow-hidden
-      absolute top-0 left-0 w-full h-screen  z-90 "
+                    absolute top-0 left-0 w-full h-screen  z-90 "
       ></div>
-      <div
-        className="absolute max-w-[80%] mx-auto top-1/2 left-1/2
-      translate-[-50%] 
-     w-full h-[80%] bg-grey-hover z-90 flex justify-between"
+      <Container
+        className="absolute max-w-[70%] mx-auto top-1/2 left-1/2
+                  translate-[-50%] 
+                  w-fit h-fit  max-h-[700px] 
+                  overflow-y-scroll bg-grey-hover
+                  z-90 flex justify-between no-scrollbar"
       >
-        <div className="px-8 py-6">
+        <div className="p-5">
           <h1 className="heading-3 py-2">Chi tiết văn bản</h1>
-          <Table className="max-w-[900px] p-2 border border-grey-bold">
-            {/* <TableBody> */}
+          <Table className=" p-8 border border-grey-bold ">
             <TableCell
               className={`heading-4 font-normal border-grey-hover p-0`}
             >
@@ -61,8 +67,21 @@ const PopUpDocx = ({
                 <TableCell className={`heading-3 border-r border-grey-bold `}>
                   Tệp đính kèm
                 </TableCell>
-                <TableCell className="heading-3  font-normal border-grey-hover p-2 whitespace-normal">
-                  sasas{' '}
+                <TableCell className="heading-3 font-normal border-grey-hover p-2 whitespace-normal">
+                  <Link
+                    href={(docx?.filePDF && docx?.filePDF[0]) || ''}
+                    className="flex p-1 items-center gap-1"
+                  >
+                    <p className="block underline">
+                      {fileURL && fileURL[fileURL?.length - 1]}
+                    </p>
+                    <Image
+                      width={20}
+                      height={34}
+                      src="/images/icons/down.png"
+                      alt="docx.png"
+                    />
+                  </Link>
                 </TableCell>
               </TableRow>
             </TableCell>
@@ -71,11 +90,16 @@ const PopUpDocx = ({
 
         <div
           onClick={() => setOpenPopUp(false)}
-          className="absolute top-[-20px] right-0 text-[20px] font-bold "
+          className="absolute top-0 right-0 text-[20px] pt-2 pr-2 "
         >
-          X
+          <Image
+            width={30}
+            height={30}
+            src="/images/icons/close.svg"
+            alt="close"
+          />
         </div>
-      </div>
+      </Container>
     </div>
   );
 };

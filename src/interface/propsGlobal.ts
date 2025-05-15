@@ -105,5 +105,6 @@ export interface DocxType {
   updatedTime?: number;
   updatingUnit?: string;
   validityStatus?: string;
+  filePDF?: string[];
   websiteId?: string;
 }

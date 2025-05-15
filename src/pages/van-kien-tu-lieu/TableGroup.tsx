@@ -7,11 +7,11 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
+import { useFetchAttachmentsDocx } from '@/hooks/useDocx';
 import type { DocxType } from '@/interface/propsGlobal';
 import { formatArticleDate } from '@/utils/Format';
 import { useState } from 'react';
 import PopUpDocx from './PopUpDocx';
-import { useFetchAttachmentsDocx } from '@/hooks/useDocx';
 const TableGroup = ({
   className,
   posts,
@@ -24,9 +24,9 @@ const TableGroup = ({
   const [openPopUp, setOpenPopUp] = useState(false);
   const [dataPopUp, setDataPopUp] = useState({});
   const [idSelected, setIdSelected] = useState('');
-  // const [file, setFile] = useState();
+  const [keyword, setKeyword] = useState('');
+  console.log('object :>> ', keyword);
   const { data: file } = useFetchAttachmentsDocx(idSelected, openPopUp);
-  console.log('file :>> ', file);
   return (
     <div className={`border border-grey-bold p-3 rounded-[2px] ${className}`}>
       <div
@@ -38,13 +38,17 @@ const TableGroup = ({
         <p className="block text-grey-footer">|</p>
         <Input
           placeholder="Tìm kiếm"
+          onChange={(e) => setKeyword(e?.target?.value)}
           className=" block border-0 h-full w-full px-1 py-0 text-4 placeholder:text-grey-bold"
         />
       </div>
 
       <div className="rounded-0 border border-grey-bold">
         {openPopUp && dataPopUp && (
-          <PopUpDocx setOpenPopUp={setOpenPopUp} docx={dataPopUp} />
+          <PopUpDocx
+            setOpenPopUp={setOpenPopUp}
+            docx={{ ...dataPopUp, filePDF: file || '' }}
+          />
         )}
         <Table className="rounded-0 ">
           <TableHeader>

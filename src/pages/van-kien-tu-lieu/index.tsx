@@ -9,29 +9,17 @@ import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import TableGroup from './TableGroup';
-const Button = styled.button`
-  max-width: 300px;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  border: 1px solid var(--color-grey-bold);
-  padding: 5px;
-  width: 100%;
-  text-transform: uppercase;
-`;
-const DocxPage = () => {
-  const [idTabCurrent, setIdTabCurrent] = useState('');
-  const { data: listCateDocx, error } = useFetchCateDocxList();
+import { fetchServerCateDocxList } from '@/Services/categoryService';
+const Button = styled.button``;
+const DocxPage = ({ dataServer }: { dataServer: any }) => {
+  const [idTabCurrent, setIdTabCurrent] = useState(
+    dataServer?.listCateDocx[0]?.id
+  );
+
   const [listDocx, setListDocx] = useState([]);
   const path = usePathname() || '';
   const { data: dataCate } = useFetchCategory(path);
-  useEffect(() => {
-    const valueIdTabcurrent = () => {
-      if (listCateDocx && !idTabCurrent) {
-        setIdTabCurrent(listCateDocx[0]?.id);
-      }
-    };
-    valueIdTabcurrent();
-  }, [listCateDocx]);
+
   useEffect(() => {
     const getlistDocx = async () => {
       try {
@@ -50,25 +38,29 @@ const DocxPage = () => {
     };
     getlistDocx();
   }, [idTabCurrent]);
+
   return (
     <MainLayout>
       <Container>
         <SectionTitle title={dataCate?.name} className="mb-5" />
         <div className="">
-          {listCateDocx &&
-            listCateDocx?.map((item: any, index: number) => {
+          {dataServer?.listCateDocx &&
+            dataServer?.listCateDocx?.map((item: any, index: number) => {
               return (
-                <Button
+                <button
                   onClick={() => setIdTabCurrent(item?.id)}
-                  className={`cursor-pointer heading-4 py-[5px] uppercase transition-[0.3s] ${
-                    idTabCurrent == item?.id
-                      ? 'bg-white text-red-primary transition-[0.3s]'
-                      : 'bg-grey-hover text-grey-bold'
-                  }`}
+                  className={`max-w-[300px] border-tl-[5px] border-tr-[5px] border 
+                          border-grey-bold p-[5px] w-full
+                            cursor-pointer heading-4 py-[5px] uppercase transition-[0.3s] 
+                            ${
+                              idTabCurrent == item?.id
+                                ? 'bg-white text-red-primary transition-[0.3s]'
+                                : 'bg-grey-hover text-grey-bold'
+                            }`}
                   key={item?.id || index}
                 >
                   {item?.name}
-                </Button>
+                </button>
               );
             })}
         </div>
@@ -79,29 +71,18 @@ const DocxPage = () => {
 };
 
 export default DocxPage;
-export async function getStaticProps() {
+export async function getStaticProps({
+  params,
+}: {
+  params: { alias: string };
+}) {
   try {
-    const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 7000);
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_VL_BASE_URL}/public/layout/VideoCatePage`,
-      { signal: controller.signal }
-    );
-    clearTimeout(timeout);
-    if (!res) {
-      throw new Error('Failed to fetch');
-    }
-    const posts = await res?.json();
-    const dataTerm = posts?.result?.blocks;
-    const dataSections = dataTerm && transformBlocks(dataTerm);
+    console.log('params :>> ', params);
+    const listCateDocx = await fetchServerCateDocxList({});
 
-    const params = { limit: 10, skip: 0 };
-
-    // const listDocx = await fetchDocxList({ params });
     const dataServer = {
-      dataSections: dataSections,
+      listCateDocx: listCateDocx,
     };
-
     return {
       props: { dataServer },
       revalidate: 60,
@@ -109,7 +90,7 @@ export async function getStaticProps() {
   } catch (error) {
     console.error('Error fetching data:', error);
     return {
-      props: { dataServer: [] }, // Or fallback
+      props: { dataServer: {} }, // Or fallback
     };
   }
 }

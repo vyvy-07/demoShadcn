@@ -1,8 +1,12 @@
+import type { QueryType } from '@/interface/queryType';
 import { parseParams } from '@/utils/utilitiesHandling';
 
 const fetchOptions = { next: { revalidate: 300 } };
 
-export async function fetchServerArticleList(listQuery: any, limit: number) {
+export async function fetchServerArticleList(
+  listQuery: QueryType,
+  limit: number
+) {
   try {
     const params = await parseParams(listQuery, limit);
     const queryString = new URLSearchParams(params as any).toString();
