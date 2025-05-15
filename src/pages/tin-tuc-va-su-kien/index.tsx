@@ -15,13 +15,16 @@ const NewsMixedPage = ({ dataServer }: any) => {
     return <>Chua co du lieu!</>;
   }
   const dataLayout = dataServer?.dataSections?.BlockHead;
-  const { data: dataSide } = useFetchArticleList(dataLayout?.BlockHead_Main, 5);
+  const { data: dataSide } = useFetchArticleList(dataLayout?.BlockHead_Side, 5);
   return (
     <MainLayout>
       <Container>
         <GridWrapper>
           <div className="col-span-8">
-            <SectionTitle title={'Tin tổng hợp'} className="mb-5" />
+            <SectionTitle
+              title={dataLayout?.BlockHead_Main?.title || 'Tin tổng hợp'}
+              className="mb-5"
+            />
             {dataServer?.cateHead_Main &&
               dataServer?.cateHead_Main?.map((item: Article, index: number) => {
                 return (
@@ -48,7 +51,7 @@ const NewsMixedPage = ({ dataServer }: any) => {
             <ListArticleSideMini
               posts={dataSide}
               titleStyle="mb-5"
-              title={dataLayout?.CateHead_Side?.title}
+              title={dataLayout?.BlockHead_Side?.title}
             />
           </div>
         </GridWrapper>
