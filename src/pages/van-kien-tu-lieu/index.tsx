@@ -49,8 +49,9 @@ const DocxPage = ({ dataServer }: { dataServer: any }) => {
               return (
                 <button
                   onClick={() => setIdTabCurrent(item?.id)}
-                  className={`max-w-[300px] border-tl-[5px] border-tr-[5px] border 
+                  className={`max-w-[300px] border rounded-tl-[5px] rounded-tr-[5px]
                           border-grey-bold p-[5px] w-full
+                         
                             cursor-pointer heading-4 py-[5px] uppercase transition-[0.3s] 
                             ${
                               idTabCurrent == item?.id
