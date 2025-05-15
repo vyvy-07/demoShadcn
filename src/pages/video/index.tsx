@@ -13,7 +13,7 @@ const VideoPage = ({ dataServer }: { dataServer: any }) => {
   }
   const blockHead = dataServer?.dataSections?.BlockHead;
   const query = { ...blockHead?.BlockHead_Main, cateId: '' };
-  const detailHead_Side = useFetchArticleList(query, 10);
+  const detailHead_Side = useFetchArticleList(query, -1);
   return (
     <MainLayout>
       <Container>

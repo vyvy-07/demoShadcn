@@ -60,7 +60,7 @@ const DocxPage = () => {
               return (
                 <Button
                   onClick={() => setIdTabCurrent(item?.id)}
-                  className={`heading-4 py-[5px] uppercase transition-[0.3s] ${
+                  className={`cursor-pointer heading-4 py-[5px] uppercase transition-[0.3s] ${
                     idTabCurrent == item?.id
                       ? 'bg-white text-red-primary transition-[0.3s]'
                       : 'bg-grey-hover text-grey-bold'

@@ -72,7 +72,6 @@ export async function getStaticProps({ params }: { params: any }) {
     }
     const posts = await res?.json();
 
-    console.log('params :>> ', params);
     const dataTerm = posts?.result?.blocks;
     const dataSections = dataTerm && transformBlocks(dataTerm);
     //cate list article
@@ -86,7 +85,6 @@ export async function getStaticProps({ params }: { params: any }) {
         7
       ));
     const dataCate = params && (await fetchServerCategoryId(params?.alias));
-    console.log('dataCate :>> ', dataCate);
     const dataServer = JSON.parse(
       JSON.stringify({
         cateHead_Main: cateHead_Main,

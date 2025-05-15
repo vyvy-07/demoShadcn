@@ -25,18 +25,15 @@ export async function fetchArticleList(
 export async function fetchDetailArticle({
   signal,
   articleId,
-  params,
 }: {
   signal: AbortSignal;
   articleId: string;
-  params: QueryType;
 }) {
   try {
     const response = await axios.get(
-      `${process.env.NEXT_PUBLIC_VL_BASE_URL_TEST}/public/article/${articleId}`,
+      `${process.env.NEXT_PUBLIC_VL_BASE_URL}/public/article/${articleId}`,
       {
         signal,
-        params,
       }
     );
 

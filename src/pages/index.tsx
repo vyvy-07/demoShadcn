@@ -19,12 +19,10 @@ import HomeS from '@/components/Page/HomePage/HomeS';
 import HomeT from '@/components/Page/HomePage/HomeT';
 import { useFetchArticleList } from '@/hooks/useArticle';
 import { fetchServerArticleList } from '@/Services/articleService';
-import { fetchServerCategoryList } from '@/Services/categoryService';
 import { transformBlocks } from '@/utils/utilitiesHandling';
 
 export default function Home({ dataServer }: any) {
   if (!dataServer?.layoutPage) {
-    console.log('index page :>> ', 111);
     return <>Chua co du lieu!</>;
   }
 

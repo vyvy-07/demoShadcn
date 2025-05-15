@@ -1,5 +1,6 @@
 import type { QueryType } from '@/interface/queryType';
 import {
+  fetchAttachmentsDocx,
   fetchCateDocxList,
   fetchDocxList,
 } from '@/Services/ClientServices/docx';
@@ -18,5 +19,13 @@ export const useFetchCateDocxList = (params = initParams) => {
     queryKey: ['cateDocx'],
     queryFn: ({ signal }) => fetchCateDocxList({ signal, params }),
     enabled: !!params,
+  });
+};
+
+export const useFetchAttachmentsDocx = (docId: string, isEnable: boolean) => {
+  return useQuery({
+    queryKey: ['attachmentsDocx', docId],
+    queryFn: ({ signal }) => fetchAttachmentsDocx({ signal, docId }),
+    enabled: !!isEnable,
   });
 };

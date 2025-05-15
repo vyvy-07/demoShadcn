@@ -67,12 +67,12 @@ export const useFetchDetailArticle = (
   }
 
   return useQuery({
-    queryKey: ['article', articleId],
+    queryKey: ['detailArticle', articleId],
     queryFn: ({ signal }) =>
       fetchDetailArticle({
         signal,
         articleId,
-        params,
+        // params,
       }),
     enabled: !!articleId,
   });

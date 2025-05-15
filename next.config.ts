@@ -6,7 +6,8 @@ const nextConfig: NextConfig = {
     domains: [
       'api.nongthonviet.com.vn',
       'vinhlong.dcs.vn',
-      'https://cms-api-vinhlong.ngn.vn',
+      // 'https://cms-api-vinhlong.ngn.vn',
+      'cms-api-vinhlong.ngn.vn',
     ],
     remotePatterns: [
       {
@@ -14,7 +15,13 @@ const nextConfig: NextConfig = {
         hostname: 'res.cloudinary.com',
         pathname: '**',
       },
+      {
+        protocol: 'https',
+        hostname: 'cms-api-vinhlong.ngn.vn',
+        pathname: '/media/**',
+      },
     ],
+    dangerouslyAllowSVG: true,
   },
 };
 
