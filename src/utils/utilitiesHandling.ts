@@ -128,7 +128,10 @@ export const transformBlocks = (
   return blocks.reduce((acc, block) => {
     const sectionMap = block.sections.reduce((sectionAcc, section) => {
       const { name, ...rest } = section;
-      sectionAcc[name] = rest;
+      sectionAcc[name] = {
+        ...rest,
+        sectionName: block.name, // Tiêm sectionName vào mỗi section
+      };
       return sectionAcc;
     }, {} as Record<string, any>);
 

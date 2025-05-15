@@ -25,7 +25,9 @@ export const HomeKMedia = ({ title, posts }: PropsGlobal) => {
               <div key={item?.id || index}>
                 <ArticleCustomCard
                   dataArticle={item}
-                  className={`${index + 1 != posts?.[index] ? 'mb-4' : ''}`}
+                  className={`${
+                    index + 1 != Number(posts?.[index]) ? 'mb-4' : ''
+                  }`}
                 />
                 {index != 1 && <hr className="text-grey" />}{' '}
               </div>

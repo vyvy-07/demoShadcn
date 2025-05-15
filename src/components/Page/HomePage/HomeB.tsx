@@ -7,6 +7,9 @@ const HomeB = ({ posts, dataLayoutMain }: PropsGlobal) => {
   if (!posts?.length) {
     return null;
   }
+  // const dataLayoutMain = dataLayout?.HomeA_Main;
+  // const dataLayoutSide = dataLayout?.HomeA_Side;
+
   return (
     <div id="homeB">
       <SectionTitle title={dataLayoutMain?.title || ''} className="mt-7 mb-4" />

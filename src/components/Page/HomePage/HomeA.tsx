@@ -4,14 +4,11 @@ import GridWrapper from '@/components/LayoutGrid/GridWrapper';
 import ListArticleSide from '@/components/SideRight/ListArticleSide';
 import type { PropsGlobal } from '@/interface/propsGlobal';
 
-const HomeA = ({
-  posts,
-  postsSide,
-  dataLayoutMain,
-  dataLayoutSide,
-}: PropsGlobal) => {
+const HomeA = ({ posts, postsSide, dataLayout }: PropsGlobal) => {
+  const dataLayoutMain = dataLayout?.HomeA_Main;
+  const dataLayoutSide = dataLayout?.HomeA_Side;
   return (
-    <div id="homeA">
+    <div id={dataLayoutMain?.sectionName}>
       <GridWrapper>
         <div className="col-span-9 gap-5">
           {posts && (

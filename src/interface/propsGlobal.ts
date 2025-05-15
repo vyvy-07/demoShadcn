@@ -45,6 +45,7 @@ export interface Article {
 }
 
 export interface PropsGlobal {
+  dataLayout?: any;
   id?: string;
   reverseTwoRow?: boolean;
   title?: string;

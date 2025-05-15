@@ -106,15 +106,14 @@ export default function Home({ dataServer }: any) {
     8,
     dataServer?.layoutPage
   );
-
+  console.log('sections :>> ', sections);
   return (
     <MainLayout>
       <Container>
         <HomeA
           posts={dataServer?.dataSectionA_Main}
           postsSide={dataServer?.dataSectionA_Side}
-          dataLayoutMain={sections?.HomeA?.HomeA_main}
-          dataLayoutSide={sections?.HomeA?.HomeA_Side}
+          dataLayout={sections?.HomeA}
         />
         <HomeB
           posts={dataServer?.dataSectionB_Main}
