@@ -71,7 +71,7 @@ export const getPostDetailUrl = (type: string, alias: string, id = '') => {
     case 'Audio':
       return `/podcast/${alias}${id && `-${id}`}.ngn`;
     default:
-      return `/${alias}${id && `-${id}`}.ngn`;
+      return `/${alias}${id && `-${id}`}`;
   }
 };
 export const formatCatePath = (type = '', alias?: string, id = '') => {

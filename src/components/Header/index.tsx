@@ -14,7 +14,7 @@ const Header = (dataCategory: PropsGlobal) => {
           src="/images/banners/header.png"
           alt="Vinh Long"
         />
-        {/* <title>Vĩnh Long</title> */}
+        <title>Vĩnh Long</title>
       </Link>
       <div className="my-5 flex items-center justify-between border-[#393939] border-y-[1px]">
         <div className="flex items-center">

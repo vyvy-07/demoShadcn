@@ -3,6 +3,7 @@ import ArticleCard from '../Articles/ArticleCard';
 import SectionTitle from '../SectionTitle';
 import type { PropsGlobal } from '@/interface/propsGlobal';
 import { formatArticleDate } from '@/utils/Format';
+import { getPostDetailUrl } from '@/utils/utilitiesHandling';
 const ListArticleSide = ({
   className,
   posts,
@@ -56,7 +57,15 @@ const ListArticleSide = ({
             } border-[#393939]  `}
             key={post.id}
           >
-            <Link href="/" className="font-medium line-clamp-3">
+            <Link
+              href={`${
+                (post?.type &&
+                  post?.alias &&
+                  getPostDetailUrl(post?.type, post?.alias)) ||
+                ''
+              }`}
+              className="font-medium line-clamp-3"
+            >
               {/* <IconTypeArticle type={post.type} /> */}
               {post.title}
             </Link>

@@ -1,10 +1,14 @@
-const ViewMoreButton = ({ dataLayout }: { dataLayout: any }) => {
-  //   const [isEnable, setIsEnable] = useState(false);
+import { useFetchArticleList } from '@/hooks/useArticle';
+import { useState } from 'react';
 
+const ViewMoreButton = ({ dataLayout }: { dataLayout: any }) => {
+  const [limited, setLimited] = useState(3);
+  const { data: dataSide } = useFetchArticleList(dataLayout, limited);
+  console.log('dataSide :>> ', dataSide);
   return (
     <div
       onClick={() => {
-        // setIsEnable(true);
+        setLimited(limited + 4);
       }}
       className="flex justify-between items-center"
     >

@@ -1,4 +1,5 @@
 import type { PropsGlobal } from '@/interface/propsGlobal';
+import { getLinkToCatePage, getPostDetailUrl } from '@/utils/utilitiesHandling';
 import Link from 'next/link';
 
 const SectionTitle = ({
@@ -16,7 +17,8 @@ const SectionTitle = ({
           <div className="w-7 border-b-[4px] border-red-primary"></div>
 
           <Link
-            href="/"
+            // href={`${getLinkToCatePage(cateAlias)}`}
+            href=""
             className="heading-3 title text-red-primary text-[22px] font-bold leading-[30px] uppercase "
           >
             <h3 className="heading-3 text-red-primary"> {title}</h3>

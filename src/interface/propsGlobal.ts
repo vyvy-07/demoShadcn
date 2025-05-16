@@ -13,6 +13,7 @@ export interface Article {
   excerpt?: string;
   featuredImage?: string;
   external: string;
+  postContent?: string;
   featuredMedia?: {
     id?: string;
     alt?: string;
