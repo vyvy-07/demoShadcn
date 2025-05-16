@@ -10,6 +10,7 @@ import { fetchServerArticleDetail } from '@/Services/articleService';
 import { transformBlocks } from '@/utils/utilitiesHandling';
 import DetailArtSection from './DetailArtSection';
 import ArtRelatedFoot from './ArtRelatedFoot';
+import SEO from '@/components/Seo';
 
 const DetailPage = ({ dataServer }: { dataServer: any }) => {
   const dataLayout = dataServer?.dataSections?.BlockHead;
@@ -25,6 +26,16 @@ const DetailPage = ({ dataServer }: { dataServer: any }) => {
   );
   return (
     <MainLayout>
+      {dataServer?.dataDetail && (
+        <SEO
+          title={dataServer?.dataDetail?.title}
+          description={dataServer?.dataDetail?.sapo}
+          image={
+            dataServer?.dataDetail?.featuredMedia?.resolutions?.medium
+              ?.uridataArticle?.featuredImage
+          }
+        />
+      )}
       <Container>
         <GridWrapper>
           <div className="col-span-9">
