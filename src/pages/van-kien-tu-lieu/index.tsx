@@ -78,7 +78,6 @@ export async function getStaticProps({
   params: { alias: string };
 }) {
   try {
-    console.log('params :>> ', params);
     const listCateDocx = await fetchServerCateDocxList({});
 
     const dataServer = {

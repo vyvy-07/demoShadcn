@@ -85,7 +85,6 @@ export async function getStaticProps() {
         dataSections?.BlockHead?.BlockHead_Main,
         7
       ));
-    console.log('dataSections :>> ', dataSections);
     const dataServer = JSON.parse(
       JSON.stringify({
         cateHead_Main,
