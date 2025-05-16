@@ -47,7 +47,8 @@ export function NavigationMenuDemo({ data }: { data: Category[] }) {
                                   <Link
                                     href={`${getLinkToCatePage(
                                       // subCateItem?.displayType,
-                                      subCateItem?.alias || ''
+                                      subCateItem?.alias || '',
+                                      subCateItem?.displayType
                                     )}`}
                                   >
                                     {subCateItem?.name}

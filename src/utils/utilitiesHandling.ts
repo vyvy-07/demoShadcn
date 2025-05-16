@@ -1,7 +1,10 @@
 import { SPECIAL_PATH } from '@/constant/dataVinhLong/specialPath';
 import type { QueryType } from '@/interface/queryType';
 
-export const getLinkToCatePage = (cateAlias: string) => {
+export const getLinkToCatePage = (cateAlias: string, type = '') => {
+  if (type) {
+    return formatCatePath(type, cateAlias);
+  }
   const res = SPECIAL_PATH.some((item) => item?.alias === cateAlias);
   if (res) {
     return `/${cateAlias}`;
