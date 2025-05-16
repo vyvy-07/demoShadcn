@@ -15,7 +15,6 @@ const PopUpDocx = ({
   setOpenPopUp: Dispatch<SetStateAction<boolean>>;
 }) => {
   const fileURL = docx?.filePDF && docx?.filePDF[0]?.split('_');
-  console.log('fileURL[fil] :>> ', fileURL && fileURL[fileURL?.length - 1]);
   return (
     <div
       className="fixed overflow-hidden

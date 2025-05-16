@@ -25,7 +25,6 @@ const TableGroup = ({
   const [dataPopUp, setDataPopUp] = useState({});
   const [idSelected, setIdSelected] = useState('');
   const [keyword, setKeyword] = useState('');
-  console.log('object :>> ', keyword);
   const { data: file } = useFetchAttachmentsDocx(idSelected, openPopUp);
   return (
     <div className={`border border-grey-bold p-3 rounded-[2px] ${className}`}>

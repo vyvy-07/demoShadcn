@@ -4,7 +4,6 @@ import { useState } from 'react';
 const ViewMoreButton = ({ dataLayout }: { dataLayout: any }) => {
   const [limited, setLimited] = useState(3);
   const { data: dataSide } = useFetchArticleList(dataLayout, limited);
-  console.log('dataSide :>> ', dataSide);
   return (
     <div
       onClick={() => {

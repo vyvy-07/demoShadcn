@@ -200,7 +200,6 @@ export async function getStaticProps() {
       `${process.env.NEXT_PUBLIC_VL_BASE_URL}/public/layout/HomePage`,
       { signal: controller.signal }
     );
-    console.log('res :>> ', res);
     clearTimeout(timeout);
     if (!res?.ok) {
       throw new Error('Failed to fetch');

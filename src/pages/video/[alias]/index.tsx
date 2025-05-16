@@ -47,7 +47,6 @@ export async function getStaticProps({
     const posts = await res?.json();
     const dataTerm = posts?.result?.blocks;
     const dataSections = dataTerm && transformBlocks(dataTerm);
-    // console.log('dataTerm :>> ', dataTerm);
 
     const dataDetail =
       params?.alias && (await fetchServerArticleDetail(params?.alias));

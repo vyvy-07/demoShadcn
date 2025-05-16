@@ -11,7 +11,6 @@ const DetailArtSection = ({
   dataDetail: Article;
   dataCate: Category;
 }) => {
-  console.log('dataDetail :>> ', dataDetail);
   return (
     <div>
       <div>
