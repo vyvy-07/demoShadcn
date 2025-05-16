@@ -43,17 +43,17 @@ const CatePageDynamic = ({ dataServer }: any) => {
 
 export default CatePageDynamic;
 export const getStaticPaths = async () => {
-  const dataCate = await fetchServerCategoryList();
   const datapaths: any = [];
-  dataCate.forEach((element: any) => {
-    if (!SPECIAL_PATH.includes(element.alias)) {
-      datapaths.push({
-        params: element,
-      });
-    }
-  });
+  const dataCate = await fetchServerCategoryList();
+
+  const paths = dataCate
+    .filter((item: any) => !SPECIAL_PATH.includes(item.alias))
+    .map((item: any) => ({
+      params: { alias: item.alias }, // Hoặc cấu trúc params phù hợp với [alias].tsx
+    }));
+
   return {
-    paths: datapaths,
+    paths: paths,
     fallback: 'blocking',
   };
 };

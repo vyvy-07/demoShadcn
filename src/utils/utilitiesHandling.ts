@@ -1,15 +1,8 @@
+import { SPECIAL_PATH } from '@/constant/dataVinhLong/specialPath';
 import type { QueryType } from '@/interface/queryType';
 
-const MEDIA_ALIAS = [
-  { alias: 'emagazine' },
-  { alias: 'podcast' },
-  { alias: 'phong-su-anh' },
-  { alias: 'infographic' },
-  { alias: 'video' },
-  { alias: 'tap-chi-in' },
-];
 export const getLinkToCatePage = (cateAlias: string) => {
-  const res = MEDIA_ALIAS.some((item) => item?.alias === cateAlias);
+  const res = SPECIAL_PATH.some((item) => item?.alias === cateAlias);
   if (res) {
     return `/${cateAlias}`;
   } else return `/danh-muc/${cateAlias}`;

@@ -10,7 +10,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from './MenuBarShadcn';
-import { formatCatePath } from '@/utils/utilitiesHandling';
+import { formatCatePath, getLinkToCatePage } from '@/utils/utilitiesHandling';
 import { navigationMenuTriggerStyle } from '../ui/navigation-menu';
 
 export function NavigationMenuDemo({ data }: { data: Category[] }) {
@@ -28,7 +28,7 @@ export function NavigationMenuDemo({ data }: { data: Category[] }) {
                   key={item?.id || index}
                 >
                   <NavigationMenuTrigger className="uppercase cursor-pointer hover:text-red-primary hover:transition-[0.03s] transition-[0.03s]">
-                    <Link href={`${formatCatePath('', item?.alias)}`}>
+                    <Link href={`${getLinkToCatePage(item?.alias || '')}`}>
                       {item?.name}
                     </Link>
                   </NavigationMenuTrigger>
@@ -45,9 +45,9 @@ export function NavigationMenuDemo({ data }: { data: Category[] }) {
                               >
                                 <NavigationMenuLink asChild>
                                   <Link
-                                    href={`${formatCatePath(
-                                      subCateItem?.displayType,
-                                      subCateItem?.alias
+                                    href={`${getLinkToCatePage(
+                                      // subCateItem?.displayType,
+                                      subCateItem?.alias || ''
                                     )}`}
                                   >
                                     {subCateItem?.name}
