@@ -106,7 +106,6 @@ export default function Home({ dataServer }: any) {
     8,
     dataServer?.layoutPage
   );
-  console.log('sections :>> ', sections);
   return (
     <MainLayout>
       <Container>

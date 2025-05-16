@@ -21,7 +21,7 @@ const CatePageDynamic = ({ dataServer }: any) => {
         <GridWrapper>
           <div className="col-span-9">
             <SectionTitle
-              // title={dataLayout?.CateHead_Main?.title || 'hoat dong'}
+              // title={dataLayout?.BlockHead_Side?.title || 'hoat dong'}
               title={dataServer?.dataCate?.name}
               className="mb-5"
             />
@@ -48,7 +48,7 @@ export const getStaticPaths = async () => {
   dataCate.forEach((element: any) => {
     if (!SPECIAL_PATH.includes(element.alias)) {
       datapaths.push({
-        params: { alias: element.alias },
+        params: element,
       });
     }
   });
@@ -75,7 +75,7 @@ export async function getStaticProps({ params }: { params: any }) {
     const dataTerm = posts?.result?.blocks;
     const dataSections = dataTerm && transformBlocks(dataTerm);
     //cate list article
-    const cateHead_Main =
+    const dataBlockHead_Main =
       dataSections?.BlockHead &&
       (await fetchServerArticleList(
         {
@@ -87,7 +87,7 @@ export async function getStaticProps({ params }: { params: any }) {
     const dataCate = params && (await fetchServerCategoryId(params?.alias));
     const dataServer = JSON.parse(
       JSON.stringify({
-        cateHead_Main: cateHead_Main,
+        cateHead_Main: dataBlockHead_Main,
         dataSections: dataSections,
         dataCate: dataCate,
       })
